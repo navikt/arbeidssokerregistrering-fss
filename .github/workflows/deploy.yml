@@ -60,7 +60,7 @@ jobs:
           RESOURCE: nais/naiserator-fss.yaml
           VARS: nais/vars-dev-fss.yaml
 
-  deploy-prod-fss-paw:
+  deploy-prod-fss:
     name: Deploy to Prod FSS
     needs: deploy-dev-fss
     runs-on: ubuntu-latest
@@ -70,7 +70,7 @@ jobs:
         run: echo "TAG=$(git log -1 --pretty='%ad_%h' --date=format:'%Y%m%d%H%M%S')" >> $GITHUB_ENV
       - name: Lag full image referanse
         run: echo "IMAGE=$IMAGE_BASE:$TAG" >> $GITHUB_ENV
-      - name: Deploy to P
+      - name: Deploy with nais
         uses: nais/deploy/actions/deploy@master
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
@@ -81,7 +81,7 @@ jobs:
 
   release:
     name: Tag and release
-    needs: deploy-prod-fss-paw
+    needs: deploy-prod-fss
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
