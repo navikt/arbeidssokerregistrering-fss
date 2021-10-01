@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  IMAGE_BASE: ghcr.io/${{ github.repository }}/arbeidssokerregistrering
+  IMAGE_BASE: ghcr.io/${{ github.repository }}/arbeidssokerregistrering-fss
 
 jobs:
   cypress-run:
