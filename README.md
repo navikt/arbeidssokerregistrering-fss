@@ -1,6 +1,6 @@
 # Arbeidssøkerregistrering i fagsystemsonen
 
-Frontend for registrering av arbeidssøker for **veiledere**.
+Frontend for registrering av arbeidssøker for **veiledere** i Modia.
 
 Frontenden for **personbrukere** finnes på [navikt/arbeidssokerregistrering](https://github.com/navikt/arbeidssokerregistrering).
 
