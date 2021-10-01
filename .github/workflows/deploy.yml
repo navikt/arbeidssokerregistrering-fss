@@ -77,7 +77,7 @@ jobs:
           CLUSTER: prod-fss
           RESOURCE: nais/naiserator-fss.yaml
           VARS: nais/vars-p-fss-paw.yaml
-          DRY_RUN: false
+          DRY_RUN: true
 
   release:
     name: Tag and release
