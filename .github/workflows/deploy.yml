@@ -76,7 +76,7 @@ jobs:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: prod-fss
           RESOURCE: nais/naiserator-fss.yaml
-          VARS: nais/vars-p-fss-paw.yaml
+          VARS: nais/vars-prod-fss.yaml
           DRY_RUN: true
 
   release:
