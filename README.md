@@ -1,6 +1,8 @@
-# Arbeidssøkerregistrering
+# Arbeidssøkerregistrering i fagsystemsonen
 
-Frontend for registrering av arbeidssøker
+Frontend for registrering av arbeidssøker for **veiledere**.
+
+Frontenden for **personbrukere** finnes på [navikt/arbeidssokerregistrering](https://github.com/navikt/arbeidssokerregistrering).
 
 # Komme i gang med utvikling
 
