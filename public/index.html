@@ -32,8 +32,13 @@
             lastInnCss(dekoratorCssUrl);
             lastInnCss(visittkortCssUrl);
         } else if(hostname.indexOf('localhost') !== -1) {
-            lastInnScript(devBaseUrl + dekoratorScriptUrl);
-            lastInnCss(devBaseUrl + dekoratorCssUrl);
+        	// Ikke last inn dev-script ved kjøring av cypress-testene.
+			// dev-scriptene krever NAV-nett, men testene blir ofte kjørt utenfor NAV-nettet (bl.a. github-action).
+			// Det ingen cypress-tester som tester fss-funksjonalitet, så dette skal ikke ha noe å si for testdekning.
+			// XXX Dette er uansett ikke optimalt, og bør endres så snart noe skal gjøres med testene i denne appen.
+        	if (!window.isCypressTest) {
+				lastInnScript(devBaseUrl + dekoratorScriptUrl);
+			}
         }
 
 	</script>
