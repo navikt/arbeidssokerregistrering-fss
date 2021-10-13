@@ -1,11 +1,7 @@
 import { hentBrukerIKontekst, oppdaterAktivBruker } from "../ducks/api";
-import { hentQueryParameter, lagAktivitetsplanUrl } from "./url-utils";
+import { hentQueryParameter } from "./url-utils";
 import mockedBrukerFnr from "../mocks/bruker-fnr";
 import mockedVeilederEnhetId from "../mocks/veileder-enhet-id";
-
-interface PersonsokEvent extends Event {
-  fodselsnummer: string;
-}
 
 const EXPIRES_AFTER = 10000; // ms
 const BRUKER_FNR_TAG = "FSS_KONTEKST_BRUKER_FNR";
@@ -90,12 +86,6 @@ export function initSessionKontekst(): void {
   }
 
   oppdaterModiaKontekst();
-}
-
-export function startBrukerFnrEndretListener(): void {
-  document.addEventListener("dekorator-hode-personsok", (event: PersonsokEvent) => {
-    window.location.href = lagAktivitetsplanUrl(event.fodselsnummer);
-  });
 }
 
 export function erIFSS(): boolean {
