@@ -42,7 +42,7 @@ class DuErNaRegistrert extends React.Component<AllProps> {
     const tittelId = erIFSS() ? "duernaregistrert-manuell-innholdstittel" : hentTekstId("innholdstittel");
     const kommerFra = hentKommerFra();
     uniLogger("arbeidssokerregistrering.visning", {
-      viser: "Viser kvitteringssiden",
+      viser: "Viser kvitteringssiden i FSS",
       registreringType: registreringType,
     });
     return (
