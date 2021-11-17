@@ -9,7 +9,7 @@ proxy:
     pingRequestPath: "/isAlive"
     validateOidcToken: false
   - contextPath: "/veilarbvisittkortfs"
-    baseUrl: "https://veilarbvisittkortfs-q1.nais.preprod.local"
+    baseUrl: "https://veilarbvisittkortfs.dev.intern.nav.no"
     pingRequestPath: "/isAlive"
     validateOidcToken: false
   - contextPath: "/modiacontextholder"
