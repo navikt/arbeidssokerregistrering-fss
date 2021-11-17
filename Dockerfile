@@ -5,8 +5,8 @@ FROM ${BASE_IMAGE_PREFIX}node as node-builder
 ADD / /source
 ENV CI=true
 WORKDIR /source
+ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN npm ci && npm run build
-
 
 FROM ghcr.io/navikt/pus-decorator/pus-decorator:latest
 ENV APPLICATION_NAME=arbeidssokerregistrering
