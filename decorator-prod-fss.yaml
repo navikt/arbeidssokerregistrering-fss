@@ -10,7 +10,7 @@ proxy:
     validateOidcToken: false
   - contextPath: "/veilarbvisittkortfs"
     baseUrl: "https://veilarbvisittkortfs.intern.nav.no"
-    pingRequestPath: "/internal/isAlive"
+    pingRequestPath: "/veilarbvisittkortfs/internal/isAlive"
     validateOidcToken: false
   - contextPath: "/modiacontextholder"
     baseUrl: "https://modiacontextholder.nais.adeo.no"
