@@ -15,6 +15,16 @@ export const erProduksjon = () => {
   return url.indexOf("arbeidssokerregistrering.nav.no") > -1;
 };
 
+const DEV_DOMAINS = ["dev", "app-q1", "app-q0", "localhost"];
+
+const erITestMiljo = (): boolean => {
+  return window.location.hostname.split(".").findIndex((domain) => DEV_DOMAINS.includes(domain)) >= 0;
+};
+
+export const utledSpaUrl = (appName: string): string => {
+  return erITestMiljo() ? `https://${appName}.dev.intern.nav.no` : `https://${appName}.intern.nav.no`;
+};
+
 type LocationType = { search: string };
 
 export const hentQueryParameter = (location: LocationType, parameter: string): string | null =>
