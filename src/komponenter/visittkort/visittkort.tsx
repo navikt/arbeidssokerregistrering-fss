@@ -34,7 +34,12 @@ const Visittkort: () => JSX.Element = () => {
   const enhetId = hentVeilederEnhetId();
   return (
     <div className="visittkortfs-wrapper">
-      <VisittkortSpa fnr={fnr || ""} enhet={enhetId || ""} tilbakeTilFlate="veilarbpersonflatefs" visVeilederVerktoy />
+      <VisittkortSpa
+        fnr={fnr || ""}
+        enhet={enhetId || ""}
+        tilbakeTilFlate="veilarbpersonflatefs"
+        visVeilederVerktoy={false}
+      />
     </div>
   );
 };
