@@ -7,15 +7,7 @@ Frontenden for **personbrukere** finnes på [navikt/arbeidssokerregistrering](ht
 # Komme i gang med utvikling
 
 - `npm i`
-- `npm start`
-
-For å starte app i demo-mode
-
-- `npm run demo`
-
-For å starte app i veileder-demo-mode (arbeidssokerregistrering-fss)
-
-- `npm run start-manuell`
+- `npm start` (starter appen i demo-modus)
 
 ## Utvikling med backend
 
@@ -37,4 +29,3 @@ Spørsmål knyttet til koden eller prosjektet kan stilles via issues her på git
 # For NAV-ansatte
 
 Interne henvendelser kan sendes via Slack i kanalen [#team-paw-dev](https://nav-it.slack.com/archives/CLTFAEW75)
-
