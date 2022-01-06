@@ -9,7 +9,7 @@ ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN npm ci && npm run build
 
 FROM ghcr.io/navikt/pus-decorator/pus-decorator:latest
-ENV APPLICATION_NAME=arbeidssokerregistrering
+ENV APPLICATION_NAME=arbeidssokerregistrering-fss
 COPY --from=node-builder /source/build /app
 ADD decorator.yaml /decorator.yaml
 ADD decorator-dev-fss.yaml /decorator-dev-fss.yaml
