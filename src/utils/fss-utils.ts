@@ -94,7 +94,7 @@ export function erIFSS(): boolean {
   }
 
   const hostname = window.location.hostname;
-  return hostname.endsWith(".adeo.no") || hostname.endsWith(".preprod.local");
+  return hostname.endsWith(".adeo.no") || hostname.endsWith(".preprod.local") || hostname.endsWith("intern.nav.no");
 }
 
 export function hentUrlBrukerFnr(): string | null {
