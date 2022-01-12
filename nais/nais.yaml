@@ -1,10 +1,13 @@
 kind: Application
 apiVersion: nais.io/v1alpha1
 metadata:
-  name: arbeidssokerregistrering
+  name: arbeidssokerregistrering-veileder
   namespace: {{namespace}}
   labels:
     team: paw
+  annotations:
+    nginx.ingress.kubernetes.io/server-snippet: |
+      underscores_in_headers on;
 spec:
   env:
   - name: CONFIGURATION_LOCATION
@@ -50,5 +53,10 @@ spec:
       cpu: "3"
       memory: 768Mi
     requests:
-      cpu: "1"
       memory: 512Mi
+      cpu: "1"
+  accessPolicy:
+    outbound:
+      rules:
+        - application: paw-auth-proxy
+

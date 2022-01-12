@@ -6,7 +6,4 @@ aktoerregister_api_v1_url: https://app-q1.adeo.no/aktoerregister/api/v1
 configuration_location: /decorator-dev-fss.yaml
 pam_janzz_url: https://pam-janzz.dev.intern.nav.no
 ingresses:
-  - https://arbeidssokerregistrering.dev.adeo.no
-  - https://arbeidssokerregistrering-q1.nais.preprod.local
-  - https://arbeidssokerregistrering-fss-q1.nais.preprod.local
-  - https://app-q1.adeo.no/arbeidssokerregistrering
+  - https://arbeidssokerregistrering.dev.intern.nav.no
