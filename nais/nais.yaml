@@ -26,6 +26,8 @@ spec:
     value: {{aktoerregister_api_v1_url}}
   - name: PAM_JANZZ_URL
     value: {{ pam_janzz_url }}
+  - name: PROXY_URL
+    value: {{ pto_proxy_url }}
   image: {{ image }}
   {{#if ingresses}}
   ingresses:
