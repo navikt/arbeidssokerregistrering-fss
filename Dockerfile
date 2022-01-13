@@ -12,5 +12,6 @@ FROM ghcr.io/navikt/pus-decorator/pus-decorator:latest
 ENV APPLICATION_NAME=arbeidssokerregistrering-veileder
 COPY --from=node-builder /source/build /app
 ADD decorator.yaml /decorator.yaml
+ADD decorator-gcp.yaml /decorator-gcp.yaml
 ADD decorator-dev-fss.yaml /decorator-dev-fss.yaml
 ADD decorator-prod-fss.yaml /decorator-prod-fss.yaml

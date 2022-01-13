@@ -4,7 +4,7 @@ veilarboppfolging_url: https://veilarboppfolging-q1.nais.preprod.local/veilarbop
 pto_proxy_url: http://pto-proxy.pto.svc.cluster.local/proxy
 veilarbpersonapi_url: https://veilarbperson-q1.nais.preprod.local/veilarbperson/api
 aktoerregister_api_v1_url: https://app-q1.adeo.no/aktoerregister/api/v1
-configuration_location: /decorator.yaml
+configuration_location: /decorator-gcp.yaml
 pam_janzz_url: https://pam-janzz.dev.intern.nav.no
 ingresses:
   - https://arbeidssokerregistrering.dev.intern.nav.no

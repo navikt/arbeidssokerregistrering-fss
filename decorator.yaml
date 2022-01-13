@@ -4,14 +4,16 @@ auth:
 
 proxy:
   - contextPath: "/veilarbregistrering"
-    baseUrl: {{ PROXY_URL }}
+    baseUrl: "http://veilarbproxy"
   - contextPath: "/veilarbperson"
-    baseUrl: {{ PROXY_URL }}
+    baseUrl: "http://veilarbproxy"
   - contextPath: "/pam-janzz"
     baseUrl: {{ PAM_JANZZ_URL }}
     pingRequestPath: "/pam-janzz/swagger-ui/"
 
 redirect:
+  - from: /arbeidssokerregistrering
+    to: {{ ARBEIDSSOKERREGISTRERING_URL }}
   - from: /dittnav
     to: {{ DITTNAV_LINK_URL }}
   - from: /veientilarbeid

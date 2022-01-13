@@ -1,0 +1,12 @@
+contextPath: /
+auth:
+  enforce: false
+
+proxy:
+  - contextPath: "/veilarbregistrering"
+    baseUrl: {{ PROXY_URL }}
+  - contextPath: "/veilarbperson"
+    baseUrl: {{ PROXY_URL }}
+  - contextPath: "/pam-janzz"
+    baseUrl: {{ PAM_JANZZ_URL }}
+    pingRequestPath: "/pam-janzz/swagger-ui/"
