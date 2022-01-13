@@ -59,6 +59,8 @@ spec:
       cpu: "1"
   spec:
     azure:
+      application:
+        enabled: true
       sidecar:
         enabled: true
         autoLogin: true
