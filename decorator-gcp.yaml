@@ -1,6 +1,4 @@
 contextPath: /
-auth:
-  enforce: false
 
 proxy:
   - contextPath: "/veilarbregistrering"
