@@ -12,8 +12,6 @@ proxy:
     pingRequestPath: "/pam-janzz/swagger-ui/"
 
 redirect:
-  - from: /arbeidssokerregistrering
-    to: {{ ARBEIDSSOKERREGISTRERING_URL }}
   - from: /dittnav
     to: {{ DITTNAV_LINK_URL }}
   - from: /veientilarbeid
