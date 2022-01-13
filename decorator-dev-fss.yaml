@@ -17,10 +17,10 @@ proxy:
     pingRequestPath: "/modiacontextholder/internal/isAlive"
     validateOidcToken: false
   - contextPath: "/veilarbregistrering"
-    baseUrl: "https://veilarbregistrering-q1.dev.adeo.no"
+    baseUrl: "https://veilarbproxy_url"
     validateOidcToken: false
   - contextPath: "/veilarboppfolging"
-    baseUrl: "https://veilarboppfolging-q1.nais.preprod.local"
+    baseUrl: "{{ veilarbproxy_url }}"
     validateOidcToken: false
   - contextPath: "/veilarbperson"
     baseUrl: "https://veilarbperson-q1.nais.preprod.local"

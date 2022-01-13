@@ -55,8 +55,15 @@ spec:
     requests:
       memory: 512Mi
       cpu: "1"
+  spec:
+    azure:
+      sidecar:
+        enabled: true
+        autoLogin: true
+        errorPath: "feilsti-ikke-konfigurert"
   accessPolicy:
     outbound:
       rules:
-        - application: paw-auth-proxy
+        - application: pto-proxy
+          namespace: pto
 
