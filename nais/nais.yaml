@@ -2,72 +2,67 @@ kind: Application
 apiVersion: nais.io/v1alpha1
 metadata:
   name: arbeidssokerregistrering-veileder
-  namespace: {{namespace}}
+  namespace: paw
   labels:
     team: paw
   annotations:
     nginx.ingress.kubernetes.io/server-snippet: |
       underscores_in_headers on;
 spec:
-  env:
-  - name: CONFIGURATION_LOCATION
-    value: {{configuration_location}}
-  - name: DISABLE_DECORATOR
-    value: "true"
-  - name: DISABLE_FRONTEND_LOGGER
-    value: "true"
-  - name: VEILARBPERSONFLATEFS_URL
-    value: {{veilarbpersonflatefs_url}}
-  - name: VEILARBOPPFOLGINGAPI_URL
-    value: {{veilarboppfolging_url}}
-  - name: VEILARBPERSONAPI_URL
-    value: {{veilarbpersonapi_url}}
-  - name: AKTOERREGISTER_API_V1_URL
-    value: {{aktoerregister_api_v1_url}}
-  - name: PAM_JANZZ_URL
-    value: {{ pam_janzz_url }}
-  - name: PROXY_URL
-    value: {{ pto_proxy_url }}
-  image: {{ image }}
-  {{#if ingresses}}
+  image: ghcr.io/navikt/poao-frontend/poao-frontend:2022.01.03_14.26-195302823f9a
+  port: 8080
   ingresses:
-  {{#each ingresses as |url|}}
-     - {{url}}
-  {{/each}}
-  {{/if}}
+    - https://arbeidssokerregistrering.dev.intern.nav.no
   liveness:
     path: /internal/isAlive
-    port: 8080
-  port: 8080
+    initialDelay: 10
   prometheus:
     enabled: true
     path: /internal/metrics
   readiness:
     path: /internal/isReady
-    port: 8080
-    initialDelay: 15
+    initialDelay: 10
   replicas:
     min: 2
     max: 4
     cpuThresholdPercentage: 50
   resources:
     limits:
-      cpu: "3"
-      memory: 768Mi
-    requests:
-      memory: 512Mi
       cpu: "1"
-  spec:
-    azure:
-      application:
-        enabled: true
-      sidecar:
-        enabled: true
-        autoLogin: true
-        errorPath: "feilsti-ikke-konfigurert"
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+  gcp:
+    buckets:
+      - name: arbeidssokerregistrering_veileder_dev
+        cascadingDelete: false
+  azure:
+    application:
+      enabled: true
+    sidecar:
+      enabled: true
+      autoLogin: true
+      errorPath: "feilsti-ikke-konfigurert"
   accessPolicy:
     outbound:
       rules:
         - application: pto-proxy
           namespace: pto
-
+  env:
+    - name: JSON_CONFIG
+        value: >
+          {
+            "gcs": {
+              "bucketName": "arbeidssokerregistrering_veileder_dev"
+            },
+            "auth": {
+              "loginProvider": "AZURE_AD"
+            },
+            "proxies": [
+              {
+                "fromPath": "/veilarbregistrering", "toUrl": "http://veilarbregistrering",
+                "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "dev-gcp" }
+              }
+            ]
+          }
