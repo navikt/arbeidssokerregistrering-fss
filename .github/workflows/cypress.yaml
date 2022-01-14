@@ -1,0 +1,32 @@
+name: Cypress test
+on:
+  push:
+    branches-ignore:
+      - main-gcp
+
+env:
+  CI: true
+  TZ: Europe/Amsterdam
+
+jobs:
+  cypress:
+    name: Cypress test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          headless: true
+          start: npm run start:cypress
+          wait-on: http://localhost:3001

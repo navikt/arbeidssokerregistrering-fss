@@ -1,0 +1,68 @@
+kind: Application
+apiVersion: nais.io/v1alpha1
+metadata:
+  name: arbeidssokerregistrering-veileder
+  namespace: paw
+  labels:
+    team: paw
+  annotations:
+    nginx.ingress.kubernetes.io/server-snippet: |
+      underscores_in_headers on;
+spec:
+  image: ghcr.io/navikt/poao-frontend/poao-frontend:2022.01.03_14.26-195302823f9a
+  port: 8080
+  ingresses:
+     - https://arbeidssokerregistrering.intern.nav.no
+  liveness:
+    path: /internal/isAlive
+    initialDelay: 10
+  prometheus:
+    enabled: true
+    path: /internal/metrics
+  readiness:
+    path: /internal/isReady
+    initialDelay: 10
+  replicas:
+    min: 2
+    max: 4
+    cpuThresholdPercentage: 50
+  resources:
+    limits:
+      cpu: "1"
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+  gcp:
+    buckets:
+      - name: arbeidssokerregistrering_veileder
+        cascadingDelete: false
+  azure:
+    application:
+      enabled: true
+    sidecar:
+      enabled: true
+      autoLogin: true
+      errorPath: "feilsti-ikke-konfigurert"
+  accessPolicy:
+    outbound:
+      rules:
+        - application: pto-proxy
+          namespace: pto
+  env:
+    - name: JSON_CONFIG
+        value: >
+          {
+            "gcs": {
+              "bucketName": "arbeidssokerregistrering_veileder"
+            },
+            "auth": {
+              "loginProvider": "ID_PORTEN"
+            },
+            "proxies": [
+              {
+                "fromPath": "/veilarbregistrering", "toUrl": "http://veilarbregistrering",
+                "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "dev-gcp" }
+              }
+            ]
+          }
