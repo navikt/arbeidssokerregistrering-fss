@@ -35,7 +35,7 @@ spec:
       memory: 256Mi
   gcp:
     buckets:
-      - name: arbeidssokerregistrering_veileder
+      - name: arbeidssokerregistrering-veileder-prod
         cascadingDelete: false
   azure:
     application:
@@ -54,7 +54,7 @@ spec:
       value: >
         {
           "gcs": {
-            "bucketName": "arbeidssokerregistrering_veileder"
+            "bucketName": "arbeidssokerregistrering-veileder-prod"
           },
           "auth": {
             "loginProvider": "ID_PORTEN"

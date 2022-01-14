@@ -15,7 +15,7 @@ jobs:
         uses: nais/deploy/actions/deploy@master
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: prod-dev
+          CLUSTER: dev-gcp
           RESOURCE: nais/nais-dev.yaml
           DRY_RUN: false
 
