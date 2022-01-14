@@ -51,18 +51,18 @@ spec:
           namespace: pto
   env:
     - name: JSON_CONFIG
-        value: >
-          {
-            "gcs": {
-              "bucketName": "arbeidssokerregistrering_veileder_dev"
-            },
-            "auth": {
-              "loginProvider": "AZURE_AD"
-            },
-            "proxies": [
-              {
-                "fromPath": "/veilarbregistrering", "toUrl": "http://veilarbregistrering",
-                "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "dev-gcp" }
-              }
-            ]
-          }
+      value: >
+        {
+          "gcs": {
+            "bucketName": "arbeidssokerregistrering_veileder_dev"
+          },
+          "auth": {
+            "loginProvider": "AZURE_AD"
+          },
+          "proxies": [
+            {
+              "fromPath": "/veilarbregistrering", "toUrl": "http://veilarbregistrering",
+              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "dev-gcp" }
+            }
+          ]
+        }
