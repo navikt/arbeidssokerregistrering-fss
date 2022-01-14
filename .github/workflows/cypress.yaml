@@ -1,8 +1,6 @@
 name: Cypress test
 on:
-  push:
-    branches-ignore:
-      - main-gcp
+  [push]
 
 env:
   CI: true
