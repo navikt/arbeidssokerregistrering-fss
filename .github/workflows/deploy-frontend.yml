@@ -1,4 +1,4 @@
-name: Build, push, and deploy
+name: Deploy frontend to bucket
 
 on:
   push:
