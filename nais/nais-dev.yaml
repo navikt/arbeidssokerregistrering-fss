@@ -49,6 +49,7 @@ spec:
       rules:
         - application: pto-proxy
           namespace: pto
+          
   env:
     - name: JSON_CONFIG
       value: >
