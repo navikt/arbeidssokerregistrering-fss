@@ -46,6 +46,10 @@ spec:
       errorPath: "feilsti-ikke-konfigurert"
   accessPolicy:
     outbound:
+      rules:
+        - application: paw-proxy
+          cluster: dev-fss
+          namespace: paw
       external:
         - host: paw-proxy.dev-fss-pub.nais.io
 
