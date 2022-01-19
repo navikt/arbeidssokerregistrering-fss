@@ -46,9 +46,8 @@ spec:
       errorPath: "feilsti-ikke-konfigurert"
   accessPolicy:
     outbound:
-      rules:
-        - application: pto-proxy
-          namespace: pto
+      external:
+        - host: paw-proxy.prod-fss-pub.nais.io
   env:
     - name: JSON_CONFIG
       value: >
@@ -59,10 +58,11 @@ spec:
           "auth": {
             "loginProvider": "ID_PORTEN"
           },
+          "fallbackStrategy":  "NONE",
           "proxies": [
             {
-              "fromPath": "/veilarbregistrering", "toUrl": "http://veilarbregistrering",
-              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "dev-gcp" }
+              "fromPath": "/veilarbregistrering", "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
             }
           ]
         }
