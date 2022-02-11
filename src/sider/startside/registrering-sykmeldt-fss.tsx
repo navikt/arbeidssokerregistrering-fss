@@ -13,12 +13,12 @@ import { AppState } from "../../reducer";
 import { Data as FeatureToggleData, selectFeatureToggles } from "../../ducks/feature-toggles";
 import veilederSvg from "./veileder-mann.svg";
 import merVeiledningSvg from "./mer-veiledning.svg";
-import { selectBrukersNavn, State as BrukersNavnState } from "../../ducks/brukers-navn";
+import { selectKontaktinfo, State as KontaktinfoState } from "../../ducks/kontaktinfo";
 import "./registrering-sykmeldt.less";
 
 interface Props {
   featureToggles: FeatureToggleData;
-  brukersNavn: BrukersNavnState;
+  kontaktinfo: KontaktinfoState;
 }
 
 type RegistreringArbeidssokerSykmeldtFssProps = Props & RouteComponentProps<MatchProps>;
@@ -33,10 +33,14 @@ class RegistreringArbeidssokerSykmeldtFss extends React.Component<RegistreringAr
   };
 
   Rad1 = () => {
-    const { brukersNavn } = this.props;
+    const {
+      kontaktinfo: {
+        data: { navn },
+      },
+    } = this.props;
     const veilederpanelKompakt = window.matchMedia("(min-width: 768px)").matches;
     const veilederpanelType = veilederpanelKompakt ? "normal" : "plakat";
-    const { fornavn } = brukersNavn.data;
+    const fornavn = navn?.fornavn;
 
     return (
       <div className="registrering-sykmeldt__rad1 rad-even">
@@ -124,7 +128,7 @@ class RegistreringArbeidssokerSykmeldtFss extends React.Component<RegistreringAr
 
 const mapStateToProps = (state: AppState) => ({
   featureToggles: selectFeatureToggles(state),
-  brukersNavn: selectBrukersNavn(state),
+  kontaktinfo: selectKontaktinfo(state),
 });
 
 export default connect(mapStateToProps)(withRouter(RegistreringArbeidssokerSykmeldtFss));

@@ -10,7 +10,7 @@ import InfoViser from "../../komponenter/info-viser/info-viser";
 import { Link } from "react-router-dom";
 import { OPPSUMMERING_PATH, DITT_SYKEFRAVAER_URL, START_PATH } from "../../utils/konstanter";
 import { AppState } from "../../reducer";
-import { selectBrukersNavn, State as BrukersNavnState } from "../../ducks/brukers-navn";
+import { selectKontaktinfo, State as KontaktinfoState } from "../../ducks/kontaktinfo";
 import { connect } from "react-redux";
 import { erIFSS } from "../../utils/fss-utils";
 import { lagAktivitetsplanUrl } from "../../utils/url-utils";
@@ -18,7 +18,7 @@ import { erKlarForFullforing } from "../fullfor/fullfor-utils";
 import veilederSvg from "./veileder-syfo.svg";
 
 interface StateProps {
-  brukersNavn: BrukersNavnState;
+  kontaktinfo: KontaktinfoState;
   state: AppState;
 }
 
@@ -34,7 +34,7 @@ class Infoside extends React.Component<Props> {
       return <Redirect to={START_PATH} />;
     }
 
-    const fornavn = this.props.brukersNavn.data.fornavn;
+    const fornavn = this.props.kontaktinfo.data.navn?.fornavn;
     let veilederpanelType: "normal" | "plakat" = "plakat";
     let veilederpanelKompakt;
 
@@ -105,7 +105,7 @@ class Infoside extends React.Component<Props> {
 }
 
 const mapStateToProps = (state: AppState): StateProps => ({
-  brukersNavn: selectBrukersNavn(state),
+  kontaktinfo: selectKontaktinfo(state),
   state: state,
 });
 

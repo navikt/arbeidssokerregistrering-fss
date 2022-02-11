@@ -5,7 +5,6 @@ import { ActionTypes as StillingFraAAregActionTypes } from "../ducks/siste-still
 import { ActionTypes as ReaktiverBrukerActionTypes } from "../ducks/reaktiverbruker";
 import { ActionTypes as OversettelseAvStillngFraAAregActionTypes } from "../ducks/oversettelse-av-stilling-fra-aareg";
 import { ActionTypes as FeatureToggleActionTypes } from "../ducks/feature-toggles";
-import { ActionTypes as BrukersnavnActionTypes } from "../ducks/brukers-navn";
 
 export const feilTyper = [
   {
@@ -42,10 +41,5 @@ export const feilTyper = [
     type: FeatureToggleActionTypes.FEATURE_TOGGLES_FEILET,
     eventnavn: "registrering.feil.featuretoggle",
     apikall: "GET /feature",
-  },
-  {
-    type: BrukersnavnActionTypes.HENT_BRUKERS_NAVN_FEILET,
-    eventnavn: "registrering.feil.brukersnavn",
-    apikall: "GET /innloggingslinje/auth",
   },
 ];

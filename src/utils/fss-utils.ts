@@ -89,7 +89,12 @@ export function initSessionKontekst(): void {
 }
 
 export function erIFSS(): boolean {
-  return true;
+  if (process.env.REACT_APP_MOCK_MANUELL_REGISTRERING) {
+    return true;
+  }
+
+  const hostname = window.location.hostname;
+  return hostname.endsWith(".adeo.no") || hostname.endsWith(".preprod.local");
 }
 
 export function hentUrlBrukerFnr(): string | null {

@@ -1,8 +1,7 @@
 import * as React from "react";
 import { connect, Dispatch } from "react-redux";
 import { AppState } from "../../reducer";
-import { hentBrukersNavn, selectBrukersNavn, State as BrukersNavnState } from "../../ducks/brukers-navn";
-import { hentKontaktinfo } from "../../ducks/kontaktinfo";
+import { hentKontaktinfo, selectKontaktinfo, State as KontaktinfoState } from "../../ducks/kontaktinfo";
 import {
   Data as AuthData,
   hentAutentiseringsInfo,
@@ -30,14 +29,13 @@ import { erIFSS } from "../../utils/fss-utils";
 import { uniLogger } from "../../metrikker/uni-logger";
 
 interface StateProps {
-  brukersNavn: BrukersNavnState;
+  kontaktinfo: KontaktinfoState;
   autentiseringsinfo: AuthState;
   registreringstatus: RegistreringstatusState;
   featuretoggles: FeatureToggleState;
 }
 
 interface DispatchProps {
-  hentBrukersNavn: () => Promise<void | unknown>;
   hentAutentiseringsInfo: () => Promise<void | unknown>;
   hentRegistreringStatus: () => void;
   hentFeatureToggle: () => Promise<void | unknown>;
@@ -52,7 +50,6 @@ export class HentInitialData extends React.Component<Props> {
       this.props.hentAutentiseringsInfo().then((res) => {
         if ((res as AuthData).securityLevel === SecurityLevel.Level4) {
           this.props.hentRegistreringStatus();
-          this.props.hentBrukersNavn();
           this.props.hentKontaktinfo();
         }
       });
@@ -60,7 +57,7 @@ export class HentInitialData extends React.Component<Props> {
   }
 
   render() {
-    const { children, registreringstatus, autentiseringsinfo, brukersNavn, featuretoggles } = this.props;
+    const { children, registreringstatus, autentiseringsinfo, kontaktinfo, featuretoggles } = this.props;
     const { securityLevel } = autentiseringsinfo.data;
     const erNede = featuretoggles.data["arbeidssokerregistrering.nedetid"];
     if (erNede) {
@@ -84,7 +81,7 @@ export class HentInitialData extends React.Component<Props> {
     return (
       <Innholdslaster
         feilmeldingKomponent={<FeilmeldingGenerell tekstId={feilmelding} />}
-        avhengigheter={[registreringstatus, brukersNavn, autentiseringsinfo, featuretoggles]}
+        avhengigheter={[registreringstatus, kontaktinfo, autentiseringsinfo, featuretoggles]}
         storrelse="XXL"
         loaderKomponent={<Loader />}
       >
@@ -96,13 +93,12 @@ export class HentInitialData extends React.Component<Props> {
 
 const mapStateToProps = (state: AppState) => ({
   autentiseringsinfo: selectAutentiseringsinfo(state),
-  brukersNavn: selectBrukersNavn(state),
+  kontaktinfo: selectKontaktinfo(state),
   registreringstatus: selectRegistreringstatus(state),
   featuretoggles: selectFeatureTogglesState(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
-  hentBrukersNavn: () => dispatch(hentBrukersNavn()),
   hentAutentiseringsInfo: () => dispatch(hentAutentiseringsInfo()),
   hentRegistreringStatus: () => dispatch(hentRegistreringStatus()),
   hentFeatureToggle: () => dispatch(hentFeatureToggles()),

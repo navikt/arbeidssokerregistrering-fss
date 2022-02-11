@@ -1,10 +1,4 @@
-import {
-  BRUKER_KONTEKST_URL,
-  FEATURE_URL,
-  OPPDATER_KONTEKST_URL,
-  VEILARBPERSON_NAVN_URL,
-  VEILARBREGISTRERING_URL,
-} from "../ducks/api";
+import { BRUKER_KONTEKST_URL, FEATURE_URL, OPPDATER_KONTEKST_URL, VEILARBREGISTRERING_URL } from "../ducks/api";
 import { getStore } from "../store";
 import { ActionTypes as SvarActionTypes, SporsmalId } from "../ducks/svar";
 import svarMock from "./svar-mock";
@@ -13,7 +7,6 @@ import { sisteStillingMock } from "./siste-stilling-mock";
 import { hentSvar } from "../ducks/svar-utils";
 import autentisert from "./autentiseringsinfo-mock";
 import pamJanzzData from "./typeahead-mock";
-import brukersNavn from "./brukers-navn-mock";
 import startRegistreringStatus from "./registreringstatus-mock";
 import sisteStillingFraAAReg from "./siste-stilling-fra-aareg-mock";
 import brukerKontekst from "./fss-bruker-kontekst";
@@ -90,10 +83,6 @@ if (MOCK_START_REGISRERING_STATUS) {
 
 if (MOCK_FEATURE_TOGGLES) {
   mock.get(`${FEATURE_URL}`, ResponseUtils.delayed(DELAY, featureTogglesMock));
-}
-
-if (MOCK_BRUKERS_NAVN) {
-  mock.get(`${VEILARBPERSON_NAVN_URL}`, ResponseUtils.delayed(DELAY, brukersNavn));
 }
 
 if (MOCK_GET_SISTE_ARBIEDSFORHOLD) {
