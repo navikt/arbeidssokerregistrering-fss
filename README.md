@@ -6,6 +6,8 @@ Frontenden for **personbrukere** finnes på [navikt/arbeidssokerregistrering](ht
 
 # Komme i gang med utvikling
 
+- Bruk Node.js v14.19
+
 - `npm i`
 - `npm start` (starter appen i demo-modus)
 
