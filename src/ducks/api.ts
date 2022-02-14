@@ -3,7 +3,6 @@ import { Data as RegistrerBrukerData } from "./registrerbruker";
 import { alleFeatureToggles } from "./feature-toggles";
 import { RegistreringType } from "./registreringstatus";
 
-export const VEILARBPERSON_NAVN_URL = "/veilarbperson/api/person/navn";
 export const AUTENTISERINGSINFO_URL = "/api/auth";
 export const LOGINSERVICEURL = `/loginservice/login?redirect=${window.location.origin}`;
 export const VEILARBREGISTRERING_URL = "/veilarbregistrering/api";
@@ -95,16 +94,6 @@ export function oppdaterAktivBruker(brukerFnr: string) {
         eventType: "NY_AKTIV_BRUKER",
         verdi: brukerFnr,
       }),
-    },
-  });
-}
-
-export function hentBrukersNavn() {
-  return fetchToJson({
-    url: leggTilFnrForFSS(VEILARBPERSON_NAVN_URL),
-    config: {
-      ...MED_CREDENTIALS,
-      headers: getHeaders(),
     },
   });
 }

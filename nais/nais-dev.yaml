@@ -70,12 +70,6 @@ spec:
               "toUrl": "https://paw-proxy.dev-fss-pub.nais.io",
               "preserveFromPath": true,
               "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "dev-fss" }
-            },
-            {
-              "fromPath": "/veilarbperson",
-              "toUrl": "https://paw-proxy.dev-fss-pub.nais.io",
-              "preserveFromPath": true,
-              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "dev-fss" }
             }
           ]
         }
