@@ -52,6 +52,7 @@ spec:
           namespace: paw
       external:
         - host: paw-proxy.dev-fss-pub.nais.io
+        - host: unleash.nais.io
 
   env:
     - name: JSON_CONFIG
@@ -67,13 +68,6 @@ spec:
           "proxies": [
             {
               "fromPath": "/veilarbregistrering",
-              "toUrl": "https://paw-proxy.dev-fss-pub.nais.io",
-              "preserveFromPath": true,
-              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "dev-fss" }
-            },
-            {
-        
-              "fromPath": "/unleash",
               "toUrl": "https://paw-proxy.dev-fss-pub.nais.io",
               "preserveFromPath": true,
               "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "dev-fss" }
