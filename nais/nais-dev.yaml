@@ -17,7 +17,7 @@ spec:
     path: /internal/isAlive
     initialDelay: 10
   prometheus:
-    enabled: true
+    enabled: false
     path: /internal/metrics
   readiness:
     path: /internal/isReady
