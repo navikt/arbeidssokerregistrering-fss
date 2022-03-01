@@ -6,7 +6,7 @@ import { RegistreringType } from "./registreringstatus";
 export const AUTENTISERINGSINFO_URL = "/api/auth";
 export const LOGINSERVICEURL = `/loginservice/login?redirect=${window.location.origin}`;
 export const VEILARBREGISTRERING_URL = "/veilarbregistrering/api";
-export const FEATURE_URL = "/api/feature";
+export const FEATURE_URL = "/unleash";
 export const OPPDATER_KONTEKST_URL = "/modiacontextholder/api/context";
 export const BRUKER_KONTEKST_URL = "/modiacontextholder/api/context/aktivbruker";
 
