@@ -5,7 +5,6 @@ import svarMock from "./svar-mock";
 import { ActionTypes as SisteStillingActionTypes } from "../ducks/siste-stilling";
 import { sisteStillingMock } from "./siste-stilling-mock";
 import { hentSvar } from "../ducks/svar-utils";
-import autentisert from "./autentiseringsinfo-mock";
 import pamJanzzData from "./typeahead-mock";
 import startRegistreringStatus from "./registreringstatus-mock";
 import sisteStillingFraAAReg from "./siste-stilling-fra-aareg-mock";
@@ -24,7 +23,6 @@ import opprettKontaktmegOppgaveRespons from "./oppgave-mock";
 // eslint-disable-next-line
 import { kontaktinfoRespons, kontaktinfoFeilrespons } from "./kontaktinfo-mock";
 
-export const MOCK_AUTENTISERINGS_INFO = true;
 export const MOCK_START_REGISRERING_STATUS = true;
 export const MOCK_BRUKERS_NAVN = true;
 export const MOCK_GET_SISTE_ARBIEDSFORHOLD = true;
@@ -126,10 +124,6 @@ if (MOCK_OPPRETT_KONTAKTMEG_OPPGAVE) {
 if (MOCK_BRUKER_KONTEKST) {
   mock.get(`${BRUKER_KONTEKST_URL}`, ResponseUtils.delayed(DELAY, brukerKontekst));
   mock.delete(`${BRUKER_KONTEKST_URL}`, ResponseUtils.delayed(DELAY, {}));
-}
-
-if (MOCK_AUTENTISERINGS_INFO) {
-  mock.get("/api/auth", ResponseUtils.delayed(DELAY, autentisert));
 }
 
 if (MOCK_OPPDATER_BRUKER_KONTEKST) {

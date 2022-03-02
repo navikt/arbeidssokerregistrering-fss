@@ -1,4 +1,3 @@
-import { ActionTypes as AutentiseringsinfoActionTypes } from "../ducks/autentiseringsinfo";
 import { ActionTypes as RegistreringStatusActionTypes } from "../ducks/registreringstatus";
 import { ActionTypes as RegistrerbrukerActionTypes } from "../ducks/registrerbruker";
 import { ActionTypes as StillingFraAAregActionTypes } from "../ducks/siste-stilling-fra-aareg";
@@ -16,11 +15,6 @@ export const feilTyper = [
     type: RegistrerbrukerActionTypes.REG_BRUKER_STATUS_FEILET,
     eventnavn: "registrering.feil.startregistrering",
     apikall: "POST /startregistrering",
-  },
-  {
-    type: AutentiseringsinfoActionTypes.HENT_AUTENTISERINGSINFO_FEILET,
-    eventnavn: "registrering.feil.autentiseringsinfo",
-    apikall: "GET /api/auth",
   },
   {
     type: StillingFraAAregActionTypes.SISTE_ARBEIDSFORHOLD_FRA_AAREG_FEILET,
