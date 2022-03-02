@@ -2,13 +2,7 @@ import * as React from "react";
 import { connect, Dispatch } from "react-redux";
 import { AppState } from "../../reducer";
 import { hentKontaktinfo, selectKontaktinfo, State as KontaktinfoState } from "../../ducks/kontaktinfo";
-import {
-  Data as AuthData,
-  hentAutentiseringsInfo,
-  SecurityLevel,
-  selectAutentiseringsinfo,
-  State as AuthState,
-} from "../../ducks/autentiseringsinfo";
+import { hentAutentiseringsInfo, selectAutentiseringsinfo, State as AuthState } from "../../ducks/autentiseringsinfo";
 import {
   hentRegistreringStatus,
   selectRegistreringstatus,
@@ -20,13 +14,11 @@ import {
   State as FeatureToggleState,
 } from "../../ducks/feature-toggles";
 import Innholdslaster from "../innholdslaster/innholdslaster";
-import StepUp from "./stepup";
 import TjenesteOppdateres from "../../sider/tjeneste-oppdateres";
 import { STATUS } from "../../ducks/api-utils";
 import Loader from "../loader/loader";
 import FeilmeldingGenerell from "../feilmelding/feilmelding-generell";
 import { erIFSS } from "../../utils/fss-utils";
-import { uniLogger } from "../../metrikker/uni-logger";
 
 interface StateProps {
   kontaktinfo: KontaktinfoState;
@@ -54,19 +46,9 @@ export class HentInitialData extends React.Component<Props> {
 
   render() {
     const { children, registreringstatus, autentiseringsinfo, kontaktinfo, featuretoggles } = this.props;
-    const { securityLevel } = autentiseringsinfo.data;
     const erNede = featuretoggles.data["arbeidssokerregistrering.nedetid"];
     if (erNede) {
       return <TjenesteOppdateres />;
-    } else if (autentiseringsinfo.status === STATUS.OK) {
-      if (securityLevel !== SecurityLevel.Level4) {
-        // Bruker mangler Oidc-token på nivå 4.
-        // Sender derfor bruker til step-up-side med forklaring og Logg-inn-knapp.
-        if (securityLevel === SecurityLevel.Level3) {
-          uniLogger("registrering.niva3");
-        }
-        return <StepUp />;
-      }
     }
 
     const feilmelding =
