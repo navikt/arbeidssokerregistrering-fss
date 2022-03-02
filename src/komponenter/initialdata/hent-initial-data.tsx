@@ -47,12 +47,8 @@ type Props = StateProps & DispatchProps;
 export class HentInitialData extends React.Component<Props> {
   componentDidMount() {
     this.props.hentFeatureToggle().then(() => {
-      this.props.hentAutentiseringsInfo().then((res) => {
-        if ((res as AuthData).securityLevel === SecurityLevel.Level4) {
-          this.props.hentRegistreringStatus();
-          this.props.hentKontaktinfo();
-        }
-      });
+      this.props.hentRegistreringStatus();
+      this.props.hentKontaktinfo();
     });
   }
 
