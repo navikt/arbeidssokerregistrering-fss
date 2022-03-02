@@ -170,7 +170,7 @@ export function hentBrukerIKontekst() {
 export function hentFeatureToggles() {
   const parameters = alleFeatureToggles.map((element) => "feature=" + element).join("&");
   return fetchToJson({
-    url: `${FEATURE_URL}/?${parameters}`,
+    url: `${FEATURE_URL}?${parameters}`,
     config: {
       ...MED_CREDENTIALS,
       headers: getHeaders(),
