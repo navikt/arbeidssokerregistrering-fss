@@ -3,7 +3,6 @@ import { Data as RegistrerBrukerData } from "./registrerbruker";
 import { alleFeatureToggles } from "./feature-toggles";
 import { RegistreringType } from "./registreringstatus";
 
-export const AUTENTISERINGSINFO_URL = "/api/auth";
 export const LOGINSERVICEURL = `/loginservice/login?redirect=${window.location.origin}`;
 export const VEILARBREGISTRERING_URL = "/veilarbregistrering/api";
 export const FEATURE_URL = `${VEILARBREGISTRERING_URL}/featuretoggle`;
@@ -101,16 +100,6 @@ export function oppdaterAktivBruker(brukerFnr: string) {
 export function hentKontaktinfo() {
   return fetchToJson({
     url: leggTilFnrForFSS(`${VEILARBREGISTRERING_URL}/person/kontaktinfo`),
-    config: {
-      ...MED_CREDENTIALS,
-      headers: getHeaders(),
-    },
-  });
-}
-
-export function hentAutentiseringsInfo() {
-  return fetchToJson({
-    url: `${AUTENTISERINGSINFO_URL}`,
     config: {
       ...MED_CREDENTIALS,
       headers: getHeaders(),
