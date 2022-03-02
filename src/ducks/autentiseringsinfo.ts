@@ -56,7 +56,7 @@ export default function (state: State = initialState, action: Action): State {
 export function hentAutentiseringsInfo() {
   return doThenDispatch(
     () => {
-      return erIFSS() ? Promise.resolve({ securityLevel: SecurityLevel.Level4 }) : Api.hentAutentiseringsInfo();
+      return Promise.resolve({ securityLevel: SecurityLevel.Level4 });
     },
     {
       PENDING: ActionTypes.HENT_AUTENTISERINGSINFO_PENDING,
