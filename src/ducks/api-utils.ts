@@ -24,7 +24,9 @@ class FetchError extends Error {
 type RecoverWith = (status: number) => unknown | null;
 
 export function leggTilFnrForFSS(url: string) {
+  console.log("Fnr: " + hentBrukerFnr());
   if (erIFSS()) {
+    console.log("Er i FSS. Setter FNR som query param på URL");
     return url + "?fnr=" + hentBrukerFnr();
   }
 
