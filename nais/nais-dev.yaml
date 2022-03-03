@@ -69,6 +69,13 @@ spec:
             "loginProvider": "AZURE_AD"
           },
           "fallbackStrategy":  "NONE",
+           "redirects": [
+             {
+                "fromPath": "/pam-janzz",
+                "toUrl": "https://pam-janzz.intern.nav.no/pam-janzz/rest",
+                "preserveFromPath": false
+             }
+           ],
           "proxies": [
             {
               "fromPath": "/veilarbregistrering",
