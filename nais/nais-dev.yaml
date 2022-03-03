@@ -73,7 +73,7 @@ spec:
              {
                 "fromPath": "/pam-janzz",
                 "toUrl": "https://pam-janzz.intern.nav.no/pam-janzz/rest",
-                "preserveFromPath": false
+                "preserveFromPath": true
              }
            ],
           "proxies": [
