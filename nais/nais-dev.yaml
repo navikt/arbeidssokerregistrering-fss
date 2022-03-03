@@ -50,6 +50,8 @@ spec:
         - application: paw-proxy
           cluster: dev-fss
           namespace: paw
+        - application: pam-janzz
+          namespace: teampam
       external:
         - host: paw-proxy.dev-fss-pub.nais.io
         - host: unleash.nais.io

@@ -46,6 +46,9 @@ spec:
       errorPath: "feilsti-ikke-konfigurert"
   accessPolicy:
     outbound:
+      rules:
+         - application: pam-janzz
+           namespace: teampam
       external:
         - host: paw-proxy.prod-fss-pub.nais.io
   env:
