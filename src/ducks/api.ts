@@ -9,7 +9,7 @@ export const FEATURE_URL = `${VEILARBREGISTRERING_URL}/featuretoggle`;
 export const OPPDATER_KONTEKST_URL = "/modiacontextholder/api/context";
 export const BRUKER_KONTEKST_URL = "/modiacontextholder/api/context/aktivbruker";
 
-const PAM_JANZZ_URL = "/pam-janzz/rest";
+const PAM_JANZZ_URL = process.env.PAM_JANZZ_URL;
 const STYRK_URL = `${PAM_JANZZ_URL}/typeahead/yrke-med-styrk08`;
 
 interface BrukerIKontekstData {
