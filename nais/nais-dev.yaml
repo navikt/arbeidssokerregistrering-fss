@@ -72,7 +72,7 @@ spec:
           "redirects": [
             {
               "fromPath": "/pam-janzz",
-              "toUrl": "https://pam-janzz.intern.nav.no",
+              "toUrl": "https://pam-janzz.dev.intern.nav.no",
               "preserveFromPath": true
             }
           ],
