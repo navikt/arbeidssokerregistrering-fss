@@ -9,7 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/server-snippet: |
       underscores_in_headers on;
 spec:
-  image: ghcr.io/navikt/poao-frontend/poao-frontend:2022.03.04_09.35-63ffbac90bb5
+  image: ghcr.io/navikt/poao-frontend/poao-frontend:2022.03.04_09.53-6b0e766775e1
   port: 8080
   ingresses:
      - https://arbeidssokerregistrering.intern.nav.no
