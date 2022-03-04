@@ -14,13 +14,13 @@ spec:
   ingresses:
      - https://arbeidssokerregistrering.intern.nav.no
   liveness:
-    path: /internal/isAlive
+    path: /internal/alive
     initialDelay: 10
   prometheus:
     enabled: true
     path: /internal/metrics
   readiness:
-    path: /internal/isReady
+    path: /internal/ready
     initialDelay: 10
   replicas:
     min: 2
