@@ -9,7 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/server-snippet: |
       underscores_in_headers on;
 spec:
-  image: ghcr.io/navikt/poao-frontend/poao-frontend:2022.01.03_14.26-195302823f9a
+  image: ghcr.io/navikt/poao-frontend/poao-frontend:2022.03.04_09.24-0a6f45646d8d
   port: 8080
   ingresses:
     - https://arbeidssokerregistrering.dev.intern.nav.no
@@ -79,8 +79,7 @@ spec:
             {
               "fromPath": "/pam-janzz",
               "toUrl": "https://pam-janzz.dev.intern.nav.no",
-              "preserveFromPath": true,
-              "toApp": { "name": "pam-janzz", "namespace": "teampam", "cluster": "dev-gcp" }
+              "preserveFromPath": true
             }
           ]
         }
