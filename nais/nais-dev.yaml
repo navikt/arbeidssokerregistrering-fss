@@ -79,7 +79,8 @@ spec:
             {
               "fromPath": "/pam-janzz",
               "toUrl": "https://pam-janzz.dev.intern.nav.no",
-              "preserveFromPath": true
+              "preserveFromPath": true,
+              "toApp": { "name": "pam-janzz", "namespace": "teampam", "cluster": "dev-gcp" }
             }
           ]
         }
