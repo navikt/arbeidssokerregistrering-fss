@@ -59,6 +59,8 @@ spec:
   env:
     - name: PAM_JANZZ_URL
       value: https://pam-janzz.intern.nav.no/pam-janzz/rest
+    - name: PUBLIC_VEILARBPERSONFLATEFS_URL
+      value: https://app-q1.adeo.no
     - name: JSON_CONFIG
       value: >
         {
@@ -69,13 +71,7 @@ spec:
             "loginProvider": "AZURE_AD"
           },
           "fallbackStrategy":  "NONE",
-          "redirects": [
-              {
-                "fromPath": "/veilarbpersonflatefs",
-                "toUrl": "https://app-q1.adeo.no",
-                "preserveFromPath": true
-              }
-            ],
+          "enableFrontendEnv": true
           "proxies": [
             {
               "fromPath": "/veilarbregistrering",

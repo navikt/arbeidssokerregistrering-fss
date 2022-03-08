@@ -52,6 +52,8 @@ spec:
       external:
         - host: paw-proxy.prod-fss-pub.nais.io
   env:
+    - name: PUBLIC_VEILARBPERSONFLATEFS_URL
+      value: https://app.adeo.no
     - name: JSON_CONFIG
       value: >
         {
@@ -62,13 +64,6 @@ spec:
             "loginProvider": "ID_PORTEN"
           },
           "fallbackStrategy":  "NONE",
-          "redirects": [
-              {
-                "fromPath": "/veilarbpersonflatefs",
-                "toUrl": "https://app.adeo.no",
-                "preserveFromPath": true
-              }
-            ],
           "proxies": [
             {
               "fromPath": "/veilarbregistrering",
