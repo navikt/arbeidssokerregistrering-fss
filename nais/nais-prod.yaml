@@ -64,7 +64,7 @@ spec:
           "fallbackStrategy":  "NONE",
           "redirects": [
               {
-                "fromPath": "/veilarbpersonflatefs",
+                "fromPath": "/veilarbpersonflatefs/*",
                 "toUrl": "https://app.adeo.no",
                 "preserveFromPath": true
               }
