@@ -57,8 +57,6 @@ spec:
         - host: unleash.nais.io
 
   env:
-    - name: PAM_JANZZ_URL
-      value: https://pam-janzz.intern.nav.no/pam-janzz/rest
     - name: JSON_CONFIG
       value: >
         {
