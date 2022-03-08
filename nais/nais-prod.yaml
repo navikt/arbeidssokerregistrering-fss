@@ -52,6 +52,8 @@ spec:
       external:
         - host: paw-proxy.prod-fss-pub.nais.io
   env:
+    - name:  VEILARBPERSONFLATEFS
+      value: https://app.adeo.no/veilarbpersonflatefs
     - name: JSON_CONFIG
       value: >
         {
