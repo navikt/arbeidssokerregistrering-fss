@@ -24,7 +24,7 @@ export const VTA_REGISTRERING_FULLORT = `${DITT_NAV_URL}?goTo=registrering`;
 export const VTA_REAKTIVERING_FULLORT = `${DITT_NAV_URL}?goTo=registrering&visKvittering=reaktivering`;
 export const DITT_SYKEFRAVAER_URL = "/sykefravaer";
 
-export const AKTIVITETSPLAN_URL = process.env.VEILARBPERSONFLATEFS;
+export const AKTIVITETSPLAN_URL = "/veilarbpersonflatefs";
 
 export const DP_SOK_URL = "https://www.nav.no/soknader/nb/person/arbeid/dagpenger";
 

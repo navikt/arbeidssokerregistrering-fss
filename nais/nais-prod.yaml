@@ -52,8 +52,6 @@ spec:
       external:
         - host: paw-proxy.prod-fss-pub.nais.io
   env:
-    - name:  VEILARBPERSONFLATEFS
-      value: https://app.adeo.no/veilarbpersonflatefs
     - name: JSON_CONFIG
       value: >
         {
@@ -73,6 +71,11 @@ spec:
             },
               "fromPath": "/pam-janzz",
               "toUrl": "https://pam-janzz.intern.nav.no",
+              "preserveFromPath": true
+            },
+            {
+              "fromPath": "/veilarbpersonflatefs",
+              "toUrl": "https://app.adeo.no/veilarbpersonflatefs",
               "preserveFromPath": true
             }
           ]

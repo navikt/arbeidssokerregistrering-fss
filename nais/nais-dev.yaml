@@ -59,8 +59,6 @@ spec:
   env:
     - name: PAM_JANZZ_URL
       value: https://pam-janzz.intern.nav.no/pam-janzz/rest
-    - name:  VEILARBPERSONFLATEFS
-      value: https://app-q1.adeo.no/veilarbpersonflatefs
     - name: JSON_CONFIG
       value: >
         {
@@ -81,6 +79,11 @@ spec:
             {
               "fromPath": "/pam-janzz",
               "toUrl": "https://pam-janzz.dev.intern.nav.no",
+              "preserveFromPath": true
+            },
+            {
+              "fromPath": "/veilarbpersonflatefs",
+              "toUrl": "https://app-q1.adeo.no/veilarbpersonflatefs",
               "preserveFromPath": true
             }
           ]
