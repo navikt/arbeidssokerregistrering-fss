@@ -88,10 +88,6 @@ export function initSessionKontekst(): void {
   oppdaterModiaKontekst();
 }
 
-export function erIFSS(): boolean {
-  return true;
-}
-
 export function hentUrlBrukerFnr(): string | null {
   return hentQueryParameter(window.location, "fnr");
 }

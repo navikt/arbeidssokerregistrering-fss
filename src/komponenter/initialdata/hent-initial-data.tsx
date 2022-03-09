@@ -17,7 +17,6 @@ import TjenesteOppdateres from "../../sider/tjeneste-oppdateres";
 import { STATUS } from "../../ducks/api-utils";
 import Loader from "../loader/loader";
 import FeilmeldingGenerell from "../feilmelding/feilmelding-generell";
-import { erIFSS } from "../../utils/fss-utils";
 
 interface StateProps {
   kontaktinfo: KontaktinfoState;
@@ -49,9 +48,7 @@ export class HentInitialData extends React.Component<Props> {
     }
 
     const feilmelding =
-      erIFSS() && registreringstatus.status === STATUS.ERROR
-        ? "feilhandtering-ikke-tilgang-aareg"
-        : "feilmelding-generell";
+      registreringstatus.status === STATUS.ERROR ? "feilhandtering-ikke-tilgang-aareg" : "feilmelding-generell";
 
     return (
       <Innholdslaster

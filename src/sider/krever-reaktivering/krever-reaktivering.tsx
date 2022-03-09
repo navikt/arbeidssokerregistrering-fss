@@ -10,14 +10,13 @@ import Loader, { loaderTittelElement } from "../../komponenter/loader/loader";
 import ReaktiveringFeilhandtering from "./feilhandtering/reaktivering-feilhandtering";
 import Innholdslaster from "../../komponenter/innholdslaster/innholdslaster";
 import { MatchProps } from "../../utils/utils";
-import { DU_ER_NA_REGISTRERT_PATH, DITT_NAV_URL } from "../../utils/konstanter";
+import { DU_ER_NA_REGISTRERT_PATH } from "../../utils/konstanter";
 import Banner from "../../komponenter/banner/banner";
 import { Data as RegistreringstatusData, selectRegistreringstatus } from "../../ducks/registreringstatus";
 
 import handinfoSvg from "./handinfo.svg";
 import "./krever-reaktivering.less";
 import { lagAktivitetsplanUrl } from "../../utils/url-utils";
-import { erIFSS } from "../../utils/fss-utils";
 import { uniLogger } from "../../metrikker/uni-logger";
 
 interface State {
@@ -113,7 +112,7 @@ class KreverReaktivering extends React.Component<Props, State> {
               </div>
               <a
                 onClick={this.avbrytReaktiveringOnClick}
-                href={erIFSS() ? lagAktivitetsplanUrl() : DITT_NAV_URL}
+                href={lagAktivitetsplanUrl()}
                 className="lenke lenke-avbryt typo-element"
               >
                 <FormattedMessage id="avbryt-lenke" />
