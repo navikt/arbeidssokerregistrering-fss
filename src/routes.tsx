@@ -6,7 +6,6 @@ import Sideanimasjon from "./komponenter/sideanimasjon/sideanimasjon";
 import AlleredeRegistrertFss from "./sider/allerede-registrert-fss/allerede-registrert-fss";
 import {
   ALLEREDE_REGISTRERT_PATH,
-  DITT_NAV_URL,
   DU_ER_NA_REGISTRERT_PATH,
   FULLFOR_PATH,
   INFOSIDE_PATH,
@@ -30,12 +29,7 @@ import Fullfor from "./sider/fullfor/fullfor";
 import DuErNaRegistrert from "./sider/registrert/registrert";
 import { AppState } from "./reducer";
 import { connect, Dispatch } from "react-redux";
-import {
-  Data as RegistreringstatusData,
-  Formidlingsgruppe,
-  RegistreringType,
-  selectRegistreringstatus,
-} from "./ducks/registreringstatus";
+import { Data as RegistreringstatusData, RegistreringType, selectRegistreringstatus } from "./ducks/registreringstatus";
 import RedirectAll from "./komponenter/redirect-all";
 import { selectReaktiveringStatus } from "./ducks/reaktiverbruker";
 import { STATUS } from "./ducks/api-utils";
@@ -46,11 +40,8 @@ import { RouteHerokuMock } from "./mocks/HerokuappEndreMockRegistreringLoep/hero
 import { setInngangAapAction, setInngangSykefravaerAction } from "./ducks/logger";
 import RegistreringArbeidssokerSykmeldtFss from "./sider/startside/registrering-sykmeldt-fss";
 import RegistreringArbeidssokerFss from "./sider/startside/registrering-arbeidssoker-fss";
-import { uniLogger } from "./metrikker/uni-logger";
 import OppsummeringOrdinaer from "./sider/oppsummering/oppsummering-ordinaer";
 import { hentQueryParameter } from "./utils/url-utils";
-import { erIFSS } from "./utils/fss-utils";
-import AlleredeRegistrert from "./sider/allerede-registrert/allerede-registrert";
 
 interface StateProps {
   registreringstatusData: RegistreringstatusData;
@@ -95,36 +86,14 @@ class Routes extends React.Component<AllProps> {
   render() {
     const { registreringstatusData, reaktivertStatus, featureToggles, location } = this.props;
     const erNede = featureToggles["arbeidssokerregistrering.nedetid"];
-    const {
-      registreringType,
-      formidlingsgruppe,
-      servicegruppe,
-      geografiskTilknytning,
-      rettighetsgruppe,
-      underOppfolging,
-    } = registreringstatusData;
+    const { registreringType } = registreringstatusData;
     const visSykefravaerSkjema = registreringType === RegistreringType.SYKMELDT_REGISTRERING;
     const visOrdinaerSkjema = !visSykefravaerSkjema;
     const klarForFullforing = erKlarForFullforing(this.props.state);
     const queryParams = location.search;
 
     if (registreringType === RegistreringType.ALLEREDE_REGISTRERT) {
-      if (erIFSS()) {
-        return <RedirectAll to={ALLEREDE_REGISTRERT_PATH} component={AlleredeRegistrertFss} />;
-      }
-      if (formidlingsgruppe === Formidlingsgruppe.ARBS) {
-        uniLogger("arbeidssokerregistrering.allerede-registrert.redirect-dittnav", {
-          formidlingsgruppe,
-          servicegruppe,
-          geografiskTilknytning,
-          rettighetsgruppe,
-          underOppfolging,
-        });
-        const redirectUrl = `${DITT_NAV_URL}?goTo=registrering`;
-        window.location.href = redirectUrl;
-      } else {
-        return <RedirectAll to={ALLEREDE_REGISTRERT_PATH} component={AlleredeRegistrert} />;
-      }
+      return <RedirectAll to={ALLEREDE_REGISTRERT_PATH} component={AlleredeRegistrertFss} />;
     } else if (registreringType === RegistreringType.REAKTIVERING && reaktivertStatus !== STATUS.OK) {
       if (erNede) {
         return <RedirectAll to={"/"} component={TjenesteOppdateres} />;

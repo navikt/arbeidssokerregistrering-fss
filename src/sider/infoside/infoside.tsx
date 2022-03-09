@@ -2,17 +2,15 @@ import * as React from "react";
 import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
 import "./infoside.less";
 import LenkeTilbake from "../../komponenter/knapper/lenke-tilbake";
-import { Redirect, RouteComponentProps, withRouter } from "react-router-dom";
+import { Link, Redirect, RouteComponentProps, withRouter } from "react-router-dom";
 import { MatchProps } from "../../utils/utils";
 import Veilederpanel from "nav-frontend-veilederpanel";
 import { Normaltekst, Systemtittel, Undertittel } from "nav-frontend-typografi";
 import InfoViser from "../../komponenter/info-viser/info-viser";
-import { Link } from "react-router-dom";
-import { OPPSUMMERING_PATH, DITT_SYKEFRAVAER_URL, START_PATH } from "../../utils/konstanter";
+import { OPPSUMMERING_PATH, START_PATH } from "../../utils/konstanter";
 import { AppState } from "../../reducer";
 import { selectKontaktinfo, State as KontaktinfoState } from "../../ducks/kontaktinfo";
 import { connect } from "react-redux";
-import { erIFSS } from "../../utils/fss-utils";
 import { lagAktivitetsplanUrl } from "../../utils/url-utils";
 import { erKlarForFullforing } from "../fullfor/fullfor-utils";
 import veilederSvg from "./veileder-syfo.svg";
@@ -92,7 +90,7 @@ class Infoside extends React.Component<Props> {
             <Link className="knapp" to={OPPSUMMERING_PATH}>
               <FormattedMessage id="infoside-knapp-uenig" />
             </Link>
-            <a href={erIFSS() ? lagAktivitetsplanUrl() : DITT_SYKEFRAVAER_URL} className="knapp">
+            <a href={lagAktivitetsplanUrl()} className="knapp">
               <FormattedMessage id="infoside-knapp-enig" />
             </a>
           </div>

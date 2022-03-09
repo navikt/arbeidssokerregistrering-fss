@@ -1,6 +1,5 @@
 import * as React from "react";
 import "./progress-bar.less";
-import { erIFSS } from "../../utils/fss-utils";
 
 interface OwnProps {
   gjeldendeSporsmal: number;
@@ -25,9 +24,7 @@ export default class ProgressBar extends React.Component<OwnProps> {
     }
 
     if (window.pageYOffset > scrollHeight) {
-      if (this.framdriftContainer && !erIFSS()) {
-        this.framdriftContainer.classList.add("framdrift-fixed");
-      }
+      this.framdriftContainer.classList.add("framdrift-fixed");
     } else {
       if (this.framdriftContainer) {
         this.framdriftContainer.classList.remove("framdrift-fixed");
