@@ -82,6 +82,12 @@ spec:
               "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "dev-fss" }
             },
             {
+              "fromPath": "/veilarboppfolging",
+              "toUrl": "https://paw-proxy.dev-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "dev-fss" }
+            },
+            {
               "fromPath": "/pam-janzz",
               "toUrl": "https://pam-janzz.dev.intern.nav.no",
               "preserveFromPath": true
