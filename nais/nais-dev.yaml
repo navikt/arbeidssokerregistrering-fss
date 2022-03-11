@@ -72,7 +72,13 @@ spec:
                 "fromPath": "/veilarbpersonflatefs/*",
                 "toUrl": "https://app-q1.adeo.no",
                 "preserveFromPath": true
-              }
+              },
+              {
+        
+                "fromPath": "/internarbeidsflatedecorator/*",
+                "toUrl": "https://internarbeidsflatedecorator-q1.dev.adeo.no",
+                "preserveFromPath": true
+              }, 
             ],
           "proxies": [
             {
