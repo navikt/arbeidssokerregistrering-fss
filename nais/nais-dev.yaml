@@ -78,7 +78,7 @@ spec:
                 "fromPath": "/internarbeidsflatedecorator/*",
                 "toUrl": "https://internarbeidsflatedecorator-q1.dev.adeo.no",
                 "preserveFromPath": true
-              }, 
+              }
             ],
           "proxies": [
             {
