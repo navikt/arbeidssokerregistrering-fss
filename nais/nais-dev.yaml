@@ -78,6 +78,11 @@ spec:
                 "fromPath": "/internarbeidsflatedecorator/*",
                 "toUrl": "https://internarbeidsflatedecorator-q1.dev.adeo.no",
                 "preserveFromPath": true
+              },
+              {
+                "fromPath": "/modiacontextholder/*",
+                "toUrl": "https://modiacontextholder-q1.dev-fss-pub.nais.io",
+                "preserveFromPath": true
               }
           ],
           "proxies": [
