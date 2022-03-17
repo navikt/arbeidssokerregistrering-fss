@@ -3,12 +3,8 @@ import * as ReactDOM from "react-dom";
 import "idempotent-babel-polyfill";
 import "react-app-polyfill/ie11";
 import Modal from "react-modal";
-import * as Sentry from "@sentry/react";
-import { erIFSS } from "./utils/fss-utils";
-import App from "./app";
 import AppFss from "./app-fss";
 import "./index.less";
-import { erNAVMiljo } from "./utils/url-utils";
 
 Modal.setAppElement("#root");
 
@@ -35,23 +31,4 @@ if (process.env.REACT_APP_MOCK) {
   require("./mocks/mocks");
 }
 
-const miljo = window.location.hostname;
-const sendFeilTilSentry = erNAVMiljo(miljo) && !erIFSS();
-Sentry.init({
-  dsn: "https://52908dd3ce2a4fde8bd57bc1cd03651c@sentry.gc.nav.no/66",
-  environment: miljo,
-  enabled: sendFeilTilSentry,
-  autoSessionTracking: false,
-  ignoreErrors: [
-    "TypeError: Failed to fetch",
-    "TypeError: NetworkError when attempting to fetch resource.",
-    "TypeError: cancelled",
-    "TypeError: avbrutt",
-    "TypeError: cancelado",
-    "TypeError: anulowane",
-    "TypeError: avbruten",
-    "TypeError: anulat",
-  ],
-});
-
-ReactDOM.render(erIFSS() ? <AppFss /> : <App />, document.getElementById("root") as HTMLElement);
+ReactDOM.render(<AppFss />, document.getElementById("root") as HTMLElement);
