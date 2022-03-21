@@ -85,7 +85,7 @@ spec:
           ],
           "proxies": [
             {
-              "fromPath": "/modiacontextholder/*",
+              "fromPath": "/modiacontextholder",
               "toUrl": "https://modiacontextholder-q1.dev-fss-pub.nais.io",
               "preserveFromPath": true,
               "toApp": { "name": "modiacontextholder-q1", "namespace": "personoversikt", "cluster": "dev-fss" }
