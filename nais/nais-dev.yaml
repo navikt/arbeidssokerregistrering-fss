@@ -50,6 +50,9 @@ spec:
         - application: paw-proxy
           cluster: dev-fss
           namespace: paw
+        - application: modiacontextholder
+          cluster: dev-fss
+          namespace: personoversikt
         - application: pam-janzz
           namespace: teampam
       external:
@@ -78,14 +81,15 @@ spec:
                 "fromPath": "/internarbeidsflatedecorator/*",
                 "toUrl": "https://internarbeidsflatedecorator-q1.dev.adeo.no",
                 "preserveFromPath": true
-              },
-              {
-                "fromPath": "/modiacontextholder/*",
-                "toUrl": "https://modiacontextholder-q1.dev-fss-pub.nais.io",
-                "preserveFromPath": true
               }
           ],
           "proxies": [
+            {
+              "fromPath": "/modiacontextholder/*",
+              "toUrl": "https://modiacontextholder-q1.dev-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "modiacontextholder-q1", "namespace": "personoversikt", "cluster": "dev-fss" }
+            },
             {
               "fromPath": "/veilarbregistrering",
               "toUrl": "https://paw-proxy.dev-fss-pub.nais.io",
@@ -114,11 +118,6 @@ spec:
               "fromPath": "/pam-janzz",
               "toUrl": "https://pam-janzz.dev.intern.nav.no",
               "preserveFromPath": true
-            },
-            {
-              "fromPath": "/modiacontextholder",
-              "toUrl": "https://modiacontextholder-q1.dev.intern.nav.no",
-              "preserveFromPath": true
-            }
+            } 
           ]
         }
