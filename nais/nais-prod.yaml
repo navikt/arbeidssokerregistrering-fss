@@ -106,6 +106,7 @@ spec:
               "preserveFromPath": true,
               "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
             },
+            {
               "fromPath": "/veilarbveileder",
               "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
               "preserveFromPath": true,
