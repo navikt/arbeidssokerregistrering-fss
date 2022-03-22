@@ -47,10 +47,17 @@ spec:
   accessPolicy:
     outbound:
       rules:
-         - application: pam-janzz
-           namespace: teampam
+        - application: pam-janzz
+          namespace: teampam
+        - application: modiacontextholder
+          namespace: personoversikt
+          cluster: prod-fss
+        - application: paw-proxy
+          cluster: prod-fss
+          namespace: paw
       external:
         - host: paw-proxy.prod-fss-pub.nais.io
+        - host: unleash.nais.io
   env:
     - name: JSON_CONFIG
       value: >
@@ -59,7 +66,7 @@ spec:
             "bucketName": "arbeidssokerregistrering-veileder-prod"
           },
           "auth": {
-            "loginProvider": "ID_PORTEN"
+            "loginProvider": "AZURE_AD"
           },
           "fallbackStrategy":  "NONE",
           "redirects": [
