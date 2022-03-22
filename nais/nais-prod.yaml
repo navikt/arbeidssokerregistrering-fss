@@ -76,6 +76,12 @@ spec:
             ],
           "proxies": [
             {
+               "fromPath": "/modiacontextholder",
+               "toUrl": "https://modiacontextholder.prod-fss-pub.nais.io",
+               "preserveFromPath": true,
+               "toApp": { "name": "modiacontextholder", "namespace": "personoversikt", "cluster": "prod-fss" }
+            },
+            {
               "fromPath": "/veilarbregistrering",
               "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
               "preserveFromPath": true,
