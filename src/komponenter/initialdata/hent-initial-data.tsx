@@ -18,6 +18,7 @@ import {
 import {
   hentFeatureToggles,
   selectFeatureTogglesState,
+  Data as FeatureToggleData,
   State as FeatureToggleState,
 } from "../../ducks/feature-toggles";
 import Innholdslaster from "../innholdslaster/innholdslaster";
@@ -46,9 +47,37 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps;
 
+function videresendTilNyIngress() {
+  const { location } = window;
+  const devHostnames = [
+    "arbeidssokerregistrering.dev.adeo.no",
+    "arbeidssokerregistrering-q1.nais.preprod.local",
+    "arbeidssokerregistrering-fss-q1.nais.preprod.local",
+    "app-q1.adeo.no",
+  ];
+  const prodHostnames = [
+    "arbeidssokerregistrering.nais.adeo.no",
+    "arbeidssokerregistrering-fss.nais.adeo.no",
+    "app.adeo.no",
+  ];
+  // pathname vil alltid starte med '/'
+  // const komplettSti = location.pathname + location.search + location.hash;
+
+  if (devHostnames.includes(location.hostname)) {
+    location.href = "https://arbeidssokerregistrering.dev.intern.nav.no"; // + komplettSti;
+    uniLogger("registrering.fss.redirect", { target: "gcp dev" });
+  } else if (prodHostnames.includes(location.hostname)) {
+    uniLogger("registrering.fss.redirect", { target: "gcp prod" });
+    location.href = "https://arbeidssokerregistrering.intern.nav.no"; // + komplettSti;
+  }
+}
+
 export class HentInitialData extends React.Component<Props> {
   componentDidMount() {
-    this.props.hentFeatureToggle().then(() => {
+    this.props.hentFeatureToggle().then((featureToggles) => {
+      if (featureToggles && (featureToggles as FeatureToggleData)["arbeidssokerregistrering.fss.ny-ingress"]) {
+        videresendTilNyIngress();
+      }
       this.props.hentAutentiseringsInfo().then((res) => {
         if ((res as AuthData).securityLevel === SecurityLevel.Level4) {
           this.props.hentRegistreringStatus();
