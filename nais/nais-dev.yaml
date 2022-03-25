@@ -85,6 +85,11 @@ spec:
           ],
           "proxies": [
             {
+              "fromPath": "/veilarbpersonflatefs/*",
+              "toUrl": "https://app-q1.adeo.no",
+              "preserveFromPath": true
+            },
+            {
               "fromPath": "/modiacontextholder",
               "toUrl": "https://modiacontextholder-q1.dev-fss-pub.nais.io",
               "preserveFromPath": true,
