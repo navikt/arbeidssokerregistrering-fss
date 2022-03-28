@@ -85,7 +85,7 @@ spec:
           ],
           "proxies": [
             {
-              "fromPath": "/veilarbpersonflatefs/*",
+              "fromPath": "/veilarbpersonflatefs/feature",
               "toUrl": "https://app-q1.adeo.no",
               "preserveFromPath": true
             },
