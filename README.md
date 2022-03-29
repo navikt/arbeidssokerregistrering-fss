@@ -8,16 +8,10 @@ Løsningen baserer seg på [poao-frontend](https://github.com/navikt/poao-fronte
 
 # Komme i gang med utvikling
 
+- Bruk Node.js v14.19
+
 - `npm i`
-- `npm start`
-
-For å starte app i demo-mode
-
-- `npm run demo`
-
-For å starte app i veileder-demo-mode (arbeidssokerregistrering-fss)
-
-- `npm run start-manuell`
+- `npm start` (starter appen i demo-modus)
 
 ## Utvikling med backend
 
