@@ -40,7 +40,7 @@ const Visittkort: () => JSX.Element = () => {
         enhet={enhetId || ""}
         tilbakeTilFlate="veilarbpersonflatefs"
         visVeilederVerktoy={true}
-        skjulEtiketter={true}
+        skjulEtiketter={false}
       />
     </div>
   );
