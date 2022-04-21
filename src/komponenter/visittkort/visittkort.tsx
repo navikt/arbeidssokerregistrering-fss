@@ -39,7 +39,7 @@ const Visittkort: () => JSX.Element = () => {
         fnr={fnr || ""}
         enhet={enhetId || ""}
         tilbakeTilFlate="veilarbpersonflatefs"
-        visVeilederVerktoy={true}
+        visVeilederVerktoy={false}
         skjulEtiketter={false}
       />
     </div>
