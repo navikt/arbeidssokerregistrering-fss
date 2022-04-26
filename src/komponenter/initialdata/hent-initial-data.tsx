@@ -60,15 +60,13 @@ function videresendTilNyIngress() {
     "arbeidssokerregistrering-fss.nais.adeo.no",
     "app.adeo.no",
   ];
-  // pathname vil alltid starte med '/'
-  // const komplettSti = location.pathname + location.search + location.hash;
 
   if (devHostnames.includes(location.hostname)) {
-    location.href = "https://arbeidssokerregistrering.dev.intern.nav.no"; // + komplettSti;
+    location.href = `https://arbeidssokerregistrering.dev.intern.nav.no/${location.search}`;
     uniLogger("registrering.fss.redirect", { target: "gcp dev" });
   } else if (prodHostnames.includes(location.hostname)) {
     uniLogger("registrering.fss.redirect", { target: "gcp prod" });
-    location.href = "https://arbeidssokerregistrering.intern.nav.no"; // + komplettSti;
+    location.href = `https://arbeidssokerregistrering.intern.nav.no/${location.search}`;
   }
 }
 
