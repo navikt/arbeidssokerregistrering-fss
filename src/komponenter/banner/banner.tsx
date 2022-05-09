@@ -8,7 +8,6 @@ import { Data as StartRegistreringData, RegistreringType } from "../../ducks/reg
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { MatchProps } from "../../utils/utils";
 import "./banner.less";
-import { erIFSS } from "../../utils/fss-utils";
 
 interface StateProps {
   startRegistreringStatus: StartRegistreringData;
@@ -21,10 +20,7 @@ class Banner extends React.Component<Props> {
     const registreringType = this.props.startRegistreringStatus.registreringType;
     const visSykefravaerSkjema = registreringType === RegistreringType.SYKMELDT_REGISTRERING;
 
-    if (erIFSS())
-      return visSykefravaerSkjema ? "banner-overskrift-sykefravaer-manuell" : "banner-overskrift-ordinaer-manuell";
-
-    return visSykefravaerSkjema ? "banner-overskrift-sykefravaer" : "banner-overskrift-ordinaer";
+    return visSykefravaerSkjema ? "banner-overskrift-sykefravaer-manuell" : "banner-overskrift-ordinaer-manuell";
   }
 
   skalVises(): boolean {

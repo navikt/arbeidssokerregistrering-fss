@@ -7,11 +7,9 @@ import { Knapp } from "nav-frontend-knapper";
 import { connect } from "react-redux";
 import { AppState } from "../../reducer";
 import { RegistreringType, selectRegistreringstatus } from "../../ducks/registreringstatus";
-import { DITT_NAV_URL, DITT_SYKEFRAVAER_URL } from "../../utils/konstanter";
 
 import avbrytSvg from "./avbryt.svg";
 import "./avbryt-modal.less";
-import { erIFSS } from "../../utils/fss-utils";
 import { lagAktivitetsplanUrl } from "../../utils/url-utils";
 
 interface OwnProps {
@@ -33,14 +31,12 @@ class AvbrytModal extends React.Component<AllProps> {
   render() {
     const { registreringType } = this.props;
     let beskrivelseId;
-    let url: string;
+    const url: string = lagAktivitetsplanUrl();
 
     if (registreringType === RegistreringType.SYKMELDT_REGISTRERING) {
       beskrivelseId = "avbryt-beskrivelse-sykmeldt";
-      url = erIFSS() ? lagAktivitetsplanUrl() : DITT_SYKEFRAVAER_URL;
     } else {
       beskrivelseId = "avbryt-beskrivelse-registrering";
-      url = erIFSS() ? lagAktivitetsplanUrl() : DITT_NAV_URL;
     }
 
     return (

@@ -1,0 +1,123 @@
+kind: Application
+apiVersion: nais.io/v1alpha1
+metadata:
+  name: arbeidssokerregistrering-veileder
+  namespace: paw
+  labels:
+    team: paw
+  annotations:
+    nginx.ingress.kubernetes.io/server-snippet: |
+      underscores_in_headers on;
+spec:
+  image: ghcr.io/navikt/poao-frontend/poao-frontend:2022.03.04_10.27-769e37315ec1
+  port: 8080
+  ingresses:
+    - https://arbeidssokerregistrering.dev.intern.nav.no
+  liveness:
+    path: /internal/alive
+    initialDelay: 10
+  prometheus:
+    enabled: false
+    path: /internal/metrics
+  readiness:
+    path: /internal/ready
+    initialDelay: 10
+  replicas:
+    min: 2
+    max: 4
+    cpuThresholdPercentage: 50
+  resources:
+    limits:
+      cpu: "1"
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+  gcp:
+    buckets:
+      - name: arbeidssokerregistrering-veileder-dev
+        cascadingDelete: false
+  azure:
+    application:
+      enabled: true
+    sidecar:
+      enabled: true
+      autoLogin: true
+      errorPath: "feilsti-ikke-konfigurert"
+  accessPolicy:
+    outbound:
+      rules:
+        - application: paw-proxy
+          cluster: dev-fss
+          namespace: paw
+        - application: modiacontextholder
+          cluster: dev-fss
+          namespace: personoversikt
+        - application: pam-janzz
+          namespace: teampam
+      external:
+        - host: paw-proxy.dev-fss-pub.nais.io
+        - host: unleash.nais.io
+
+  env:
+    - name: JSON_CONFIG
+      value: >
+        {
+          "gcs": {
+            "bucketName": "arbeidssokerregistrering-veileder-dev"
+          },
+          "auth": {
+            "loginProvider": "AZURE_AD"
+          },
+          "fallbackStrategy":  "NONE",
+          "redirects": [
+              {
+                "fromPath": "/veilarbpersonflatefs/*",
+                "toUrl": "https://app-q1.adeo.no",
+                "preserveFromPath": true
+              },
+              {
+        
+                "fromPath": "/internarbeidsflatedecorator/*",
+                "toUrl": "https://internarbeidsflatedecorator-q1.dev.adeo.no",
+                "preserveFromPath": true
+              }
+          ],
+          "proxies": [
+            {
+              "fromPath": "/modiacontextholder",
+              "toUrl": "https://modiacontextholder-q1.dev-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "modiacontextholder-q1", "namespace": "personoversikt", "cluster": "dev-fss" }
+            },
+            {
+              "fromPath": "/veilarbregistrering",
+              "toUrl": "https://paw-proxy.dev-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "dev-fss" }
+            },
+            {
+              "fromPath": "/veilarboppfolging",
+              "toUrl": "https://paw-proxy.dev-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "dev-fss" }
+            },
+            {
+              "fromPath": "/veilarbperson",
+              "toUrl": "https://paw-proxy.dev-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "dev-fss" }
+            },
+            {
+              "fromPath": "/veilarbveileder",
+              "toUrl": "https://paw-proxy.dev-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "dev-fss" }
+            },
+            {
+              "fromPath": "/pam-janzz",
+              "toUrl": "https://pam-janzz.dev.intern.nav.no",
+              "preserveFromPath": true
+            } 
+          ]
+        }

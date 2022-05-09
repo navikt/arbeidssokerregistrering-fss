@@ -4,6 +4,8 @@ Frontend for registrering av arbeidssøker for **veiledere** i Modia.
 
 Frontenden for **personbrukere** finnes på [navikt/arbeidssokerregistrering](https://github.com/navikt/arbeidssokerregistrering).
 
+Løsningen baserer seg på [poao-frontend](https://github.com/navikt/poao-frontend) så for å se oppsett og konfigurasjon se på det originale repoet.
+
 # Komme i gang med utvikling
 
 - Bruk Node.js v14.19

@@ -2,7 +2,7 @@ import { Dispatch } from "react-redux";
 import { AppState } from "../reducer";
 import ActionType from "./actions";
 import { ThunkAction } from "redux-thunk";
-import { erIFSS, hentBrukerFnr, hentVeilederEnhetId } from "../utils/fss-utils";
+import { hentBrukerFnr, hentVeilederEnhetId } from "../utils/fss-utils";
 
 export const STATUS = {
   NOT_STARTED: "NOT_STARTED",
@@ -24,19 +24,11 @@ class FetchError extends Error {
 type RecoverWith = (status: number) => unknown | null;
 
 export function leggTilFnrForFSS(url: string) {
-  if (erIFSS()) {
-    return url + "?fnr=" + hentBrukerFnr();
-  }
-
-  return url;
+  return url + "?fnr=" + hentBrukerFnr();
 }
 
 export function leggTilFnrOgEnhetForFSS(url: string) {
-  if (erIFSS()) {
-    return url + "?fnr=" + hentBrukerFnr() + "&enhetId=" + hentVeilederEnhetId();
-  }
-
-  return url;
+  return url + "?fnr=" + hentBrukerFnr() + "&enhetId=" + hentVeilederEnhetId();
 }
 
 export function sjekkStatuskode(recoverWith?: RecoverWith) {

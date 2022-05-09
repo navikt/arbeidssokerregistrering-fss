@@ -3,7 +3,6 @@ import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
 import { connect, Dispatch } from "react-redux";
 import { Redirect, RouteComponentProps } from "react-router-dom";
 import NavAlertStripe from "nav-frontend-alertstriper";
-import { BekreftCheckboksPanel } from "nav-frontend-skjema";
 import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel";
 import { Element, Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 import { disableVertikalScrollingVedAnimasjon, getIntlMessage, MatchProps } from "../../utils/utils";
@@ -33,7 +32,6 @@ import epostSvg from "./epost.svg";
 import okonomiSvg from "./okonomi.svg";
 
 import "./fullfor.less";
-import { erIFSS } from "../../utils/fss-utils";
 import { erKlarForFullforing } from "./fullfor-utils";
 
 interface StateProps {
@@ -70,12 +68,6 @@ class Fullfor extends React.PureComponent<Props, EgenState> {
   }
 
   registrerBrukerOnClick() {
-    // Veiledere trenger ikke å bekrefte
-    if (!this.state.markert && !erIFSS()) {
-      this.setState({ visAdvarsel: true });
-      return;
-    }
-
     this.setState((prevState) => ({ ...prevState, sblArbeidRegistrerBrukerStatus: STATUS.PENDING }));
 
     this.props.onRegistrerBruker(this.getSvarMappetForBackend(), RegistreringType.ORDINAER_REGISTRERING).then((res) => {
@@ -193,14 +185,6 @@ class Fullfor extends React.PureComponent<Props, EgenState> {
               </ul>
             </Ekspanderbartpanel>
           </div>
-          {!erIFSS() && (
-            <BekreftCheckboksPanel
-              onChange={this.settMarkert}
-              checked={this.state.markert}
-              label={getIntlMessage(intl.messages, "fullfor-sjekkboks")}
-              className="fullfor-bekreft"
-            />
-          )}
           {advarselElement}
           <div className="lenke-avbryt-wrapper">
             <KnappFullfor intl={intl} onClick={this.registrerBrukerOnClick} />

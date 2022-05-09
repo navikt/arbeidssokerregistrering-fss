@@ -1,0 +1,35 @@
+name: Deploy BFF
+on:
+  push:
+    paths:
+      - "nais/*.yaml"
+
+jobs:
+  deploy-dev:
+    name: Deploy to Dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Deploy with nais
+        uses: nais/deploy/actions/deploy@master
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: nais/nais-dev.yaml
+          DRY_RUN: false
+
+  deploy-prod:
+    name: Deploy to Prod
+    needs: deploy-dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Deploy with nais
+        uses: nais/deploy/actions/deploy@master
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: prod-gcp
+          RESOURCE: nais/nais-prod.yaml
+          DRY_RUN: false

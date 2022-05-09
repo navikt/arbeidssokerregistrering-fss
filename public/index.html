@@ -19,23 +19,22 @@
             document.head.appendChild(css);
         }
 
-        const devBaseUrl = 'https://internarbeidsflatedecorator-q1.dev.adeo.no';
         const dekoratorScriptUrl = '/internarbeidsflatedecorator/v2.1/static/js/head.v2.min.js';
         const dekoratorCssUrl = '/internarbeidsflatedecorator/v2.1/static/css/main.css';
         const hostname = window.location.hostname;
 
-        if (hostname.indexOf('adeo.no') !== -1 || hostname.indexOf('preprod.local') !== -1) {
-            lastInnScript(dekoratorScriptUrl);
-            lastInnCss(dekoratorCssUrl);
-        } else if(hostname.indexOf('localhost') !== -1) {
-        	// Ikke last inn dev-script ved kjøring av cypress-testene.
+		if(hostname.indexOf('localhost') !== -1) {
+			// Ikke last inn dev-script ved kjøring av cypress-testene.
 			// dev-scriptene krever NAV-nett, men testene blir ofte kjørt utenfor NAV-nettet (bl.a. github-action).
 			// Det ingen cypress-tester som tester fss-funksjonalitet, så dette skal ikke ha noe å si for testdekning.
 			// XXX Dette er uansett ikke optimalt, og bør endres så snart noe skal gjøres med testene i denne appen.
-        	if (!window.isCypressTest) {
+			if (!window.isCypressTest) {
 				lastInnScript(devBaseUrl + dekoratorScriptUrl);
 			}
-        }
+		} else {
+			lastInnScript(dekoratorScriptUrl);
+			lastInnCss(dekoratorCssUrl);
+		}
 
 	</script>
 

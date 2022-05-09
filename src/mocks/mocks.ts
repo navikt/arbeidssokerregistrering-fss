@@ -1,19 +1,11 @@
-import {
-  BRUKER_KONTEKST_URL,
-  FEATURE_URL,
-  OPPDATER_KONTEKST_URL,
-  VEILARBPERSON_NAVN_URL,
-  VEILARBREGISTRERING_URL,
-} from "../ducks/api";
+import { BRUKER_KONTEKST_URL, FEATURE_URL, OPPDATER_KONTEKST_URL, VEILARBREGISTRERING_URL } from "../ducks/api";
 import { getStore } from "../store";
 import { ActionTypes as SvarActionTypes, SporsmalId } from "../ducks/svar";
 import svarMock from "./svar-mock";
 import { ActionTypes as SisteStillingActionTypes } from "../ducks/siste-stilling";
 import { sisteStillingMock } from "./siste-stilling-mock";
 import { hentSvar } from "../ducks/svar-utils";
-import autentisert from "./autentiseringsinfo-mock";
 import pamJanzzData from "./typeahead-mock";
-import brukersNavn from "./brukers-navn-mock";
 import startRegistreringStatus from "./registreringstatus-mock";
 import sisteStillingFraAAReg from "./siste-stilling-fra-aareg-mock";
 import brukerKontekst from "./fss-bruker-kontekst";
@@ -31,7 +23,6 @@ import opprettKontaktmegOppgaveRespons from "./oppgave-mock";
 // eslint-disable-next-line
 import { kontaktinfoRespons, kontaktinfoFeilrespons } from "./kontaktinfo-mock";
 
-export const MOCK_AUTENTISERINGS_INFO = true;
 export const MOCK_START_REGISRERING_STATUS = true;
 export const MOCK_BRUKERS_NAVN = true;
 export const MOCK_GET_SISTE_ARBIEDSFORHOLD = true;
@@ -92,10 +83,6 @@ if (MOCK_FEATURE_TOGGLES) {
   mock.get(`${FEATURE_URL}`, ResponseUtils.delayed(DELAY, featureTogglesMock));
 }
 
-if (MOCK_BRUKERS_NAVN) {
-  mock.get(`${VEILARBPERSON_NAVN_URL}`, ResponseUtils.delayed(DELAY, brukersNavn));
-}
-
 if (MOCK_GET_SISTE_ARBIEDSFORHOLD) {
   mock.get(`${VEILARBREGISTRERING_URL}/sistearbeidsforhold`, ResponseUtils.delayed(DELAY, sisteStillingFraAAReg));
 }
@@ -137,10 +124,6 @@ if (MOCK_OPPRETT_KONTAKTMEG_OPPGAVE) {
 if (MOCK_BRUKER_KONTEKST) {
   mock.get(`${BRUKER_KONTEKST_URL}`, ResponseUtils.delayed(DELAY, brukerKontekst));
   mock.delete(`${BRUKER_KONTEKST_URL}`, ResponseUtils.delayed(DELAY, {}));
-}
-
-if (MOCK_AUTENTISERINGS_INFO) {
-  mock.get("/api/auth", ResponseUtils.delayed(DELAY, autentisert));
 }
 
 if (MOCK_OPPDATER_BRUKER_KONTEKST) {

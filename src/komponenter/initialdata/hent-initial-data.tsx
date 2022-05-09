@@ -1,15 +1,7 @@
 import * as React from "react";
 import { connect, Dispatch } from "react-redux";
 import { AppState } from "../../reducer";
-import { hentBrukersNavn, selectBrukersNavn, State as BrukersNavnState } from "../../ducks/brukers-navn";
-import { hentKontaktinfo } from "../../ducks/kontaktinfo";
-import {
-  Data as AuthData,
-  hentAutentiseringsInfo,
-  SecurityLevel,
-  selectAutentiseringsinfo,
-  State as AuthState,
-} from "../../ducks/autentiseringsinfo";
+import { hentKontaktinfo, selectKontaktinfo, State as KontaktinfoState } from "../../ducks/kontaktinfo";
 import {
   hentRegistreringStatus,
   selectRegistreringstatus,
@@ -18,28 +10,21 @@ import {
 import {
   hentFeatureToggles,
   selectFeatureTogglesState,
-  Data as FeatureToggleData,
   State as FeatureToggleState,
 } from "../../ducks/feature-toggles";
 import Innholdslaster from "../innholdslaster/innholdslaster";
-import StepUp from "./stepup";
 import TjenesteOppdateres from "../../sider/tjeneste-oppdateres";
 import { STATUS } from "../../ducks/api-utils";
 import Loader from "../loader/loader";
 import FeilmeldingGenerell from "../feilmelding/feilmelding-generell";
-import { erIFSS } from "../../utils/fss-utils";
-import { uniLogger } from "../../metrikker/uni-logger";
 
 interface StateProps {
-  brukersNavn: BrukersNavnState;
-  autentiseringsinfo: AuthState;
+  kontaktinfo: KontaktinfoState;
   registreringstatus: RegistreringstatusState;
   featuretoggles: FeatureToggleState;
 }
 
 interface DispatchProps {
-  hentBrukersNavn: () => Promise<void | unknown>;
-  hentAutentiseringsInfo: () => Promise<void | unknown>;
   hentRegistreringStatus: () => void;
   hentFeatureToggle: () => Promise<void | unknown>;
   hentKontaktinfo: () => Promise<void | unknown>;
@@ -47,71 +32,28 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps;
 
-function videresendTilNyIngress() {
-  const { location } = window;
-  const devHostnames = [
-    "arbeidssokerregistrering.dev.adeo.no",
-    "arbeidssokerregistrering-q1.nais.preprod.local",
-    "arbeidssokerregistrering-fss-q1.nais.preprod.local",
-    "app-q1.adeo.no",
-  ];
-  const prodHostnames = [
-    "arbeidssokerregistrering.nais.adeo.no",
-    "arbeidssokerregistrering-fss.nais.adeo.no",
-    "app.adeo.no",
-  ];
-
-  if (devHostnames.includes(location.hostname)) {
-    location.href = `https://arbeidssokerregistrering.dev.intern.nav.no/${location.search}`;
-    uniLogger("registrering.fss.redirect", { target: "gcp dev" });
-  } else if (prodHostnames.includes(location.hostname)) {
-    uniLogger("registrering.fss.redirect", { target: "gcp prod" });
-    location.href = `https://arbeidssokerregistrering.intern.nav.no/${location.search}`;
-  }
-}
-
 export class HentInitialData extends React.Component<Props> {
   componentDidMount() {
-    this.props.hentFeatureToggle().then((featureToggles) => {
-      if (featureToggles && (featureToggles as FeatureToggleData)["arbeidssokerregistrering.fss.ny-ingress"]) {
-        videresendTilNyIngress();
-      }
-      this.props.hentAutentiseringsInfo().then((res) => {
-        if ((res as AuthData).securityLevel === SecurityLevel.Level4) {
-          this.props.hentRegistreringStatus();
-          this.props.hentBrukersNavn();
-          this.props.hentKontaktinfo();
-        }
-      });
+    this.props.hentFeatureToggle().then(() => {
+      this.props.hentRegistreringStatus();
+      this.props.hentKontaktinfo();
     });
   }
 
   render() {
-    const { children, registreringstatus, autentiseringsinfo, brukersNavn, featuretoggles } = this.props;
-    const { securityLevel } = autentiseringsinfo.data;
+    const { children, registreringstatus, kontaktinfo, featuretoggles } = this.props;
     const erNede = featuretoggles.data["arbeidssokerregistrering.nedetid"];
     if (erNede) {
       return <TjenesteOppdateres />;
-    } else if (autentiseringsinfo.status === STATUS.OK) {
-      if (securityLevel !== SecurityLevel.Level4) {
-        // Bruker mangler Oidc-token på nivå 4.
-        // Sender derfor bruker til step-up-side med forklaring og Logg-inn-knapp.
-        if (securityLevel === SecurityLevel.Level3) {
-          uniLogger("registrering.niva3");
-        }
-        return <StepUp />;
-      }
     }
 
     const feilmelding =
-      erIFSS() && registreringstatus.status === STATUS.ERROR
-        ? "feilhandtering-ikke-tilgang-aareg"
-        : "feilmelding-generell";
+      registreringstatus.status === STATUS.ERROR ? "feilhandtering-ikke-tilgang-aareg" : "feilmelding-generell";
 
     return (
       <Innholdslaster
         feilmeldingKomponent={<FeilmeldingGenerell tekstId={feilmelding} />}
-        avhengigheter={[registreringstatus, brukersNavn, autentiseringsinfo, featuretoggles]}
+        avhengigheter={[registreringstatus, kontaktinfo, featuretoggles]}
         storrelse="XXL"
         loaderKomponent={<Loader />}
       >
@@ -122,15 +64,12 @@ export class HentInitialData extends React.Component<Props> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  autentiseringsinfo: selectAutentiseringsinfo(state),
-  brukersNavn: selectBrukersNavn(state),
+  kontaktinfo: selectKontaktinfo(state),
   registreringstatus: selectRegistreringstatus(state),
   featuretoggles: selectFeatureTogglesState(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
-  hentBrukersNavn: () => dispatch(hentBrukersNavn()),
-  hentAutentiseringsInfo: () => dispatch(hentAutentiseringsInfo()),
   hentRegistreringStatus: () => dispatch(hentRegistreringStatus()),
   hentFeatureToggle: () => dispatch(hentFeatureToggles()),
   hentKontaktinfo: () => dispatch(hentKontaktinfo()),

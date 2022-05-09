@@ -1,6 +1,10 @@
 export const kontaktinfoRespons = {
   telefonnummerHosKrr: "23232323",
   telefonnummerHosNav: "22222222",
+  navn: {
+    fornavn: "Testbruker",
+    etternavn: "Testesen",
+  },
 };
 
 export const kontaktinfoFeilrespons = {

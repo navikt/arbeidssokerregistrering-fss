@@ -3,11 +3,9 @@ import { Data as RegistrerBrukerData } from "./registrerbruker";
 import { alleFeatureToggles } from "./feature-toggles";
 import { RegistreringType } from "./registreringstatus";
 
-export const VEILARBPERSON_NAVN_URL = "/veilarbperson/api/person/navn";
-export const AUTENTISERINGSINFO_URL = "/api/auth";
 export const LOGINSERVICEURL = `/loginservice/login?redirect=${window.location.origin}`;
 export const VEILARBREGISTRERING_URL = "/veilarbregistrering/api";
-export const FEATURE_URL = "/api/feature";
+export const FEATURE_URL = `${VEILARBREGISTRERING_URL}/featuretoggle`;
 export const OPPDATER_KONTEKST_URL = "/modiacontextholder/api/context";
 export const BRUKER_KONTEKST_URL = "/modiacontextholder/api/context/aktivbruker";
 
@@ -28,6 +26,7 @@ export function getHeaders() {
   return new Headers({
     "Content-Type": "application/json",
     NAV_CSRF_PROTECTION: getCookie("NAV_CSRF_PROTECTION"),
+    "Nav-Consumer-Id": "arbeidssokerregistrering-veileder",
   });
 }
 
@@ -99,29 +98,9 @@ export function oppdaterAktivBruker(brukerFnr: string) {
   });
 }
 
-export function hentBrukersNavn() {
-  return fetchToJson({
-    url: leggTilFnrForFSS(VEILARBPERSON_NAVN_URL),
-    config: {
-      ...MED_CREDENTIALS,
-      headers: getHeaders(),
-    },
-  });
-}
-
 export function hentKontaktinfo() {
   return fetchToJson({
     url: leggTilFnrForFSS(`${VEILARBREGISTRERING_URL}/person/kontaktinfo`),
-    config: {
-      ...MED_CREDENTIALS,
-      headers: getHeaders(),
-    },
-  });
-}
-
-export function hentAutentiseringsInfo() {
-  return fetchToJson({
-    url: `${AUTENTISERINGSINFO_URL}`,
     config: {
       ...MED_CREDENTIALS,
       headers: getHeaders(),
@@ -181,7 +160,7 @@ export function hentBrukerIKontekst() {
 export function hentFeatureToggles() {
   const parameters = alleFeatureToggles.map((element) => "feature=" + element).join("&");
   return fetchToJson({
-    url: `${FEATURE_URL}/?${parameters}`,
+    url: `${FEATURE_URL}?${parameters}`,
     config: {
       ...MED_CREDENTIALS,
       headers: getHeaders(),

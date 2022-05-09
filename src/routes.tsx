@@ -3,11 +3,9 @@ import { Redirect, Route, RouteComponentProps, Switch, withRouter } from "react-
 import Banner from "./komponenter/banner/banner";
 import ProgressBarContainer from "./komponenter/progress-bar/progress-bar-container";
 import Sideanimasjon from "./komponenter/sideanimasjon/sideanimasjon";
-import AlleredeRegistrert from "./sider/allerede-registrert/allerede-registrert";
 import AlleredeRegistrertFss from "./sider/allerede-registrert-fss/allerede-registrert-fss";
 import {
   ALLEREDE_REGISTRERT_PATH,
-  DITT_NAV_URL,
   DU_ER_NA_REGISTRERT_PATH,
   FULLFOR_PATH,
   INFOSIDE_PATH,
@@ -31,12 +29,7 @@ import Fullfor from "./sider/fullfor/fullfor";
 import DuErNaRegistrert from "./sider/registrert/registrert";
 import { AppState } from "./reducer";
 import { connect, Dispatch } from "react-redux";
-import {
-  Data as RegistreringstatusData,
-  Formidlingsgruppe,
-  RegistreringType,
-  selectRegistreringstatus,
-} from "./ducks/registreringstatus";
+import { Data as RegistreringstatusData, RegistreringType, selectRegistreringstatus } from "./ducks/registreringstatus";
 import RedirectAll from "./komponenter/redirect-all";
 import { selectReaktiveringStatus } from "./ducks/reaktiverbruker";
 import { STATUS } from "./ducks/api-utils";
@@ -45,12 +38,8 @@ import { Data as FeatureToggleData, selectFeatureToggles } from "./ducks/feature
 import TjenesteOppdateres from "./sider/tjeneste-oppdateres";
 import { RouteHerokuMock } from "./mocks/HerokuappEndreMockRegistreringLoep/herokuapp-endre-mock-registrering-loep";
 import { setInngangAapAction, setInngangSykefravaerAction } from "./ducks/logger";
-import { erIFSS } from "./utils/fss-utils";
 import RegistreringArbeidssokerSykmeldtFss from "./sider/startside/registrering-sykmeldt-fss";
-import RegistreringArbeidssokerSykmeldt from "./sider/startside/registrering-sykmeldt";
 import RegistreringArbeidssokerFss from "./sider/startside/registrering-arbeidssoker-fss";
-import RegistreringArbeidssoker from "./sider/startside/registrering-arbeidssoker";
-import { uniLogger } from "./metrikker/uni-logger";
 import OppsummeringOrdinaer from "./sider/oppsummering/oppsummering-ordinaer";
 import { hentQueryParameter } from "./utils/url-utils";
 
@@ -97,36 +86,14 @@ class Routes extends React.Component<AllProps> {
   render() {
     const { registreringstatusData, reaktivertStatus, featureToggles, location } = this.props;
     const erNede = featureToggles["arbeidssokerregistrering.nedetid"];
-    const {
-      registreringType,
-      formidlingsgruppe,
-      servicegruppe,
-      geografiskTilknytning,
-      rettighetsgruppe,
-      underOppfolging,
-    } = registreringstatusData;
+    const { registreringType } = registreringstatusData;
     const visSykefravaerSkjema = registreringType === RegistreringType.SYKMELDT_REGISTRERING;
     const visOrdinaerSkjema = !visSykefravaerSkjema;
     const klarForFullforing = erKlarForFullforing(this.props.state);
     const queryParams = location.search;
 
     if (registreringType === RegistreringType.ALLEREDE_REGISTRERT) {
-      if (erIFSS()) {
-        return <RedirectAll to={ALLEREDE_REGISTRERT_PATH} component={AlleredeRegistrertFss} />;
-      }
-      if (formidlingsgruppe === Formidlingsgruppe.ARBS) {
-        uniLogger("arbeidssokerregistrering.allerede-registrert.redirect-dittnav", {
-          formidlingsgruppe,
-          servicegruppe,
-          geografiskTilknytning,
-          rettighetsgruppe,
-          underOppfolging,
-        });
-        const redirectUrl = `${DITT_NAV_URL}?goTo=registrering`;
-        window.location.href = redirectUrl;
-      } else {
-        return <RedirectAll to={ALLEREDE_REGISTRERT_PATH} component={AlleredeRegistrert} />;
-      }
+      return <RedirectAll to={ALLEREDE_REGISTRERT_PATH} component={AlleredeRegistrertFss} />;
     } else if (registreringType === RegistreringType.REAKTIVERING && reaktivertStatus !== STATUS.OK) {
       if (erNede) {
         return <RedirectAll to={"/"} component={TjenesteOppdateres} />;
@@ -151,10 +118,7 @@ class Routes extends React.Component<AllProps> {
 
             {visOrdinaerSkjema ? (
               <Switch>
-                <Route
-                  path={START_PATH}
-                  component={erIFSS() ? RegistreringArbeidssokerFss : RegistreringArbeidssoker}
-                />
+                <Route path={START_PATH} component={RegistreringArbeidssokerFss} />
                 <Route path={`${SKJEMA_PATH}/:id`} component={SkjemaRegistrering} />
                 <Route path={FULLFOR_PATH} component={Fullfor} />
                 <Route path={OPPSUMMERING_PATH} component={OppsummeringOrdinaer} />
@@ -163,10 +127,7 @@ class Routes extends React.Component<AllProps> {
             ) : null}
             {visSykefravaerSkjema ? (
               <Switch>
-                <Route
-                  path={START_PATH}
-                  component={erIFSS() ? RegistreringArbeidssokerSykmeldtFss : RegistreringArbeidssokerSykmeldt}
-                />
+                <Route path={START_PATH} component={RegistreringArbeidssokerSykmeldtFss} />
                 <Route path={INFOSIDE_PATH} component={Infoside} />
                 <Route path={INNGANGSSPORSMAL_PATH} component={Inngangssporsmal} />
                 <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/1/:id`} component={SkjemaSykefravaerSammeArbeidsgiver} />

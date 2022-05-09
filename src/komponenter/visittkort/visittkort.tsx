@@ -13,6 +13,7 @@ interface SpaProps {
 interface VisittKortProps extends SpaProps {
   tilbakeTilFlate: string;
   visVeilederVerktoy: boolean;
+  skjulEtiketter: boolean;
 }
 
 export enum SpaName {
@@ -39,6 +40,7 @@ const Visittkort: () => JSX.Element = () => {
         enhet={enhetId || ""}
         tilbakeTilFlate="veilarbpersonflatefs"
         visVeilederVerktoy={false}
+        skjulEtiketter={false}
       />
     </div>
   );

@@ -13,9 +13,17 @@ export interface State {
   status: string;
 }
 
+export interface Navn {
+  fornavn?: string;
+  mellomnavn?: string | null;
+  etternavn?: string;
+  sammensattNavn?: string; // TODO sjekk om nødvendig
+}
+
 export interface Data {
   telefonnummerHosKrr?: string;
   telefonnummerHosNav?: string;
+  navn?: Navn;
 }
 
 interface Action {
