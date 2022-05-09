@@ -1,9 +1,6 @@
 name: Deploy frontend to bucket
 
-on:
-  push:
-    branches:
-      - main-gcp
+on: [push]
 
 env:
   CI: true
