@@ -132,6 +132,7 @@ if (MOCK_OPPDATER_BRUKER_KONTEKST) {
 
 if (MOCK_KONTAKTINFO) {
   mock.get(`${VEILARBREGISTRERING_URL}/person/kontaktinfo`, ResponseUtils.delayed(DELAY, kontaktinfoRespons));
+  //mock.get(`${VEILARBREGISTRERING_URL}/person/kontaktinfo`, ResponseUtils.delayed(DELAY, ResponseUtils.statusCode(404)));
   /*
         mock.get(`${VEILARBREGISTRERING_URL}/person/kontaktinfo`,
                  ResponseUtils.combine(ResponseUtils.statusCode(500),

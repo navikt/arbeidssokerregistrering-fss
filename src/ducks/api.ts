@@ -105,6 +105,7 @@ export function hentKontaktinfo() {
       ...MED_CREDENTIALS,
       headers: getHeaders(),
     },
+    recoverWith: () => ({}),
   });
 }
 
