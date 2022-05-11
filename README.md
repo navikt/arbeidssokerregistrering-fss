@@ -12,6 +12,7 @@ Løsningen baserer seg på [poao-frontend](https://github.com/navikt/poao-fronte
 
 - `npm i`
 - `npm start` (starter appen i demo-modus)
+- gå til [http://localhost:3001/?fnr=6346464&enhetId=5353](http://localhost:3001/?fnr=6346464&enhetId=5353)
 
 ## Utvikling med backend
 
