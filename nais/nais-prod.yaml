@@ -64,7 +64,7 @@ spec:
     - name: JSON_CONFIG
       value: >
         {
-          "enableSecureLogs": false,
+          "enableSecureLogs": true,
           "gcs": {
             "bucketName": "arbeidssokerregistrering-veileder-prod"
           },
