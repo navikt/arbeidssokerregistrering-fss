@@ -21,6 +21,7 @@ export default function Feilhandtering(props: Props & ReactIntl.InjectedIntlProp
         );
       }
       case FullforErrorTypes.BRUKER_ER_UKJENT:
+      case FullforErrorTypes.BRUKER_KAN_IKKE_REAKTIVERES_FORENKLET:
       case FullforErrorTypes.BRUKER_KAN_IKKE_REAKTIVERES: {
         return <FeilmeldingBrukersStatusUgyldig feilType={errorData.data.type} />;
       }

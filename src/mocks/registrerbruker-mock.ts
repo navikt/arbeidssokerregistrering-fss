@@ -39,3 +39,13 @@ export const registreringFeilrespons = {
     stackTrace: "no.nav.apiapp.feil.Feil: BRUKER_KAN_IKKE_REAKTIVERES",
   },
 };
+
+export const kanIkkeReaktiveresForenkletFeilrespons = {
+  id: "fa5ec8e51366d8b9722bb564f2534e7e",
+  type: "BRUKER_KAN_IKKE_REAKTIVERES_FORENKLET",
+  detaljer: {
+    detaljertType: "no.nav.apiapp.feil.Feil",
+    feilMelding: "BRUKER_KAN_IKKE_REAKTIVERES_FORENKLET",
+    stackTrace: "no.nav.apiapp.feil.Feil: BRUKER_KAN_IKKE_REAKTIVERES_FORENKLET",
+  },
+};
