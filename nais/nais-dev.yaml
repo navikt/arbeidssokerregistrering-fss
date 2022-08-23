@@ -77,7 +77,7 @@ spec:
               {
                 "fromPath": "/veilarbpersonflate/*",
                 "toUrl": "https://veilarbpersonflate.dev.intern.nav.no",
-                "preserveFromPath": true
+                "preserveFromPath": false
               },
               {
         
