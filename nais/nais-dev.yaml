@@ -52,8 +52,6 @@ spec:
         - application: paw-proxy
           cluster: dev-fss
           namespace: paw
-        - application: veilarbregistrering
-          namespace: paw
         - application: modiacontextholder
           cluster: dev-fss
           namespace: personoversikt
@@ -97,9 +95,9 @@ spec:
             },
             {
               "fromPath": "/veilarbregistrering",
-              "toUrl": "http://veilarbregistrering",
+              "toUrl": "https://paw-proxy.dev-fss-pub.nais.io",
               "preserveFromPath": true,
-              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "dev-gcp" }
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "dev-fss" }
             },
             {
               "fromPath": "/veilarboppfolging",
