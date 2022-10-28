@@ -97,7 +97,7 @@ spec:
             },
             {
                "fromPath": "/veilarbregistrering/api/sisteArbeidsforhold",
-               "toUrl": "https://veilarbregistrering/veilarbregistrering/api/sisteArbeidsforhold",
+               "toUrl": "http://veilarbregistrering/veilarbregistrering/api/sisteArbeidsforhold",
                "preserveFromPath": false,
                "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "dev-gcp" }
             },
