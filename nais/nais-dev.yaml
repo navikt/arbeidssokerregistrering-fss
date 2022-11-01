@@ -11,7 +11,7 @@ metadata:
 spec:
   secureLogs:
     enabled: true
-  image: ghcr.io/navikt/poao-frontend/poao-frontend:2022.10.27_12.31-f21da4864c3d
+  image: ghcr.io/navikt/poao-frontend/poao-frontend:2022.08.01_11.00-f813dcd15fd5
   port: 8080
   ingresses:
     - https://arbeidssokerregistrering.dev.intern.nav.no
