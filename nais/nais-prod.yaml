@@ -57,6 +57,7 @@ spec:
         - application: paw-proxy
           cluster: prod-fss
           namespace: paw
+        - application: veilarbregistrering
       external:
         - host: paw-proxy.prod-fss-pub.nais.io
         - host: unleash.nais.io
@@ -92,10 +93,46 @@ spec:
                "toApp": { "name": "modiacontextholder", "namespace": "personoversikt", "cluster": "prod-fss" }
             },
             {
-              "fromPath": "/veilarbregistrering",
+              "fromPath": "/veilarbregistrering/api/startregistrering",
               "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
               "preserveFromPath": true,
               "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
+            },
+            {
+              "fromPath": "/veilarbregistrering/api/featuretoggle",
+              "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
+            },
+            {
+              "fromPath": "/veilarbregistrering/api/person/kontaktinfo",
+              "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
+            },
+            {
+              "fromPath": "/veilarbregistrering/api/sistearbeidsforhold",
+              "toUrl": "http://veilarbregistrering",
+              "preserveFromPath": true,
+              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
+            },
+            {
+              "fromPath": "/veilarbregistrering/api/startreaktivering",
+              "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
+            },
+            {
+               "fromPath": "/veilarbregistrering/api/startregistreringsykmeldt",
+               "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
+               "preserveFromPath": true,
+               "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
+            },
+            {
+               "fromPath": "/veilarbregistrering/api/oppgave",
+               "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
+               "preserveFromPath": true,
+               "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
             },
             {
               "fromPath": "/veilarboppfolging",
