@@ -100,15 +100,15 @@ spec:
             },
             {
               "fromPath": "/veilarbregistrering/api/featuretoggle",
-              "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
+              "toUrl": "http://veilarbregistrering",
               "preserveFromPath": true,
-              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
+              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
             },
             {
               "fromPath": "/veilarbregistrering/api/person/kontaktinfo",
-              "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
+              "toUrl": "http://veilarbregistrering",
               "preserveFromPath": true,
-              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
+              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
             },
             {
               "fromPath": "/veilarbregistrering/api/sistearbeidsforhold",
