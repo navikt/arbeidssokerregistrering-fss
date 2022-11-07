@@ -126,7 +126,7 @@ spec:
               "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "dev-gcp" }
             },
             {
-               "fromPath": "/veilarbregistrering/api/startregistreringsykmeldt",
+               "fromPath": "/veilarbregistrering/api/startregistrersykmeldt",
                "toUrl": "http://veilarbregistrering",
                "preserveFromPath": true,
                "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "dev-gcp" }

@@ -123,7 +123,7 @@ spec:
               "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
             },
             {
-               "fromPath": "/veilarbregistrering/api/startregistreringsykmeldt",
+               "fromPath": "/veilarbregistrering/api/startregistrersykmeldt",
                "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
                "preserveFromPath": true,
                "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
