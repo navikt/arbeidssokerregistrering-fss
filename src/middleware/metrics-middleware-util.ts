@@ -13,8 +13,8 @@ export const feilTyper = [
   },
   {
     type: RegistrerbrukerActionTypes.REG_BRUKER_STATUS_FEILET,
-    eventnavn: "registrering.feil.fullfoerordinaerregistrering",
-    apikall: "POST /fullfoerordinaerregistrering",
+    eventnavn: "registrering.feil.startregistrering",
+    apikall: "POST /startregistrering",
   },
   {
     type: StillingFraAAregActionTypes.SISTE_ARBEIDSFORHOLD_FRA_AAREG_FEILET,
@@ -24,7 +24,7 @@ export const feilTyper = [
   {
     type: ReaktiverBrukerActionTypes.REAKTIVER_BRUKER_STATUS_FEILET,
     eventnavn: "registrering.feil.reaktivering",
-    apikall: "POST /fullfoerreaktivering",
+    apikall: "POST /startreaktivering",
   },
   {
     type: OversettelseAvStillngFraAAregActionTypes.HENT_SISTE_STILLING_FEILET,

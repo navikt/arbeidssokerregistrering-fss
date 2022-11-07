@@ -1,4 +1,4 @@
-import { fetchToJson, leggTilFnrForPersonbruker, leggTilFnrOgEnhet } from "./api-utils";
+import { fetchToJson, leggTilFnrForFSS, leggTilFnrOgEnhetForFSS } from "./api-utils";
 import { Data as RegistrerBrukerData } from "./registrerbruker";
 import { alleFeatureToggles } from "./feature-toggles";
 import { RegistreringType } from "./registreringstatus";
@@ -36,7 +36,7 @@ export const MED_CREDENTIALS = {
 
 export function hentRegistreringStatus() {
   return fetchToJson({
-    url: leggTilFnrForPersonbruker(`${VEILARBREGISTRERING_URL}/startregistrering`),
+    url: leggTilFnrForFSS(`${VEILARBREGISTRERING_URL}/startregistrering`),
     config: {
       ...MED_CREDENTIALS,
       headers: getHeaders(),
@@ -46,12 +46,10 @@ export function hentRegistreringStatus() {
 
 export function registrerBruker(data: RegistrerBrukerData, registreringType: RegistreringType) {
   const endepunkt =
-    registreringType === RegistreringType.SYKMELDT_REGISTRERING
-      ? "fullfoersykmeldtregistrering"
-      : "fullfoerordinaerregistrering";
+    registreringType === RegistreringType.SYKMELDT_REGISTRERING ? "startregistrersykmeldt" : "startregistrering";
 
   return fetchToJson({
-    url: leggTilFnrOgEnhet(`${VEILARBREGISTRERING_URL}/${endepunkt}`),
+    url: leggTilFnrOgEnhetForFSS(`${VEILARBREGISTRERING_URL}/${endepunkt}`),
     config: {
       ...MED_CREDENTIALS,
       headers: getHeaders(),
@@ -63,7 +61,7 @@ export function registrerBruker(data: RegistrerBrukerData, registreringType: Reg
 
 export function startReaktivering() {
   return fetchToJson({
-    url: leggTilFnrForPersonbruker(`${VEILARBREGISTRERING_URL}/fullfoerreaktivering`),
+    url: leggTilFnrForFSS(`${VEILARBREGISTRERING_URL}/startreaktivering`),
     config: {
       ...MED_CREDENTIALS,
       headers: getHeaders(),
@@ -75,7 +73,7 @@ export function startReaktivering() {
 
 export function opprettKontaktmegOppgave() {
   return fetchToJson({
-    url: leggTilFnrForPersonbruker(`${VEILARBREGISTRERING_URL}/oppgave`),
+    url: leggTilFnrForFSS(`${VEILARBREGISTRERING_URL}/oppgave`),
     config: {
       ...MED_CREDENTIALS,
       headers: getHeaders(),
@@ -102,7 +100,7 @@ export function oppdaterAktivBruker(brukerFnr: string) {
 
 export function hentKontaktinfo() {
   return fetchToJson({
-    url: leggTilFnrForPersonbruker(`${VEILARBREGISTRERING_URL}/person/kontaktinfo`),
+    url: leggTilFnrForFSS(`${VEILARBREGISTRERING_URL}/person/kontaktinfo`),
     config: {
       ...MED_CREDENTIALS,
       headers: getHeaders(),
@@ -113,7 +111,7 @@ export function hentKontaktinfo() {
 
 export function hentStyrkkodeForSisteStillingFraAAReg() {
   return fetchToJson({
-    url: leggTilFnrForPersonbruker(`${VEILARBREGISTRERING_URL}/sistearbeidsforhold`),
+    url: leggTilFnrForFSS(`${VEILARBREGISTRERING_URL}/sistearbeidsforhold`),
     config: {
       ...MED_CREDENTIALS,
       headers: getHeaders(),

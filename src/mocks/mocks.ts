@@ -99,23 +99,20 @@ if (MOCK_STYRK08_PAMJANZZ) {
 }
 
 if (MOCK_REGISTRER_BRUKER) {
-  mock.post(
-    `${VEILARBREGISTRERING_URL}/fullfoerordinaerregistrering`,
-    ResponseUtils.delayed(DELAY, ordinaerRegistreringRespons)
-  );
+  mock.post(`${VEILARBREGISTRERING_URL}/startregistrering`, ResponseUtils.delayed(DELAY, ordinaerRegistreringRespons));
   /*
-        mock.post(`${VEILARBREGISTRERING_URL}/fullfoerordinaerregistrering`,
+        mock.post(`${VEILARBREGISTRERING_URL}/startregistrering`,
                    ResponseUtils.combine(ResponseUtils.statusCode(500),
                    manglerArbeidstillatelseFeilResponse));
     */
   mock.post(
-    `${VEILARBREGISTRERING_URL}/fullfoersykmeldtregistrering`,
+    `${VEILARBREGISTRERING_URL}/startregistrersykmeldt`,
     ResponseUtils.delayed(DELAY, sykmeldtRegistreringRespons)
   );
 }
 
 if (MOCK_REAKTIVER_BRUKER) {
-  mock.post(`${VEILARBREGISTRERING_URL}/fullfoerreaktivering`, ResponseUtils.delayed(DELAY, {}));
+  mock.post(`${VEILARBREGISTRERING_URL}/startreaktivering`, ResponseUtils.delayed(DELAY, {}));
 }
 
 if (MOCK_OPPRETT_KONTAKTMEG_OPPGAVE) {
