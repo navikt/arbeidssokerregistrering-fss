@@ -23,11 +23,11 @@ class FetchError extends Error {
 
 type RecoverWith = (status: number) => unknown | null;
 
-export function leggTilFnrForFSS(url: string) {
+export function leggTilFnrForPersonbruker(url: string) {
   return url + "?fnr=" + hentBrukerFnr();
 }
 
-export function leggTilFnrOgEnhetForFSS(url: string) {
+export function leggTilFnrOgEnhet(url: string) {
   return url + "?fnr=" + hentBrukerFnr() + "&enhetId=" + hentVeilederEnhetId();
 }
 
