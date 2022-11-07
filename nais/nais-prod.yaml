@@ -99,6 +99,24 @@ spec:
               "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
             },
             {
+              "fromPath": "/veilarbregistrering/api/fullfoerordinaerregistrering",
+              "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
+            },
+            {
+              "fromPath": "/veilarbregistrering/api/fullfoersykmeldtregistrering",
+              "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
+            },
+            {
+              "fromPath": "/veilarbregistrering/api/fullfoerreaktivering",
+              "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
+              "preserveFromPath": true,
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
+            },
+            {
               "fromPath": "/veilarbregistrering/api/featuretoggle",
               "toUrl": "http://veilarbregistrering",
               "preserveFromPath": true,
