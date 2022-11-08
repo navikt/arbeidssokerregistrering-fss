@@ -94,9 +94,9 @@ spec:
             },
             {
               "fromPath": "/veilarbregistrering/api/startregistrering",
-              "toUrl": "http://veilarbregistrering",
+              "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
               "preserveFromPath": true,
-              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
+              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
             },
             {
               "fromPath": "/veilarbregistrering/api/fullfoerordinaerregistrering",
