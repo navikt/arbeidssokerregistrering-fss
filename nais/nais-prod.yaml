@@ -135,18 +135,6 @@ spec:
               "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
             },
             {
-              "fromPath": "/veilarbregistrering/api/startreaktivering",
-              "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
-              "preserveFromPath": true,
-              "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
-            },
-            {
-               "fromPath": "/veilarbregistrering/api/startregistrersykmeldt",
-               "toUrl": "https://paw-proxy.prod-fss-pub.nais.io",
-               "preserveFromPath": true,
-               "toApp": { "name": "paw-proxy", "namespace": "paw", "cluster": "prod-fss" }
-            },
-            {
                "fromPath": "/veilarbregistrering/api/oppgave",
                "toUrl": "http://veilarbregistrering",
                "preserveFromPath": true,
