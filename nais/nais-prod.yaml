@@ -93,52 +93,10 @@ spec:
                "toApp": { "name": "modiacontextholder", "namespace": "personoversikt", "cluster": "prod-fss" }
             },
             {
-              "fromPath": "/veilarbregistrering/api/startregistrering",
+              "fromPath": "/veilarbregistrering",
               "toUrl": "http://veilarbregistrering",
               "preserveFromPath": true,
               "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
-            },
-            {
-              "fromPath": "/veilarbregistrering/api/fullfoerordinaerregistrering",
-              "toUrl": "http://veilarbregistrering",
-              "preserveFromPath": true,
-              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
-            },
-            {
-              "fromPath": "/veilarbregistrering/api/fullfoersykmeldtregistrering",
-              "toUrl": "http://veilarbregistrering",
-              "preserveFromPath": true,
-              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
-            },
-            {
-              "fromPath": "/veilarbregistrering/api/fullfoerreaktivering",
-              "toUrl": "http://veilarbregistrering",
-              "preserveFromPath": true,
-              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
-            },
-            {
-              "fromPath": "/veilarbregistrering/api/featuretoggle",
-              "toUrl": "http://veilarbregistrering",
-              "preserveFromPath": true,
-              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
-            },
-            {
-              "fromPath": "/veilarbregistrering/api/person/kontaktinfo",
-              "toUrl": "http://veilarbregistrering",
-              "preserveFromPath": true,
-              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
-            },
-            {
-              "fromPath": "/veilarbregistrering/api/sistearbeidsforhold",
-              "toUrl": "http://veilarbregistrering",
-              "preserveFromPath": true,
-              "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
-            },
-            {
-               "fromPath": "/veilarbregistrering/api/oppgave",
-               "toUrl": "http://veilarbregistrering",
-               "preserveFromPath": true,
-               "toApp": { "name": "veilarbregistrering", "namespace": "paw", "cluster": "prod-gcp" }
             },
             {
               "fromPath": "/veilarboppfolging",
