@@ -7,7 +7,6 @@ import { AppState } from "../../reducer";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { injectIntl } from "react-intl";
-import { MatchProps } from "../../utils/utils";
 import { OPPSUMMERING_PATH, SKJEMA_SYKEFRAVAER_PATH } from "../../utils/konstanter";
 import { nullStillSporsmalSomIkkeSkalBesvares, SkjemaConfig } from "../../komponenter/skjema/skjema-utils";
 import { RegistreringType } from "../../ducks/registreringstatus";
