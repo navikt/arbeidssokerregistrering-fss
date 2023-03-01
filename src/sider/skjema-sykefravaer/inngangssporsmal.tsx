@@ -8,7 +8,8 @@ import {
 } from "../../komponenter/skjema/skjema-utils";
 import { Innholdstittel } from "nav-frontend-typografi";
 import { endreSvarAction, setInitialState, SporsmalId } from "../../ducks/svar";
-import { connect, Dispatch } from "react-redux";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
 import { AppState } from "../../reducer";
 import { FremtidigSituasjonSvar, hentSvar, Svar } from "../../ducks/svar-utils";
 import ResponsivSide from "../../komponenter/side/responsiv-side";

@@ -1,4 +1,4 @@
-import { Dispatch } from "react-redux";
+import { Dispatch } from "redux";
 import { AppState } from "../reducer";
 import ActionType from "./actions";
 import { ThunkAction } from "redux-thunk";

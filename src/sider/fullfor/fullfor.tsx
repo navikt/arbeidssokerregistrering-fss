@@ -1,6 +1,7 @@
 import * as React from "react";
 import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
-import { connect, Dispatch } from "react-redux";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
 import { Redirect, RouteComponentProps } from "react-router-dom";
 import NavAlertStripe from "nav-frontend-alertstriper";
 import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel";

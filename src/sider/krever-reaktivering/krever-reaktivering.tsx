@@ -1,6 +1,7 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
-import { connect, Dispatch } from "react-redux";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import KnappBase from "nav-frontend-knapper";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";

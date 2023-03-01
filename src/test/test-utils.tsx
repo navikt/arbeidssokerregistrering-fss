@@ -4,7 +4,8 @@ import { mount, shallow } from "enzyme";
 import { shallowWithIntl as shIntl } from "./intl-enzyme-test-helper.js";
 
 import { getStore } from "../store";
-import { Provider, Store } from "react-redux";
+import { Provider } from "react-redux";
+import { Store } from "redux";
 import { AppState } from "../reducer";
 import { Data as RegStatusData, ActionTypes as RegStatusActionTypes } from "../ducks/registreringstatus";
 import { Data as FeatureStatusData, ActionTypes as FeatureStatusActionTypes } from "../ducks/feature-toggles";
