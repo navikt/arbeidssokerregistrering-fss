@@ -31,7 +31,7 @@ interface DispatchProps {
   hentKontaktinfo: () => Promise<void | unknown>;
 }
 
-type Props = StateProps & DispatchProps;
+type Props = StateProps & DispatchProps & { children?: React.ReactNode | undefined };
 
 export class HentInitialData extends React.Component<Props> {
   componentDidMount() {

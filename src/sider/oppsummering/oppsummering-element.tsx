@@ -21,6 +21,7 @@ interface OwnProps {
   skjul?: boolean;
   skjulHvisSvarErLik?: Svar | Svar[];
   values?: { [key: string]: any };
+  children?: React.ReactNode | undefined;
 }
 
 interface StateProps {

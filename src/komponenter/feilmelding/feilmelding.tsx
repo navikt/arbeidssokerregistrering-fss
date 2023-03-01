@@ -6,6 +6,7 @@ import "./feilmelding.less";
 interface FeilmeldingProps {
   bilde?: any;
   className?: string;
+  children?: React.ReactNode | undefined;
 }
 
 class Feilmelding extends React.Component<FeilmeldingProps> {

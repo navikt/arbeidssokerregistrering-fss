@@ -9,6 +9,7 @@ interface Props {
   className?: string;
   target?: string;
   onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+  children?: React.ReactNode | undefined;
 }
 
 export default class LenkeMedChevron extends React.Component<Props> {

@@ -20,6 +20,7 @@ interface InnholdslasterProps {
   feilmeldingKomponent?: React.ReactNode;
   loaderKomponent?: React.ReactNode;
   storrelse?: SpinnerStorrelse;
+  children?: any
 }
 
 interface InnholdslasterState {
