@@ -8,8 +8,7 @@ Løsningen baserer seg på [poao-frontend](https://github.com/navikt/poao-fronte
 
 # Komme i gang med utvikling
 
-- Bruk Node.js v14.19
-
+- Bruk Node.js v18 `nvm use`
 - `npm i`
 - `npm start` (starter appen i demo-modus)
 - gå til [http://localhost:3001/?fnr=6346464&enhetId=5353](http://localhost:3001/?fnr=6346464&enhetId=5353)
