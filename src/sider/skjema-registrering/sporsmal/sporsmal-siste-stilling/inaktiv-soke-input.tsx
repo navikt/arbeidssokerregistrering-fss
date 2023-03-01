@@ -2,20 +2,20 @@ import * as React from "react";
 import { Stilling } from "../../../../ducks/siste-stilling";
 import "./inaktiv-soke-input.less";
 import { Normaltekst, Undertittel } from "nav-frontend-typografi";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { WrappedComponentProps, injectIntl } from "react-intl";
 
 interface InaktivSokeInputProps {
   stilling: Stilling;
   onInputAktivert: () => void;
 }
 
-type AllProps = InaktivSokeInputProps & InjectedIntlProps;
+type AllProps = InaktivSokeInputProps & WrappedComponentProps;
 
-const InaktivSokeInput: React.SFC<AllProps> = (props: AllProps) => {
+const InaktivSokeInput: React.FunctionComponent<AllProps> = (props: AllProps) => {
   const { intl, stilling, onInputAktivert } = props;
   const tekster = {
-    undertittel: intl.messages["siste-arbeidsforhold.undertittel"],
-    endreTekst: intl.messages["sistestilling-endre-tekst"],
+    undertittel: intl.formatMessage ({id: "siste-arbeidsforhold.undertittel"}),
+    endreTekst: intl.formatMessage ({id:"sistestilling-endre-tekst"}),
   };
 
   return (

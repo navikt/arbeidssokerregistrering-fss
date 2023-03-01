@@ -1,6 +1,6 @@
 import { SporsmalId, State as SvarState } from "../../ducks/svar";
 import { DinSituasjonSvar, hentSvar, IngenSvar, Svar, TilbakeIArbeidSvar, UtdanningSvar } from "../../ducks/svar-utils";
-import { InjectedIntl } from "react-intl";
+import { IntlShape } from "react-intl";
 import { Props as SkjemaProps } from "./skjema";
 import { RegistreringType } from "../../ducks/registreringstatus";
 import { INFOSIDE_PATH } from "../../utils/konstanter";
@@ -26,7 +26,7 @@ export type TekstKontekst = "tittel" | "info" | "ingress";
 export function getIntlTekstForSporsmal(
   sporsmalId: string,
   kontekst: TekstKontekst,
-  intl: InjectedIntl,
+  intl: IntlShape,
   registreringType: RegistreringType
 ): string {
   const registreringTypeId = registreringType === RegistreringType.SYKMELDT_REGISTRERING ? "sykmeldt" : "registrering";
@@ -35,9 +35,9 @@ export function getIntlTekstForSporsmal(
   const idUtenRegType = `${sporsmalId.toLowerCase()}-${kontekst}`;
 
   if (intl.messages[idMedRegType]) {
-    return intl.messages[idMedRegType];
+    return intl.formatMessage ({id:idMedRegType});
   } else {
-    return intl.messages[idUtenRegType];
+    return intl.formatMessage ({id:idUtenRegType});
   }
 }
 

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
 import "./infoside.less";
 import LenkeTilbake from "../../komponenter/knapper/lenke-tilbake";
 import { Link, Redirect, RouteComponentProps, withRouter } from "react-router-dom";
@@ -20,7 +20,7 @@ interface StateProps {
   state: AppState;
 }
 
-type Props = StateProps & InjectedIntlProps & RouteComponentProps<MatchProps>;
+type Props = StateProps & WrappedComponentProps & RouteComponentProps<MatchProps>;
 
 class Infoside extends React.Component<Props> {
   handleTilbakeBtnClick = (): void => {

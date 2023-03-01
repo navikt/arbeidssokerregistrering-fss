@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
 import {
   selectSisteStillingFraAAReg,
   State as SisteArbeidsforholdState,
@@ -45,7 +45,7 @@ interface DispatchProps {
   velgStilling: (stilling: Stilling) => void;
 }
 
-type Props = SporsmalProps & StateProps & DispatchProps & InjectedIntlProps;
+type Props = SporsmalProps & StateProps & DispatchProps & WrappedComponentProps;
 
 class SisteStilling extends React.Component<Props, SisteStillingState> {
   constructor(props: Props) {
@@ -155,7 +155,7 @@ class SisteStilling extends React.Component<Props, SisteStillingState> {
                   {getTekst("tittel")}
                 </Innholdstittel>
                 <Normaltekst className="spm-beskrivelse">
-                  <span dangerouslySetInnerHTML={{ __html: intl.messages["siste-arbeidsforhold.ingress"] }} />
+                  <span dangerouslySetInnerHTML={{ __html: intl.formatMessage({ id: "siste-arbeidsforhold.ingress" }) }} />
                 </Normaltekst>
               </>
             }

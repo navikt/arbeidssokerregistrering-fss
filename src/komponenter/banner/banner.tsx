@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { WrappedComponentProps, injectIntl } from "react-intl";
 import { Systemtittel } from "nav-frontend-typografi";
 import { START_PATH } from "../../utils/konstanter";
 import { AppState } from "../../reducer";
@@ -13,7 +13,7 @@ interface StateProps {
   startRegistreringStatus: StartRegistreringData;
 }
 
-type Props = RouteComponentProps<MatchProps> & InjectedIntlProps & StateProps;
+type Props = RouteComponentProps<MatchProps> & WrappedComponentProps & StateProps;
 
 class Banner extends React.Component<Props> {
   settBannerOverskriftId(): string {

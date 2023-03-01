@@ -8,7 +8,7 @@ interface Props {
   errorData: FullforErrorData;
 }
 
-export default function Feilhandtering(props: Props & ReactIntl.InjectedIntlProps) {
+export default function Feilhandtering(props: Props & ReactIntl.WrappedComponentProps) {
   const { errorData } = props;
   if (errorData && errorData.data) {
     switch (errorData.data.type) {

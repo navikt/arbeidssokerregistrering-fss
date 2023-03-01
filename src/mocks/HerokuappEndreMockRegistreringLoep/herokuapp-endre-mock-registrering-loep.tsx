@@ -1,5 +1,5 @@
 import * as React from "react";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { WrappedComponentProps, injectIntl } from "react-intl";
 import { Route, RouteComponentProps, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import {
@@ -38,7 +38,7 @@ interface OwnState {
   feilmeldingRadioKnapp: string;
 }
 
-type Props = InjectedIntlProps & StateProps & RouteComponentProps<MatchProps>;
+type Props = WrappedComponentProps & StateProps & RouteComponentProps<MatchProps>;
 
 class HerokuappEndreMockRegistreringLoep extends React.Component<Props, OwnState> {
   constructor(props: Props) {

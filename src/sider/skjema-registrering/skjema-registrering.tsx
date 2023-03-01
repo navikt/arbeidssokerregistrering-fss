@@ -5,7 +5,7 @@ import { hentSvar, Svar } from "../../ducks/svar-utils";
 import { AppState } from "../../reducer";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { WrappedComponentProps, injectIntl } from "react-intl";
 import { MatchProps } from "../../utils/utils";
 import { RouteComponentProps } from "react-router-dom";
 import Skjema from "../../komponenter/skjema/skjema";
@@ -26,7 +26,7 @@ interface StateProps {
   svarState: SvarState;
 }
 
-type Props = DispatchProps & StateProps & InjectedIntlProps & RouteComponentProps<MatchProps>;
+type Props = DispatchProps & StateProps & WrappedComponentProps & RouteComponentProps<MatchProps>;
 
 class SkjemaRegistrering extends React.Component<Props> {
   render() {

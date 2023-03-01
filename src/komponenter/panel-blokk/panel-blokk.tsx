@@ -1,5 +1,5 @@
 import * as React from "react";
-import { injectIntl, InjectedIntlProps } from "react-intl";
+import { injectIntl, WrappedComponentProps } from "react-intl";
 import classNames from "classnames";
 import Panel from "nav-frontend-paneler";
 import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
@@ -22,7 +22,7 @@ function PanelBlokk({
   tittelVerdier,
   intl,
   children,
-}: PanelBlokkProps & InjectedIntlProps) {
+}: PanelBlokkProps & WrappedComponentProps) {
   return (
     <Panel className={classNames("panel-blokk padding-vertikalt-standard mmb", cssVariant)}>
       {tittelId ? (
@@ -42,7 +42,7 @@ function PanelBlokk({
         <Normaltekst className="panel-blokk-beskrivelse">
           <span
             dangerouslySetInnerHTML={{
-              __html: getIntlMessage(intl.messages, beskrivelseId),
+              __html: intl.formatMessage({ id: beskrivelseId }),
             }}
           />
         </Normaltekst>

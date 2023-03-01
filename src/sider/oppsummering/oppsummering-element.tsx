@@ -4,7 +4,6 @@ import { SporsmalId, State as SvarState } from "../../ducks/svar";
 import { AppState } from "../../reducer";
 import { FormattedMessage } from "react-intl";
 import { hentSvar, Svar } from "../../ducks/svar-utils";
-import { MessageValue } from "react-intl";
 import { getTekstIdForSvar } from "../../komponenter/skjema/skjema-utils";
 import {
   Data as RegistreringstatusData,
@@ -21,7 +20,7 @@ interface OwnProps {
   tekst?: string;
   skjul?: boolean;
   skjulHvisSvarErLik?: Svar | Svar[];
-  values?: { [key: string]: MessageValue | JSX.Element };
+  values?: { [key: string]: any };
 }
 
 interface StateProps {

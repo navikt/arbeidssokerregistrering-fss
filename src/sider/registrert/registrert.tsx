@@ -1,6 +1,6 @@
 import * as React from "react";
 import cls from "classnames";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
 import { Systemtittel } from "nav-frontend-typografi";
 import AvsjekkBilde from "./avsjekk-bilde/avsjekk-bilde";
 import { erIE } from "../../utils/ie-test";
@@ -16,7 +16,7 @@ interface StateProps {
   state: AppState;
 }
 
-type AllProps = StateProps & InjectedIntlProps & RouteComponentProps<MatchProps>;
+type AllProps = StateProps & WrappedComponentProps & RouteComponentProps<MatchProps>;
 
 class DuErNaRegistrert extends React.Component<AllProps> {
   hentTekstId(erSykmeldt: boolean): (id: string) => string {

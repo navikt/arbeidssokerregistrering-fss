@@ -7,14 +7,14 @@ import {
 import { SporsmalId, State as SvarState } from "./svar";
 import { ingenYrkesbakgrunn, Stilling, tomStilling } from "./siste-stilling";
 import { getIntlTekstForSporsmal, getTekstIdForSvar } from "../komponenter/skjema/skjema-utils";
-import { InjectedIntl } from "react-intl";
+import { IntlShape } from "react-intl";
 import { hentSvar, IngenSvar } from "./svar-utils";
 import { RegistreringType } from "./registreringstatus";
 
 export function mapAvgitteSvarForBackend(
   svar: SvarState,
   sisteStilling: Stilling,
-  intl: InjectedIntl,
+  intl: IntlShape,
   registreringType: RegistreringType
 ): OrdinaerRegistreringData | SykmeldtRegistreringData {
   const besvarelse = mapTilBesvarelse(svar);
@@ -50,7 +50,7 @@ export function mapTilSvarState(besvarelse: BesvarelseType): SvarState {
 
 export function genererTeksterForBesvarelse(
   svarState: SvarState,
-  intl: InjectedIntl,
+  intl: IntlShape,
   sisteStilling: Stilling,
   registreringType: RegistreringType
 ): TeksterForBesvarelse {
@@ -64,9 +64,10 @@ export function genererTeksterForBesvarelse(
 function getIntlTekstForPotensieltUbesvartSporsmal(
   sporsmalId: SporsmalId,
   svarState: SvarState,
-  intl: InjectedIntl,
+  intl: IntlShape,
   sisteStilling: Stilling
 ): string {
+
   if (sporsmalId === "sisteStilling") {
     return hentAvgittSvarForSisteStilling(sisteStilling);
   }
@@ -75,7 +76,7 @@ function getIntlTekstForPotensieltUbesvartSporsmal(
     return "Ikke aktuelt";
   }
   const tekstId = getTekstIdForSvar(sporsmalId, svar);
-  return intlHarTekstId(intl, tekstId) ? intl.messages[tekstId] : svar.toString();
+  return intlHarTekstId(intl, tekstId) ? intl.formatMessage({ id: tekstId }) : svar.toString();
 }
 
 function hentAvgittSvarForSisteStilling(sisteStilling: Stilling): string {
@@ -85,6 +86,6 @@ function hentAvgittSvarForSisteStilling(sisteStilling: Stilling): string {
   return sisteStilling.label;
 }
 
-function intlHarTekstId(intl: InjectedIntl, tekstId: string): boolean {
+function intlHarTekstId(intl: IntlShape, tekstId: string): boolean {
   return Object.keys(intl.messages).includes(tekstId);
 }

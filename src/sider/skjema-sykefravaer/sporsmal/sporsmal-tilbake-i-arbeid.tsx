@@ -4,10 +4,10 @@ import { getIntlTekstForSporsmal, getTekstIdForSvar, TekstKontekst } from "../..
 import { Innholdstittel } from "nav-frontend-typografi";
 import { Svar, TilbakeIArbeidSvar } from "../../../ducks/svar-utils";
 import { SporsmalProps } from "../../../komponenter/skjema/sporsmal-utils";
-import { injectIntl, InjectedIntlProps } from "react-intl";
+import { injectIntl, WrappedComponentProps } from "react-intl";
 import { SkjemaGruppe } from "nav-frontend-skjema";
 
-type Props = SporsmalProps & InjectedIntlProps;
+type Props = SporsmalProps & WrappedComponentProps;
 
 function SporsmalTilbakeIArbeid(props: Props) {
   const fellesProps = {

@@ -1,3 +1,5 @@
+import { MessageFormatElement } from "react-intl";
+
 export function hentFornavn(name: string | undefined) {
   return name ? storForbokstavOgEtterBindestrek(name.split(" ")[0]) : "";
 }
@@ -13,7 +15,7 @@ function forsteTegnStorBokstav(name: string) {
   return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 }
 
-export function getIntlMessage(messages: { [id: string]: string }, id: string): string {
+export function getIntlMessage(messages: { [id: string]: string | MessageFormatElement[] }, id: string): string | MessageFormatElement[] {
   return messages[id] || id;
 }
 

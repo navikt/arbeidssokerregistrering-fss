@@ -7,7 +7,7 @@ import { SporsmalProps } from "../../../komponenter/skjema/sporsmal-utils";
 import ReactIntl, { injectIntl } from "react-intl";
 import { SkjemaGruppe } from "nav-frontend-skjema";
 
-type Props = SporsmalProps & ReactIntl.InjectedIntlProps;
+type Props = SporsmalProps & ReactIntl.WrappedComponentProps;
 
 function UtdanningBestattSporsmal(props: Props) {
   const fellesProps = {

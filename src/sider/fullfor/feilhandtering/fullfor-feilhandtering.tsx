@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { WrappedComponentProps, injectIntl } from "react-intl";
 import { AppState } from "../../../reducer";
 import { ErrorData as FullforErrorData } from "../../../ducks/registrerbruker";
 import Feilhandtering from "./feilhandtering";
@@ -9,7 +9,7 @@ interface StateProps {
   errorData: FullforErrorData;
 }
 
-type Props = StateProps & InjectedIntlProps;
+type Props = StateProps & WrappedComponentProps;
 
 class FullforFeilhandtering extends React.Component<Props> {
   render() {

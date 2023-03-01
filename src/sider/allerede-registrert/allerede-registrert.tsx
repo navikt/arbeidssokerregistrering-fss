@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Column, Row } from "nav-frontend-grid";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { WrappedComponentProps, injectIntl } from "react-intl";
 import { Normaltekst } from "nav-frontend-typografi";
 import GraaBakgrunn from "../../komponenter/graa-bakgrunn/graa-bakgrunn";
 import Banner from "../../komponenter/banner/banner";
@@ -13,7 +13,7 @@ import "./allerede-registrert.less";
 interface StateProps {
   state: AppState;
 }
-type Props = InjectedIntlProps & StateProps;
+type Props = WrappedComponentProps & StateProps;
 
 class AlleredeRegistrert extends React.Component<Props> {
   handleClickAktivitetsplan(event) {

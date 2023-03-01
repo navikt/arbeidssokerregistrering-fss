@@ -1,5 +1,5 @@
 import * as React from "react";
-import { InjectedIntlProps, InjectedIntl, injectIntl } from "react-intl";
+import { WrappedComponentProps, IntlShape, injectIntl } from "react-intl";
 import { connect } from "react-redux";
 import { Normaltekst } from "nav-frontend-typografi";
 import { AppState } from "../../../reducer";
@@ -20,10 +20,10 @@ interface StateProps {
   state: AppState;
 }
 
-type AllProps = StateProps & InjectedIntlProps & FeilmeldingBrukersStatusUgyldigProps;
+type AllProps = StateProps & WrappedComponentProps & FeilmeldingBrukersStatusUgyldigProps;
 
 class FeilmeldingBrukersStatusUgyldig extends React.Component<AllProps> {
-  lagFeilmelding(feilType: FullforErrorTypes, intl: InjectedIntl) {
+  lagFeilmelding(feilType: FullforErrorTypes, intl: IntlShape) {
     const { messages } = intl;
     let feilmelding;
 
@@ -35,9 +35,9 @@ class FeilmeldingBrukersStatusUgyldig extends React.Component<AllProps> {
       feilmelding = (
         <Feilmelding>
           <div>
-            <Normaltekst className="blokk-s">{messages["feilhandtering-overtekst"]}</Normaltekst>
+            <Normaltekst className="blokk-s">{intl.formatMessage({ id: "feilhandtering-overtekst" })}</Normaltekst>
             <Normaltekst>
-              <span dangerouslySetInnerHTML={{ __html: messages["feilhandtering-undertekst"] }} />
+              <span dangerouslySetInnerHTML={{ __html: intl.formatMessage({ id: "feilhandtering-undertekst" }) }} />
             </Normaltekst>
           </div>
         </Feilmelding>

@@ -1,8 +1,7 @@
 import * as React from "react";
-import { injectIntl, InjectedIntlProps } from "react-intl";
+import { injectIntl, WrappedComponentProps } from "react-intl";
 import { Normaltekst } from "nav-frontend-typografi";
 import Ikon from "nav-frontend-ikoner-assets";
-import { getIntlMessage } from "../../utils/utils";
 
 import "./ekspanderbartinfo.less";
 
@@ -13,7 +12,7 @@ interface Props {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-type EgenProps = Props & InjectedIntlProps;
+type EgenProps = Props & WrappedComponentProps;
 
 interface EgenStateProps {
   apen: boolean;
@@ -49,7 +48,7 @@ class EkspanderbartInfo extends React.PureComponent<EgenProps, EgenStateProps> {
         >
           <Normaltekst className="ekspanderbartinfo__label">
             <Ikon kind="help-circle" size={25} className="ekspanderbartinfo__ikon" />
-            {getIntlMessage(this.props.intl.messages, this.props.tittelId)}
+            {this.props.intl.formatMessage({id: "this.props.tittelId"})}
           </Normaltekst>
         </button>
         {this.state.apen && <div className="ekspanderbartinfo__innhold">{this.props.children}</div>}

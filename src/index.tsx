@@ -5,6 +5,10 @@ import "react-app-polyfill/ie11";
 import Modal from "react-modal";
 import AppFss from "./app-fss";
 import "./index.less";
+import "@formatjs/intl-pluralrules/polyfill";
+import "@formatjs/intl-pluralrules/locale-data/nb";
+import "@formatjs/intl-relativetimeformat/polyfill";
+import "@formatjs/intl-relativetimeformat/locale-data/nb";
 
 Modal.setAppElement("#root");
 

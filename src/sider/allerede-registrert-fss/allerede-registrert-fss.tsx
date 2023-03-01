@@ -1,12 +1,12 @@
 import * as React from "react";
-import { InjectedIntlProps, injectIntl, FormattedMessage } from "react-intl";
+import { WrappedComponentProps, injectIntl, FormattedMessage } from "react-intl";
 import BannerFss from "../../komponenter/banner-fss/banner-fss";
 import aktivitetsplanIkon from "./aktivitetsplan-ikon.svg";
 import { lagAktivitetsplanUrl } from "../../utils/url-utils";
 import "./allerede-registrert-fss.less";
 import { Normaltekst, Systemtittel } from "nav-frontend-typografi";
 
-class AlleredeRegistrertFss extends React.Component<InjectedIntlProps> {
+class AlleredeRegistrertFss extends React.Component<WrappedComponentProps> {
   render() {
     return (
       <>

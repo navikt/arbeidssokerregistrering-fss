@@ -1,5 +1,5 @@
 import * as React from "react";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { WrappedComponentProps, injectIntl } from "react-intl";
 import { Input } from "nav-frontend-skjema";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { Stilling } from "../../../../ducks/siste-stilling";
@@ -107,7 +107,7 @@ interface AutoCompleteState {
   inputValue: string;
 }
 
-type Props = AutoCompleteProps & InjectedIntlProps;
+type Props = AutoCompleteProps & WrappedComponentProps;
 class AutoComplete extends React.Component<Props, AutoCompleteState> {
   formRef: any;
   static clickLabel() {
@@ -295,7 +295,7 @@ class AutoComplete extends React.Component<Props, AutoCompleteState> {
           tab-index="0"
           aria-owns="resultat"
           autoComplete="off"
-          label={<Undertittel>{intl.messages["siste-arbeidsforhold.undertittel"]}</Undertittel>}
+          label={<Undertittel>{intl.formatMessage({ id: "siste-arbeidsforhold.undertittel" })}</Undertittel>}
           id="stilling"
           aria-autocomplete="both"
           aria-describedby="initInstr"

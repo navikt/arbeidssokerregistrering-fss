@@ -10,7 +10,7 @@ import {
     UtdanningSvar
 } from "../../../../../src/ducks/svar-utils";
 import { mapAvgitteSvarForBackend, mapTilBesvarelse, mapTilSvarState } from "../../../../../src/ducks/registrerbruker-utils";
-import { InjectedIntl } from 'react-intl';
+import { IntlShape } from 'react-intl';
 import { BesvarelseType, TeksterForBesvarelse } from "../../../../../src/ducks/registrerbruker";
 import { SporsmalId } from "../../../../../src/ducks/svar";
 import { RegistreringType } from "../../../../../src/ducks/registreringstatus";
@@ -70,7 +70,7 @@ describe('utils test', () => {
             'dinsituasjon-tittel': 'dinsituasjon-tittel',
         };
 
-        let dummyIntl = {} as InjectedIntl;
+        let dummyIntl = {} as IntlShape;
         dummyIntl.messages = messages;
 
         const expectedTekster: TeksterForBesvarelse = [

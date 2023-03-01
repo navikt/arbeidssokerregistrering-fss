@@ -2,7 +2,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import Alternativ from "../../../komponenter/skjema/alternativ";
-import { InjectedIntlProps, injectIntl } from "react-intl";
+import { WrappedComponentProps, injectIntl } from "react-intl";
 import { getIntlTekstForSporsmal, getTekstIdForSvar } from "../../../komponenter/skjema/skjema-utils";
 import { Innholdstittel } from "nav-frontend-typografi";
 import {
@@ -27,7 +27,7 @@ interface StateProps {
   sisteStilling: Stilling;
 }
 
-type Props = SporsmalProps & InjectedIntlProps & DispatchProps & StateProps;
+type Props = SporsmalProps & WrappedComponentProps & DispatchProps & StateProps;
 
 class SporsmalDinSituasjon extends React.Component<Props> {
   velgStillingHvisDenIkkeAlleredeErValgt(stilling: Stilling) {

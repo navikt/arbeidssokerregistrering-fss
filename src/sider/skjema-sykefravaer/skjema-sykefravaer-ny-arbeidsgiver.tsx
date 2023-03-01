@@ -8,7 +8,7 @@ import { Dispatch } from "redux";
 import { injectIntl } from "react-intl";
 import { MatchProps } from "../../utils/utils";
 import { RouteComponentProps } from "react-router-dom";
-import { InjectedIntlProps } from "react-intl";
+import { WrappedComponentProps } from "react-intl";
 import { OPPSUMMERING_PATH, SKJEMA_SYKEFRAVAER_PATH } from "../../utils/konstanter";
 import { nullStillSporsmalSomIkkeSkalBesvares, SkjemaConfig } from "../../komponenter/skjema/skjema-utils";
 import { RegistreringType } from "../../ducks/registreringstatus";
@@ -28,7 +28,7 @@ const skjemaFlytNyArbeidsgiver: SkjemaConfig = new Map<Svar, string[]>([
   [UtdanningSvar.INGEN_UTDANNING, ["utdanningBestatt", "utdanningGodkjent"]],
 ]);
 
-type Props = DispatchProps & StateProps & InjectedIntlProps & RouteComponentProps<MatchProps>;
+type Props = DispatchProps & StateProps & WrappedComponentProps & RouteComponentProps<MatchProps>;
 
 class SkjemaSykefravaerNyArbeidsgiver extends React.Component<Props> {
   render() {

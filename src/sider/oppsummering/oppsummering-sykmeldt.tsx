@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
 import { Redirect, RouteComponentProps } from "react-router-dom";
 import KnappBase from "nav-frontend-knapper";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
@@ -36,7 +36,7 @@ interface DispatchProps {
   onRegistrerBruker: (data: RegistrerBrukerData, registreringType: RegistreringType) => Promise<void | unknown>;
 }
 
-type Props = StateProps & DispatchProps & RouteComponentProps<MatchProps> & InjectedIntlProps;
+type Props = StateProps & DispatchProps & RouteComponentProps<MatchProps> & WrappedComponentProps;
 
 class OppsummeringSykmeldt extends React.Component<Props> {
   constructor(props: Props) {

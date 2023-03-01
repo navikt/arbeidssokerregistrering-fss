@@ -5,10 +5,10 @@ import { Normaltekst, Innholdstittel } from "nav-frontend-typografi";
 import Ikon from "nav-frontend-ikoner-assets";
 import { HelseHinderSvar, Svar } from "../../../ducks/svar-utils";
 import { SporsmalProps } from "../../../komponenter/skjema/sporsmal-utils";
-import { injectIntl, InjectedIntlProps } from "react-intl";
+import { injectIntl, WrappedComponentProps } from "react-intl";
 import { SkjemaGruppe } from "nav-frontend-skjema";
 
-type Props = SporsmalProps & InjectedIntlProps;
+type Props = SporsmalProps & WrappedComponentProps;
 
 function HelseHinder(props: Props) {
   const fellesProps = {

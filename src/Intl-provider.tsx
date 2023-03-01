@@ -1,10 +1,9 @@
 import * as React from "react";
-import { addLocaleData, IntlProvider as Provider } from "react-intl";
-import * as nb from "react-intl/locale-data/nb";
+import { IntlProvider as Provider } from "react-intl";
 import tekster from "./tekster/bundle";
 import { hentQueryParameter } from "./utils/url-utils";
+import { PropsWithChildren } from "react";
 
-addLocaleData(nb);
 
 interface TeksterTilMappingType {
   [propName: string]: string;
@@ -25,7 +24,7 @@ function skalViseTekstnokler(): boolean {
 
 class IntlProvider extends React.Component {
   render() {
-    const { children, ...props } = this.props;
+    const { children, ...props }: PropsWithChildren = this.props;
     const locale = "nb";
 
     const teksterEllerNokler = skalViseTekstnokler() ? mapTeksterTilNokler(tekster.nb) : tekster.nb;
