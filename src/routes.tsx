@@ -1,5 +1,8 @@
 import * as React from "react";
-import { Redirect, Route, RouteComponentProps, Switch, withRouter } from "react-router-dom";
+import { Dispatch } from "redux";
+import { connect } from "react-redux";
+import { Navigate, Route, Routes, useLocation, useParams, useNavigate } from "react-router-dom";
+
 import Banner from "./komponenter/banner/banner";
 import ProgressBarContainer from "./komponenter/progress-bar/progress-bar-container";
 import Sideanimasjon from "./komponenter/sideanimasjon/sideanimasjon";
@@ -28,8 +31,6 @@ import OppsummeringSykmeldt from "./sider/oppsummering/oppsummering-sykmeldt";
 import Fullfor from "./sider/fullfor/fullfor";
 import DuErNaRegistrert from "./sider/registrert/registrert";
 import { AppState } from "./reducer";
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
 import { Data as RegistreringstatusData, RegistreringType, selectRegistreringstatus } from "./ducks/registreringstatus";
 import RedirectAll from "./komponenter/redirect-all";
 import { selectReaktiveringStatus } from "./ducks/reaktiverbruker";
@@ -56,11 +57,19 @@ interface DispatchProps {
   setInngangAapAction: () => void;
 }
 
-type AllProps = StateProps & RouteComponentProps<any> & DispatchProps;
+type AllProps = StateProps & any & DispatchProps;
 
-class Routes extends React.Component<AllProps> {
-  kommerFraSykefravaer() {
-    const { registreringstatusData, location } = this.props;
+export const withRouter = (Component) => (props) => {
+  const location = useLocation();
+  const params = useParams();
+  const navigate = useNavigate();
+
+  return <Component {...props} {...{ location, params, navigate }} />;
+};
+
+function AppRoutes(props: AllProps) {
+  const kommerFraSykefravaer = () => {
+    const { registreringstatusData, location } = props;
     const erFraSykefravaer = hentQueryParameter(location, "fraSykefravaer") === "true";
 
     return (
@@ -68,85 +77,81 @@ class Routes extends React.Component<AllProps> {
       erFraSykefravaer &&
       location.pathname === START_PATH
     );
-  }
+  };
 
-  kommerAap() {
+  const kommerAap = () => {
     return hentQueryParameter(this.props.location, "fraAap") === "true";
+  };
+
+  if (kommerAap()) {
+    props.setInngangAapAction();
   }
 
-  componentDidMount() {
-    if (this.kommerAap()) {
-      this.props.setInngangAapAction();
-    }
-
-    if (this.kommerFraSykefravaer()) {
-      this.props.setInngangFraSykefravaer();
-    }
+  if (kommerFraSykefravaer()) {
+    props.setInngangFraSykefravaer();
   }
 
-  render() {
-    const { registreringstatusData, reaktivertStatus, featureToggles, location } = this.props;
-    const erNede = featureToggles["arbeidssokerregistrering.nedetid"];
-    const { registreringType } = registreringstatusData;
-    const visSykefravaerSkjema = registreringType === RegistreringType.SYKMELDT_REGISTRERING;
-    const visOrdinaerSkjema = !visSykefravaerSkjema;
-    const klarForFullforing = erKlarForFullforing(this.props.state);
-    const queryParams = location.search;
+  const { registreringstatusData, reaktivertStatus, featureToggles, location } = props;
+  const erNede = featureToggles["arbeidssokerregistrering.nedetid"];
+  const { registreringType } = registreringstatusData;
+  const visSykefravaerSkjema = registreringType === RegistreringType.SYKMELDT_REGISTRERING;
+  const visOrdinaerSkjema = !visSykefravaerSkjema;
+  const klarForFullforing = erKlarForFullforing(props.state);
+  const queryParams = location.search;
 
-    if (registreringType === RegistreringType.ALLEREDE_REGISTRERT) {
-      return <RedirectAll to={ALLEREDE_REGISTRERT_PATH} component={AlleredeRegistrertFss} />;
-    } else if (registreringType === RegistreringType.REAKTIVERING && reaktivertStatus !== STATUS.OK) {
-      if (erNede) {
-        return <RedirectAll to={"/"} component={TjenesteOppdateres} />;
-      }
-      return <RedirectAll to={REAKTIVERING_PATH} component={KreverReaktivering} />;
-    } else if (this.kommerFraSykefravaer()) {
-      return <RedirectAll to={INNGANGSSPORSMAL_PATH} component={Inngangssporsmal} />;
+  if (registreringType === RegistreringType.ALLEREDE_REGISTRERT) {
+    return <RedirectAll to={ALLEREDE_REGISTRERT_PATH} component={AlleredeRegistrertFss} />;
+  } else if (registreringType === RegistreringType.REAKTIVERING && reaktivertStatus !== STATUS.OK) {
+    if (erNede) {
+      return <RedirectAll to={"/"} component={TjenesteOppdateres} />;
     }
-
-    return (
-      <>
-        {RouteHerokuMock}
-        <Route path="/" component={Banner} />
-        <Route path="/:url" component={ProgressBarContainer} />
-
-        <Sideanimasjon>
-          <Switch>
-            {erNede ? <RedirectAll to={"/"} component={TjenesteOppdateres} /> : null}
-            {klarForFullforing || reaktivertStatus === STATUS.OK ? (
-              <Route path={DU_ER_NA_REGISTRERT_PATH} component={DuErNaRegistrert} />
-            ) : null}
-
-            {visOrdinaerSkjema ? (
-              <Switch>
-                <Route path={START_PATH} component={RegistreringArbeidssokerFss} />
-                <Route path={`${SKJEMA_PATH}/:id`} component={SkjemaRegistrering} />
-                <Route path={FULLFOR_PATH} component={Fullfor} />
-                <Route path={OPPSUMMERING_PATH} component={OppsummeringOrdinaer} />
-                <Redirect to={START_PATH} />
-              </Switch>
-            ) : null}
-            {visSykefravaerSkjema ? (
-              <Switch>
-                <Route path={START_PATH} component={RegistreringArbeidssokerSykmeldtFss} />
-                <Route path={INFOSIDE_PATH} component={Infoside} />
-                <Route path={INNGANGSSPORSMAL_PATH} component={Inngangssporsmal} />
-                <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/1/:id`} component={SkjemaSykefravaerSammeArbeidsgiver} />
-                <Route
-                  path={`${SKJEMA_SYKEFRAVAER_PATH}/2/:id`}
-                  component={SkjemaSykefravaerSammeArbeidsgiverNyStilling}
-                />
-                <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/3/:id`} component={SkjemaSykefravaerNyArbeidsgiver} />
-                <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/4/:id`} component={SkjemaSykefravaerUsikker} />
-                <Route path={OPPSUMMERING_PATH} component={OppsummeringSykmeldt} />
-                <Redirect to={START_PATH + queryParams} />
-              </Switch>
-            ) : null}
-          </Switch>
-        </Sideanimasjon>
-      </>
-    );
+    return <RedirectAll to={REAKTIVERING_PATH} component={KreverReaktivering} />;
+  } else if (this.kommerFraSykefravaer()) {
+    return <RedirectAll to={INNGANGSSPORSMAL_PATH} component={Inngangssporsmal} />;
   }
+
+  return (
+    <Routes>
+      {RouteHerokuMock}
+      <Route path="/" element={<Banner />} />
+      <Route path="/:url" element={<ProgressBarContainer />} />
+
+      <Sideanimasjon>
+        <Routes>
+          {erNede ? <RedirectAll to={"/"} component={TjenesteOppdateres} /> : null}
+          {klarForFullforing || reaktivertStatus === STATUS.OK ? (
+            <Route path={DU_ER_NA_REGISTRERT_PATH} element={<DuErNaRegistrert />} />
+          ) : null}
+
+          {visOrdinaerSkjema ? (
+            <Routes>
+              <Route path={START_PATH} element={<RegistreringArbeidssokerFss />} />
+              <Route path={`${SKJEMA_PATH}/:id`} element={<SkjemaRegistrering />} />
+              <Route path={FULLFOR_PATH} element={<Fullfor />} />
+              <Route path={OPPSUMMERING_PATH} element={<OppsummeringOrdinaer />} />
+              <Navigate to={START_PATH} replace />
+            </Routes>
+          ) : null}
+          {visSykefravaerSkjema ? (
+            <Routes>
+              <Route path={START_PATH} element={<RegistreringArbeidssokerSykmeldtFss />} />
+              <Route path={INFOSIDE_PATH} element={<Infoside />} />
+              <Route path={INNGANGSSPORSMAL_PATH} element={<Inngangssporsmal />} />
+              <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/1/:id`} element={<SkjemaSykefravaerSammeArbeidsgiver />} />
+              <Route
+                path={`${SKJEMA_SYKEFRAVAER_PATH}/2/:id`}
+                element={<SkjemaSykefravaerSammeArbeidsgiverNyStilling />}
+              />
+              <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/3/:id`} element={<SkjemaSykefravaerNyArbeidsgiver />} />
+              <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/4/:id`} element={<SkjemaSykefravaerUsikker />} />
+              <Route path={OPPSUMMERING_PATH} element={<OppsummeringSykmeldt />} />
+              <Navigate to={START_PATH + queryParams} replace />
+            </Routes>
+          ) : null}
+        </Routes>
+      </Sideanimasjon>
+    </Routes>
+  );
 }
 
 const mapStateToProps = (state: AppState) => ({
@@ -156,9 +161,9 @@ const mapStateToProps = (state: AppState) => ({
   state: state,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   setInngangFraSykefravaer: () => dispatch(setInngangSykefravaerAction()),
   setInngangAapAction: () => dispatch(setInngangAapAction()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps, null, { pure: false })(withRouter(Routes));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(AppRoutes));

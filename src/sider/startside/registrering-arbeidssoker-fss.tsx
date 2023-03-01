@@ -1,17 +1,17 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
-import { RouteComponentProps } from "react-router-dom";
 import { Element, Innholdstittel, Normaltekst, Systemtittel, Undertittel } from "nav-frontend-typografi";
 import KnappBase from "nav-frontend-knapper";
+
 import aktplanbilde from "./aktivitetsplan-ill.svg";
 import paragrafbilde from "./paragraf.svg";
 import infobilde from "./info.svg";
-import { MatchProps } from "../../utils/utils";
 import { SKJEMA_PATH } from "../../utils/konstanter";
 import LenkeAvbryt from "../../komponenter/knapper/lenke-avbryt";
+
 import "./registrering-arbeidssoker.less";
 
-class RegistreringArbeidssokerFss extends React.Component<RouteComponentProps<MatchProps>> {
+class RegistreringArbeidssokerFss extends React.Component<any> {
   Rad1 = () => {
     return (
       <div className="registrering-arbeidssoker__rad1">

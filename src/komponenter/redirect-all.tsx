@@ -1,24 +1,23 @@
 import * as React from "react";
-import { Redirect, Route, RouteComponentProps } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
+
 import { RouteHerokuMock } from "../mocks/HerokuappEndreMockRegistreringLoep/herokuapp-endre-mock-registrering-loep";
 
 interface OwnProps {
   to: string;
-  component: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
+  component: any;
 }
 
-class RedirectAll extends React.PureComponent<OwnProps> {
-  render() {
-    const { to, component } = this.props;
+function RedirectAll(props: OwnProps) {
+  const { to, component } = props;
 
-    return (
-      <>
-        {RouteHerokuMock}
-        <Route component={component} />
-        <Redirect to={to} />
-      </>
-    );
-  }
+  return (
+    <Routes>
+      {RouteHerokuMock}
+      <Route element={component} />
+      <Navigate to={to} replace />
+    </Routes>
+  );
 }
 
 export default RedirectAll;

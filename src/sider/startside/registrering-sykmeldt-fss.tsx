@@ -1,12 +1,12 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
-import { RouteComponentProps, withRouter } from "react-router-dom";
 import Veilederpanel from "nav-frontend-veilederpanel";
 import { Element, Innholdstittel, Normaltekst, Systemtittel } from "nav-frontend-typografi";
 import KnappBase from "nav-frontend-knapper";
 import { Knapp } from "nav-frontend-knapper";
-import { MatchProps } from "../../utils/utils";
+
+import { withRouter } from "../../routes";
 import { INNGANGSSPORSMAL_PATH } from "../../utils/konstanter";
 import InformasjonModal from "./informasjon/informasjon-modal";
 import { AppState } from "../../reducer";
@@ -14,6 +14,7 @@ import { Data as FeatureToggleData, selectFeatureToggles } from "../../ducks/fea
 import veilederSvg from "./veileder-mann.svg";
 import merVeiledningSvg from "./mer-veiledning.svg";
 import { selectKontaktinfo, State as KontaktinfoState } from "../../ducks/kontaktinfo";
+
 import "./registrering-sykmeldt.less";
 
 interface Props {
@@ -21,7 +22,7 @@ interface Props {
   kontaktinfo: KontaktinfoState;
 }
 
-type RegistreringArbeidssokerSykmeldtFssProps = Props & RouteComponentProps<MatchProps>;
+type RegistreringArbeidssokerSykmeldtFssProps = Props & any;
 
 interface State {
   isModalOpen: boolean;

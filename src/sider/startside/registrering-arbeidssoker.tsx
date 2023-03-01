@@ -1,8 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
-import { RouteComponentProps } from "react-router-dom";
-import "./registrering-arbeidssoker.less";
 import { Innholdstittel, Normaltekst, Undertittel, Element, Sidetittel } from "nav-frontend-typografi";
 import { Knapp } from "nav-frontend-knapper";
 import KnappBase from "nav-frontend-knapper";
@@ -11,17 +9,18 @@ import aktplanbilde from "./aktivitetsplan-ill.svg";
 import paragrafbilde from "./paragraf.svg";
 import infobilde from "./info.svg";
 import KommerFra from "../../komponenter/kommer-fra/kommerfra";
-import { MatchProps } from "../../utils/utils";
 import { SKJEMA_PATH } from "../../utils/konstanter";
 import InformasjonModal from "./informasjon/informasjon-modal";
 import { AppState } from "../../reducer";
 import { Data as FeatureToggleData, selectFeatureToggles } from "../../ducks/feature-toggles";
 
+import "./registrering-arbeidssoker.less";
+
 interface Props {
   featureToggles: FeatureToggleData;
 }
 
-type RegistreringArbeidssokerProps = Props & RouteComponentProps<MatchProps>;
+type RegistreringArbeidssokerProps = Props & any;
 
 interface State {
   isModalOpen: boolean;
