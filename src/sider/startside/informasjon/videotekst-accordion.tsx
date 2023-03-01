@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormattedHTMLMessage, FormattedMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import "./videotekst-accordion.less";
 
@@ -17,7 +17,7 @@ class VideotekstAccordion extends React.Component<Record<string, unknown>, EgenS
       <section className="videotekst-accordion">
         {this.state.apen ? (
           <div className="informasjon-modal__innhold">
-            <FormattedHTMLMessage id="registrering-arbeidssoker.informasjon-modal.innhold" />
+            <FormattedMessage id="registrering-arbeidssoker.informasjon-modal.innhold" />
           </div>
         ) : null}
 

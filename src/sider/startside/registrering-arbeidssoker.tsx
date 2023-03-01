@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { FormattedHTMLMessage, FormattedMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { RouteComponentProps } from "react-router-dom";
 import "./registrering-arbeidssoker.less";
 import { Innholdstittel, Normaltekst, Undertittel, Element, Sidetittel } from "nav-frontend-typografi";
@@ -49,7 +49,7 @@ class RegistreringArbeidssoker extends React.Component<RegistreringArbeidssokerP
           </Innholdstittel>
           <div className="rad1__innhold">
             <Normaltekst className="rad__innhold-tekst" tag="div">
-              <FormattedHTMLMessage id="registrering-arbeidssoker.argument1tekst" tagName="ul" />
+              <FormattedMessage id="registrering-arbeidssoker.argument1tekst" tagName="ul" />
               <Knapp onClick={this.handleSeVideoBtnClicked}>
                 <FormattedMessage id="registrering-arbeidssoker.argument1knapp" />
               </Knapp>
@@ -73,7 +73,7 @@ class RegistreringArbeidssoker extends React.Component<RegistreringArbeidssokerP
                 <FormattedMessage id="registrering-arbeidssoker.argument2tittel1" />
               </Undertittel>
               <Normaltekst tag="div">
-                <FormattedHTMLMessage id="registrering-arbeidssoker.argument2tekst1" />
+                <FormattedMessage id="registrering-arbeidssoker.argument2tekst1" />
               </Normaltekst>
             </div>
             <div className="rad2__boks rad2__plikter">
@@ -82,7 +82,7 @@ class RegistreringArbeidssoker extends React.Component<RegistreringArbeidssokerP
                 <FormattedMessage id="registrering-arbeidssoker.argument2tittel2" />
               </Undertittel>
               <Normaltekst tag="div">
-                <FormattedHTMLMessage id="registrering-arbeidssoker.argument2tekst2" />
+                <FormattedMessage id="registrering-arbeidssoker.argument2tekst2" />
               </Normaltekst>
             </div>
           </div>
@@ -115,7 +115,7 @@ class RegistreringArbeidssoker extends React.Component<RegistreringArbeidssokerP
               </li>
             </ul>
             <Normaltekst>
-              <FormattedHTMLMessage id="registrering-arbeidssoker.rad3.del2" />
+              <FormattedMessage id="registrering-arbeidssoker.rad3.del2" />
             </Normaltekst>
             <Element tag="h3">
               <FormattedMessage id="registrering-arbeidssoker.rad3.del4.tittel" />
@@ -130,7 +130,7 @@ class RegistreringArbeidssoker extends React.Component<RegistreringArbeidssokerP
             </Normaltekst>
           </div>
           <Normaltekst tag="div" className="rad3__tips">
-            <FormattedHTMLMessage id="registrering-arbeidssoker.tipstekst" />
+            <FormattedMessage id="registrering-arbeidssoker.tipstekst" />
           </Normaltekst>
 
           <div className="rad3__knapperad">

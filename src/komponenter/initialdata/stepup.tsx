@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { Normaltekst, Systemtittel } from "nav-frontend-typografi";
 import { LOGINSERVICEURL } from "../../ducks/api";
 import "./stepup.less";
@@ -18,7 +18,7 @@ const StepUp = () => (
       <div className="knapper-vertikalt">
         <a className="knapp knapp--hoved stepup__knapp" href={LOGINSERVICEURL}>
           <Normaltekst>
-            <FormattedHTMLMessage id="knapp-logg-inn" />
+            <FormattedMessage id="knapp-logg-inn" />
           </Normaltekst>
         </a>
       </div>

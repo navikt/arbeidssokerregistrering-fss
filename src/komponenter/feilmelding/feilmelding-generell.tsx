@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import Feilmelding from "./feilmelding";
 import { Normaltekst } from "nav-frontend-typografi";
 import { uniLogger } from "../../metrikker/uni-logger";
@@ -10,7 +10,7 @@ function FeilmeldingGenerell({ tekstId }: { tekstId?: string }) {
   return (
     <Feilmelding>
       <Normaltekst>
-        <FormattedHTMLMessage id={id} />
+        <FormattedMessage id={id} />
       </Normaltekst>
     </Feilmelding>
   );

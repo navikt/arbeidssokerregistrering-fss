@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { Normaltekst, Systemtittel } from "nav-frontend-typografi";
 import { uniLogger } from "../../../metrikker/uni-logger";
 import { HEROKU_VEIENTILARBEID_URL, VEIENTILARBEID_URL, DP_SOK_URL } from "../../../utils/konstanter";
@@ -57,7 +57,7 @@ class RegistrertAksjonspanel extends React.Component<RegistrertAksjonspanelProps
             <FormattedMessage id={hentTekstId("systemtittel")} />
           </Systemtittel>
           <Normaltekst className="blokk">
-            <FormattedHTMLMessage id={hentTekstId("normaltekst")} />
+            <FormattedMessage id={hentTekstId("normaltekst")} />
           </Normaltekst>
           <div className="registrert__knapperad">
             {knappetekstJa === "duernaregistrert-knapp-sok-dagpenger" && <DagpengerEngelsk />}

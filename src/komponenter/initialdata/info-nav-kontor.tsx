@@ -1,5 +1,5 @@
 import { Normaltekst, Undertittel } from "nav-frontend-typografi";
-import { FormattedMessage, FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import * as React from "react";
 import { amplitudeLogger } from "../../metrikker/amplitude-utils";
 import "./info-kort.less";
@@ -35,7 +35,7 @@ const InfoNavKontor = () => {
         <FormattedMessage id="overskrift-manuell-hjelp-stepup" />
       </Undertittel>
       <Normaltekst className="blokk-s">
-        <FormattedHTMLMessage id="beskrivelse-manuell-hjelp-stepup" />
+        <FormattedMessage id="beskrivelse-manuell-hjelp-stepup" />
       </Normaltekst>
       <Lenke />
     </div>

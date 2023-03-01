@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormattedHTMLMessage, FormattedMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 import ModalWrapper from "./modal-wrapper";
 
@@ -26,7 +26,7 @@ class InformasjonModal extends React.Component<Props> {
           <FormattedMessage id="registrering-arbeidssoker.informasjon-modal.tittel" />
         </Innholdstittel>
         <Normaltekst className="informasjon-modal__ingress">
-          <FormattedHTMLMessage id="registrering-arbeidssoker.informasjon-modal.ingress" />
+          <FormattedMessage id="registrering-arbeidssoker.informasjon-modal.ingress" />
         </Normaltekst>
         <iframe
           title="onboarding-video"

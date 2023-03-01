@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { FormattedHTMLMessage, FormattedMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import Veilederpanel from "nav-frontend-veilederpanel";
 import { Element, Innholdstittel, Normaltekst, Systemtittel } from "nav-frontend-typografi";
@@ -49,7 +49,7 @@ class RegistreringArbeidssokerSykmeldtFss extends React.Component<RegistreringAr
           type={veilederpanelType}
           kompakt={veilederpanelKompakt}
         >
-          <FormattedHTMLMessage id="registrering-sykmeldt-snakkeboble" values={{ fornavn }} />
+          <FormattedMessage id="registrering-sykmeldt-snakkeboble" values={{ fornavn }} />
         </Veilederpanel>
       </div>
     );
@@ -63,7 +63,7 @@ class RegistreringArbeidssokerSykmeldtFss extends React.Component<RegistreringAr
         </Innholdstittel>
         <div className="rad2__innhold">
           <Normaltekst className="rad__innhold-tekst" tag="div">
-            <FormattedHTMLMessage id="registrering-sykmeldt.argument1tekst" tagName="ul" />
+            <FormattedMessage id="registrering-sykmeldt.argument1tekst" tagName="ul" />
             <Knapp onClick={this.handleSeVideoBtnClicked}>
               <FormattedMessage id="registrering-sykmeldt.argument1knapp" />
             </Knapp>
@@ -86,7 +86,7 @@ class RegistreringArbeidssokerSykmeldtFss extends React.Component<RegistreringAr
             <FormattedMessage id="registrering-sykmeldt.rad3.del1-tittel-fss" />
           </Element>
           <Normaltekst className="blokk-l" tag="div">
-            <FormattedHTMLMessage id="registrering-sykmeldt.rad3.del1-innhold-fss" />
+            <FormattedMessage id="registrering-sykmeldt.rad3.del1-innhold-fss" />
           </Normaltekst>
         </div>
         <div className="rad3__knapperad">

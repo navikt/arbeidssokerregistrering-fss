@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormattedHTMLMessage, FormattedMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { RouteComponentProps } from "react-router-dom";
 import { Element, Innholdstittel, Normaltekst, Systemtittel, Undertittel } from "nav-frontend-typografi";
 import KnappBase from "nav-frontend-knapper";
@@ -21,7 +21,7 @@ class RegistreringArbeidssokerFss extends React.Component<RouteComponentProps<Ma
         <div className="rad1__innhold">
           <div className="rad1__innhold__tekst">
             <Normaltekst tag="div">
-              <FormattedHTMLMessage id="registrering-arbeidssoker.argument1tekst-fss" tagName="ul" />
+              <FormattedMessage id="registrering-arbeidssoker.argument1tekst-fss" tagName="ul" />
             </Normaltekst>
           </div>
           <div>
@@ -42,7 +42,7 @@ class RegistreringArbeidssokerFss extends React.Component<RouteComponentProps<Ma
               <FormattedMessage id="registrering-arbeidssoker.argument2tittel1" />
             </Undertittel>
             <Normaltekst tag="div">
-              <FormattedHTMLMessage id="registrering-arbeidssoker.argument2tekst1-fss" />
+              <FormattedMessage id="registrering-arbeidssoker.argument2tekst1-fss" />
             </Normaltekst>
           </div>
           <div className="rad2__boks rad2__plikter">
@@ -51,7 +51,7 @@ class RegistreringArbeidssokerFss extends React.Component<RouteComponentProps<Ma
               <FormattedMessage id="registrering-arbeidssoker.argument2tittel2" />
             </Undertittel>
             <Normaltekst tag="div">
-              <FormattedHTMLMessage id="registrering-arbeidssoker.argument2tekst2-fss" />
+              <FormattedMessage id="registrering-arbeidssoker.argument2tekst2-fss" />
             </Normaltekst>
           </div>
         </div>
@@ -70,7 +70,7 @@ class RegistreringArbeidssokerFss extends React.Component<RouteComponentProps<Ma
             <FormattedMessage id="registrering-arbeidssoker.rad3.del1-fss" />
           </Normaltekst>
           <Normaltekst>
-            <FormattedHTMLMessage id="registrering-arbeidssoker.rad3.opplysninger-fss" />
+            <FormattedMessage id="registrering-arbeidssoker.rad3.opplysninger-fss" />
           </Normaltekst>
           <Normaltekst className="blokk-l" tag="div">
             <FormattedMessage id="registrering-arbeidssoker.rad3.del2-fss" />
@@ -80,18 +80,18 @@ class RegistreringArbeidssokerFss extends React.Component<RouteComponentProps<Ma
             <FormattedMessage id="registrering-arbeidssoker.rad3.del3-tittel-fss" />
           </Element>
           <Normaltekst className="blokk-l" tag="div">
-            <FormattedHTMLMessage id="registrering-arbeidssoker.rad3.del3-innhold-fss" />
+            <FormattedMessage id="registrering-arbeidssoker.rad3.del3-innhold-fss" />
           </Normaltekst>
 
           <Element tag="h3">
             <FormattedMessage id="registrering-arbeidssoker.rad3.del4-tittel-fss" />
           </Element>
           <Normaltekst className="blokk-l" tag="div">
-            <FormattedHTMLMessage id="registrering-arbeidssoker.rad3.del4-innhold-fss" />
+            <FormattedMessage id="registrering-arbeidssoker.rad3.del4-innhold-fss" />
           </Normaltekst>
 
           <Normaltekst className="registrering-arbeidssoker__rad3--tips" tag="div">
-            <FormattedHTMLMessage id="registrering-arbeidssoker.rad3.tips-fss" />
+            <FormattedMessage id="registrering-arbeidssoker.rad3.tips-fss" />
           </Normaltekst>
         </div>
       </div>
