@@ -1,5 +1,8 @@
-import { name as appname, version as appversion } from "../../package.json";
+import packageInfo from "../../package.json";
 import { amplitudeLogger } from "./amplitude-utils";
+
+const appname = packageInfo.name;
+const appversion = packageInfo.version;
 
 const prefix = {
   appname,
