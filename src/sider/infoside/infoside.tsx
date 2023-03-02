@@ -5,7 +5,7 @@ import { Navigate, Link } from "react-router-dom";
 import Veilederpanel from "nav-frontend-veilederpanel";
 import { connect } from "react-redux";
 
-import { withRouter } from "../../routes";
+import { withRouter } from "../../utils/with-router";
 import LenkeTilbake from "../../komponenter/knapper/lenke-tilbake";
 import InfoViser from "../../komponenter/info-viser/info-viser";
 import { OPPSUMMERING_PATH, START_PATH } from "../../utils/konstanter";

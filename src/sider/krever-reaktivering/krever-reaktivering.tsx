@@ -5,7 +5,7 @@ import { AnyAction, Dispatch } from "redux";
 import KnappBase from "nav-frontend-knapper";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 
-import { withRouter } from "../../routes";
+import { withRouter } from "../../utils/with-router";
 import { AppState } from "../../reducer";
 import { reaktiverBruker, State as ReaktiverBrukerState } from "../../ducks/reaktiverbruker";
 import Loader, { loaderTittelElement } from "../../komponenter/loader/loader";

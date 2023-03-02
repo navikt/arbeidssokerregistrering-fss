@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { withRouter } from "../../routes";
+import { withRouter } from "../../utils/with-router";
 import { scrollToBanner } from "../../utils/utils";
 import { START_PATH } from "../../utils/konstanter";
 

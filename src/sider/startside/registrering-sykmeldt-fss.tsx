@@ -6,7 +6,7 @@ import { Element, Innholdstittel, Normaltekst, Systemtittel } from "nav-frontend
 import KnappBase from "nav-frontend-knapper";
 import { Knapp } from "nav-frontend-knapper";
 
-import { withRouter } from "../../routes";
+import { withRouter } from "../../utils/with-router";
 import { INNGANGSSPORSMAL_PATH } from "../../utils/konstanter";
 import InformasjonModal from "./informasjon/informasjon-modal";
 import { AppState } from "../../reducer";

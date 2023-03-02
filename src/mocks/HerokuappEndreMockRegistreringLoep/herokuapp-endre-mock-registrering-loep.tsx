@@ -6,7 +6,7 @@ import { RadioPanel } from "nav-frontend-skjema";
 import { Normaltekst } from "nav-frontend-typografi";
 import Lukknapp from "nav-frontend-lukknapp";
 
-import { withRouter } from "../../routes";
+import { withRouter } from "../../utils/with-router";
 import {
   Data as StartRegistreringData,
   RegistreringType,

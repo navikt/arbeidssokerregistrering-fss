@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { WrappedComponentProps, injectIntl } from "react-intl";
 import { Systemtittel } from "nav-frontend-typografi";
 
-import { withRouter } from "../../routes";
+import { withRouter } from "../../utils/with-router";
 import { START_PATH } from "../../utils/konstanter";
 import { AppState } from "../../reducer";
 import { Data as StartRegistreringData, RegistreringType } from "../../ducks/registreringstatus";

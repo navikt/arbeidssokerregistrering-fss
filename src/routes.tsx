@@ -1,7 +1,7 @@
 import * as React from "react";
 import { AnyAction, Dispatch } from "redux";
 import { connect } from "react-redux";
-import { Navigate, Route, Routes, useLocation, useParams, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import Banner from "./komponenter/banner/banner";
 import ProgressBarContainer from "./komponenter/progress-bar/progress-bar-container";
@@ -45,6 +45,7 @@ import RegistreringArbeidssokerFss from "./sider/startside/registrering-arbeidss
 import OppsummeringOrdinaer from "./sider/oppsummering/oppsummering-ordinaer";
 import { hentQueryParameter } from "./utils/url-utils";
 import { ThunkDispatch } from "redux-thunk";
+import { withRouter } from "./utils/with-router";
 
 interface StateProps {
   registreringstatusData: RegistreringstatusData;
@@ -59,14 +60,6 @@ interface DispatchProps {
 }
 
 type AllProps = StateProps & any & DispatchProps;
-
-export const withRouter = (Component) => (props) => {
-  const location = useLocation();
-  const params = useParams();
-  const navigate = useNavigate();
-
-  return <Component {...props} {...{ location, params, navigate }} />;
-};
 
 function AppRoutes(props: AllProps) {
   const kommerFraSykefravaer = () => {
