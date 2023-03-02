@@ -80,7 +80,7 @@ function AppRoutes(props: AllProps) {
   };
 
   const kommerAap = () => {
-    return hentQueryParameter(this.props.location, "fraAap") === "true";
+    return hentQueryParameter(props.location, "fraAap") === "true";
   };
 
   if (kommerAap()) {
@@ -106,7 +106,7 @@ function AppRoutes(props: AllProps) {
       return <RedirectAll to={"/"} component={TjenesteOppdateres} />;
     }
     return <RedirectAll to={REAKTIVERING_PATH} component={KreverReaktivering} />;
-  } else if (this.kommerFraSykefravaer()) {
+  } else if (kommerFraSykefravaer()) {
     return <RedirectAll to={INNGANGSSPORSMAL_PATH} component={Inngangssporsmal} />;
   }
 
