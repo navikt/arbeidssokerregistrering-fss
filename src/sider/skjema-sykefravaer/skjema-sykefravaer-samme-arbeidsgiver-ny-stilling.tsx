@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import { WrappedComponentProps, injectIntl } from "react-intl";
 
 import Skjema from "../../komponenter/skjema/skjema";
@@ -11,6 +11,7 @@ import { OPPSUMMERING_PATH, SKJEMA_SYKEFRAVAER_PATH } from "../../utils/konstant
 import { vanligFlyt } from "../../komponenter/skjema/skjema-utils";
 import { RegistreringType } from "../../ducks/registreringstatus";
 import { sammeArbeidsgiverNyStillingSporsmaleneConfig } from "./skjema-sykefravaer-sporsmalene";
+import { ThunkDispatch } from "redux-thunk";
 
 interface DispatchProps {
   endreSvar: (sporsmalId: string, svar: Svar) => void;
@@ -56,7 +57,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
   svarState: state.svar,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   endreSvar: (sporsmalId, svar) => dispatch(endreSvarAction(sporsmalId, svar)),
 });
 

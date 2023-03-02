@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import { WrappedComponentProps } from "react-intl";
 import { injectIntl } from "react-intl";
 
@@ -13,6 +13,7 @@ import { nullStillSporsmalSomIkkeSkalBesvares, SkjemaConfig } from "../../kompon
 import { RegistreringType } from "../../ducks/registreringstatus";
 import { nyArbeidsgiverSporsmaleneConfig } from "./skjema-sykefravaer-sporsmalene";
 import { hentInngangsLoep } from "./inngangssporsmal-svar-alternativene";
+import { ThunkDispatch } from "redux-thunk";
 
 interface DispatchProps {
   resetSvar: (sporsmalId: SporsmalId) => void;
@@ -68,7 +69,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
   svarState: state.svar,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   resetSvar: (sporsmalId) => dispatch(resetSvarAction(sporsmalId)),
   endreSvar: (sporsmalId, svar) => dispatch(endreSvarAction(sporsmalId, svar)),
 });

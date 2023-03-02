@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
 import { Navigate } from "react-router-dom";
 import KnappBase from "nav-frontend-knapper";
@@ -28,6 +28,7 @@ import { STATUS } from "../../ducks/api-utils";
 import { erKlarForFullforing } from "../fullfor/fullfor-utils";
 
 import "./oppsummering.less";
+import { ThunkDispatch } from "redux-thunk";
 
 interface StateProps {
   registrerBrukerData: RegistrerBrukerState;
@@ -113,7 +114,7 @@ const mapStateToProps = (state: AppState) => ({
   state: state,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   onRegistrerBruker: (data, registreringType: RegistreringType) => dispatch(utforRegistrering(data, registreringType)),
 });
 

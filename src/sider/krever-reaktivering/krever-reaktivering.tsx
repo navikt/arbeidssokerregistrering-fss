@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import KnappBase from "nav-frontend-knapper";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 
@@ -19,6 +19,7 @@ import { uniLogger } from "../../metrikker/uni-logger";
 
 import handinfoSvg from "./handinfo.svg";
 import "./krever-reaktivering.less";
+import { ThunkDispatch } from "redux-thunk";
 
 interface State {
   reaktivererBruker: boolean;
@@ -131,7 +132,7 @@ const mapStateToProps = (state: AppState) => ({
   registreringstatusData: selectRegistreringstatus(state).data,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   onReaktiverBruker: () => dispatch(reaktiverBruker()),
 });
 

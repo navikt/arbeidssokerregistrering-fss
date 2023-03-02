@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import { connect } from "react-redux";
 import { Navigate, Route, Routes, useLocation, useParams, useNavigate } from "react-router-dom";
 
@@ -44,6 +44,7 @@ import RegistreringArbeidssokerSykmeldtFss from "./sider/startside/registrering-
 import RegistreringArbeidssokerFss from "./sider/startside/registrering-arbeidssoker-fss";
 import OppsummeringOrdinaer from "./sider/oppsummering/oppsummering-ordinaer";
 import { hentQueryParameter } from "./utils/url-utils";
+import { ThunkDispatch } from "redux-thunk";
 
 interface StateProps {
   registreringstatusData: RegistreringstatusData;
@@ -161,7 +162,7 @@ const mapStateToProps = (state: AppState) => ({
   state: state,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   setInngangFraSykefravaer: () => dispatch(setInngangSykefravaerAction()),
   setInngangAapAction: () => dispatch(setInngangAapAction()),
 });

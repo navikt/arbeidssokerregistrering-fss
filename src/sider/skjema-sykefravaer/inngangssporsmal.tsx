@@ -9,7 +9,7 @@ import {
 import { Innholdstittel } from "nav-frontend-typografi";
 import { endreSvarAction, setInitialState, SporsmalId } from "../../ducks/svar";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import { AppState } from "../../reducer";
 import { FremtidigSituasjonSvar, hentSvar, Svar } from "../../ducks/svar-utils";
 import ResponsivSide from "../../komponenter/side/responsiv-side";
@@ -23,6 +23,7 @@ import { RegistreringType } from "../../ducks/registreringstatus";
 import "./inngangssporsmal.less";
 import { hentAlternativeneForInngangsporsmal, hentInngangsLoep } from "./inngangssporsmal-svar-alternativene";
 import { SkjemaGruppe } from "nav-frontend-skjema";
+import { ThunkDispatch } from "redux-thunk";
 
 interface OwnState {
   visAdvarsel: boolean;
@@ -145,7 +146,7 @@ const mapStateToProps = (state: AppState) => ({
   svarState: state.svar,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   resetSvar: () => dispatch(setInitialState()),
   endreSvar: (sporsmalId, svar) => dispatch(endreSvarAction(sporsmalId, svar)),
 });

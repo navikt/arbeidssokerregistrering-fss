@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import {
   hentStyrkkodeForSisteStillingFraAAReg,
   selectSisteStillingFraAAReg,
@@ -24,6 +24,7 @@ import { STATUS } from "../../ducks/api-utils";
 import FeilmeldingGenerell from "../../komponenter/feilmelding/feilmelding-generell";
 import { settDefaultStilling } from "../../ducks/default-stilling";
 import { PropsWithChildren } from "react";
+import { ThunkDispatch } from "redux-thunk";
 
 interface StateProps {
   sisteStillingFraAAReg: SisteArbeidsforholdState;
@@ -95,7 +96,7 @@ const mapStateToProps = (state: AppState) => ({
   sisteStilling: selectSisteStilling(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   hentStyrkkodeForSisteStillingFraAAReg: () => dispatch(hentStyrkkodeForSisteStillingFraAAReg()),
   hentStillingFraPamGittStyrkkode: (styrk: string) => dispatch(hentStillingFraPamGittStyrkkode(styrk)),
   velgStilling: (stilling: Stilling) => dispatch(velgSisteStilling(stilling)),

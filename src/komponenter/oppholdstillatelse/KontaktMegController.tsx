@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import NavFrontendSpinner from "nav-frontend-spinner";
 
 import { AppState } from "../../reducer";
@@ -10,6 +10,7 @@ import { selectKontaktinfo, State as KontaktinfoState } from "../../ducks/kontak
 import { OppgaveSuccess, OppgaveErrorTooSoon, OppgaveError, KontaktMegForm } from "./";
 
 import "./kontakt-meg-melding.less";
+import { ThunkDispatch } from "redux-thunk";
 
 interface DispatchProps {
   opprettKontaktmegOppgave: () => void;
@@ -58,7 +59,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
   kontaktinfo: selectKontaktinfo(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   opprettKontaktmegOppgave: () => dispatch(opprettKontaktmegOppgave()),
 });
 

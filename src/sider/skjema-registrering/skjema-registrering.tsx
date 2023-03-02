@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { WrappedComponentProps, injectIntl } from "react-intl";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 
 import LastInnSisteStilling from "./last-inn-siste-stilling";
 import { endreSvarAction, resetSvarAction, SporsmalId, State as SvarState } from "../../ducks/svar";
@@ -15,6 +15,7 @@ import {
 } from "../../komponenter/skjema/skjema-utils";
 import { RegistreringType } from "../../ducks/registreringstatus";
 import hentRegistreringSporsmalene from "./skjema-sporsmalene";
+import { ThunkDispatch } from "redux-thunk";
 
 interface DispatchProps {
   resetSvar: (sporsmalId: SporsmalId) => void;
@@ -62,7 +63,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
   svarState: state.svar,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   resetSvar: (sporsmalId) => dispatch(resetSvarAction(sporsmalId)),
   endreSvar: (sporsmalId, svar) => dispatch(endreSvarAction(sporsmalId, svar)),
 });

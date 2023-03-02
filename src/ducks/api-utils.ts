@@ -1,5 +1,5 @@
-import { Dispatch } from "redux";
-import { ThunkAction } from "redux-thunk";
+import { AnyAction } from "redux";
+import { ThunkAction, ThunkDispatch } from "redux-thunk";
 
 import { AppState } from "../reducer";
 import ActionType from "./actions";
@@ -52,7 +52,7 @@ export function toJson(response: Response) {
   return response;
 }
 
-export function sendResultatTilDispatch(dispatch: Dispatch<any>, action: ActionType) {
+export function sendResultatTilDispatch(dispatch: ThunkDispatch<AppState, void, AnyAction>, action: ActionType) {
   return <S>(data: S): S => {
     // if (data.length === 1) {
     //     return dispatch({ type: action, data: data[0] });
@@ -62,7 +62,7 @@ export function sendResultatTilDispatch(dispatch: Dispatch<any>, action: ActionT
   };
 }
 
-export function handterFeil(dispatch: Dispatch<any>, action: ActionType) {
+export function handterFeil(dispatch: ThunkDispatch<AppState, void, AnyAction>, action: ActionType) {
   return (error: FetchError): void => {
     if (error.response) {
       error.response
@@ -110,8 +110,8 @@ interface RestActions {
 export function doThenDispatch<DATA>(
   fn: () => Promise<DATA>,
   { OK, FEILET, PENDING }: RestActions
-): ThunkAction<Promise<DATA | void>, AppState, void> {
-  return (dispatch: Dispatch<any>) => {
+): ThunkAction<Promise<DATA | void>, AppState, unknown, AnyAction> {
+  return (dispatch: ThunkDispatch<AppState, void, AnyAction>) => {
     if (PENDING) {
       dispatch({ type: PENDING });
     }

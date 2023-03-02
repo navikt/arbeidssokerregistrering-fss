@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import Alternativ from "../../../komponenter/skjema/alternativ";
 import { WrappedComponentProps, injectIntl } from "react-intl";
 import { getIntlTekstForSporsmal, getTekstIdForSvar } from "../../../komponenter/skjema/skjema-utils";
@@ -17,6 +17,7 @@ import { situasjonerDerViVetAtBrukerenHarHattJobb } from "./sporsmal-siste-still
 import { DinSituasjonSvar, Svar } from "../../../ducks/svar-utils";
 import { SporsmalProps } from "../../../komponenter/skjema/sporsmal-utils";
 import { SkjemaGruppe } from "nav-frontend-skjema";
+import { ThunkDispatch } from "redux-thunk";
 
 interface DispatchProps {
   velgStilling: (stilling: Stilling) => void;
@@ -90,7 +91,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
   sisteStilling: selectSisteStilling(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   velgStilling: (stilling: Stilling) => dispatch(velgSisteStilling(stilling)),
 });
 

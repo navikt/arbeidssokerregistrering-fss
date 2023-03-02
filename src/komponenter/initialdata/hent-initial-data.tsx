@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import { AppState } from "../../reducer";
 import { hentKontaktinfo, selectKontaktinfo, State as KontaktinfoState } from "../../ducks/kontaktinfo";
 import {
@@ -18,6 +18,7 @@ import TjenesteOppdateres from "../../sider/tjeneste-oppdateres";
 import { STATUS } from "../../ducks/api-utils";
 import Loader from "../loader/loader";
 import FeilmeldingGenerell from "../feilmelding/feilmelding-generell";
+import { ThunkDispatch } from "redux-thunk";
 
 interface StateProps {
   kontaktinfo: KontaktinfoState;
@@ -70,7 +71,7 @@ const mapStateToProps = (state: AppState) => ({
   featuretoggles: selectFeatureTogglesState(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   hentRegistreringStatus: () => dispatch(hentRegistreringStatus()),
   hentFeatureToggle: () => dispatch(hentFeatureToggles()),
   hentKontaktinfo: () => dispatch(hentKontaktinfo()),

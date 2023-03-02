@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
 import {
   selectSisteStillingFraAAReg,
@@ -26,6 +26,7 @@ import { SporsmalProps } from "../../../../komponenter/skjema/sporsmal-utils";
 import { RegistreringType, selectRegistreringstatus } from "../../../../ducks/registreringstatus";
 import InaktivSokeInput from "./inaktiv-soke-input";
 import { SkjemaGruppe } from "nav-frontend-skjema";
+import { ThunkDispatch } from "redux-thunk";
 
 interface SisteStillingState {
   erInputAktiv: boolean;
@@ -189,7 +190,7 @@ const mapStateToProps = (state: AppState) => ({
   registreringType: selectRegistreringstatus(state).data.registreringType,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   hentStillingFraPamGittStyrkkode: (styrk: string) => dispatch(hentStillingFraPamGittStyrkkode(styrk)),
   velgStilling: (stilling: Stilling) => dispatch(velgSisteStilling(stilling)),
 });

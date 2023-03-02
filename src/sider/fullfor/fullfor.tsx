@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import { Navigate } from "react-router-dom";
 import NavAlertStripe from "nav-frontend-alertstriper";
 import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel";
@@ -35,6 +35,7 @@ import okonomiSvg from "./okonomi.svg";
 import { erKlarForFullforing } from "./fullfor-utils";
 
 import "./fullfor.less";
+import { ThunkDispatch } from "redux-thunk";
 
 interface StateProps {
   registrerBrukerData: RegistrerBrukerState;
@@ -204,7 +205,7 @@ const mapStateToProps = (state: AppState) => ({
   state: state,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AnyAction>): DispatchProps => ({
   onRegistrerBruker: (data, registreringType: RegistreringType) => dispatch(utforRegistrering(data, registreringType)),
 });
 
