@@ -24,7 +24,7 @@ export default class ProgressBar extends React.Component<OwnProps> {
     }
 
     if (!this.framdriftContainer) {
-      return;
+      return null;
     }
 
     if (window.pageYOffset > scrollHeight) {

@@ -3,6 +3,7 @@ import { disableVertikalScrollingVedAnimasjon } from "../../utils/utils";
 
 interface Props {
   flag: number | string;
+  children?: React.ReactNode | undefined
 }
 
 interface State {
