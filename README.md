@@ -19,13 +19,6 @@ Løsningen baserer seg på [poao-frontend](https://github.com/navikt/poao-fronte
 - Clone og start `veilarbregistrering` https://github.com/navikt/veilarbregistrering
 - Åpne appen i `localhost:8080`
 
-# Kjøre GUI-tester lokalt
-
-Start server i cypress modus i et terminalvindu og start testene i et annet.
-
-- `npm run start:cypress`
-- `npm run cypress:run`
-
 # Henvendelser
 
 Spørsmål knyttet til koden eller prosjektet kan stilles via issues her på github.

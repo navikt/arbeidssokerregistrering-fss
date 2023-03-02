@@ -1,8 +1,0 @@
-{
-  "baseUrl": "http://localhost:3001",
-  "integrationFolder": "cypress/specs/arbeidssokerregistrering",
-  "video": false,
-  "screenshotOnRunFailure": true,
-  "defaultCommandTimeout": 3000,
-  "waitForAnimations": false
-}
