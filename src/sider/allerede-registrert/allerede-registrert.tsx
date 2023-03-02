@@ -60,6 +60,7 @@ class AlleredeRegistrert extends React.Component<Props> {
 
   render() {
     const messages = this.props.intl.messages;
+    const formatMessage = this.props.intl.formatMessage;
     const formidlingsgruppe = this.props.state.registreringStatus.data.formidlingsgruppe;
     const servicegruppe = this.props.state.registreringStatus.data.servicegruppe;
     const formidlingsgruppeOrIngenVerdi = formidlingsgruppe || "INGEN_VERDI";
@@ -84,10 +85,10 @@ class AlleredeRegistrert extends React.Component<Props> {
             <Column xs="12" sm="8" className="allerede-registrert__boks">
               <div className="allerede-registrert__boks-innhold">
                 <Normaltekst className="allerede-registrert__boks-tekst">
-                  {messages["allerede-registrert-boks-1-tekst"]}
+                  {formatMessage({ id: "allerede-registrert-boks-1-tekst" })}
                 </Normaltekst>
                 <a
-                  href={messages["allerede-registrert-boks-1-lenke"]}
+                  href={formatMessage({ id: "allerede-registrert-boks-1-lenke" })}
                   className="allerede-registrert__knapp knapp"
                   onClick={this.handleClickAktivitetsplan}
                   data-formidlingsgruppe={formidlingsgruppeOrIngenVerdi}
@@ -95,7 +96,7 @@ class AlleredeRegistrert extends React.Component<Props> {
                   data-geografisktilknytning={geografiskTilknytning}
                   data-rettighetsgruppe={rettighetsgruppe}
                 >
-                  {messages["allerede-registrert-boks-1-knapp"]}
+                  {formatMessage({ id: "allerede-registrert-boks-1-knapp" })}
                 </a>
               </div>
             </Column>
@@ -104,10 +105,10 @@ class AlleredeRegistrert extends React.Component<Props> {
             <Column xs="12" sm="8" className="allerede-registrert__boks">
               <div className="allerede-registrert__boks-innhold">
                 <Normaltekst className="allerede-registrert__boks-tekst">
-                  {messages["allerede-registrert-boks-2-tekst"]}
+                  {formatMessage({ id: "allerede-registrert-boks-2-tekst" })}
                 </Normaltekst>
                 <a
-                  href={messages["allerede-registrert-boks-2-lenke"]}
+                  href={formatMessage({ id: "allerede-registrert-boks-2-lenke" })}
                   className="allerede-registrert__knapp knapp"
                   onClick={this.handleClickVeienTilArbeid}
                   data-formidlingsgruppe={formidlingsgruppeOrIngenVerdi}
@@ -115,7 +116,7 @@ class AlleredeRegistrert extends React.Component<Props> {
                   data-geografisktilknytning={geografiskTilknytning}
                   data-rettighetsgruppe={rettighetsgruppe}
                 >
-                  {messages["allerede-registrert-boks-2-knapp"]}
+                  {formatMessage({ id: "allerede-registrert-boks-2-knapp" })}
                 </a>
               </div>
             </Column>
@@ -124,10 +125,10 @@ class AlleredeRegistrert extends React.Component<Props> {
             <Column xs="12" sm="8" className="allerede-registrert__boks">
               <div className="allerede-registrert__boks-innhold">
                 <Normaltekst className="allerede-registrert__boks-tekst">
-                  {messages["allerede-registrert-boks-3-tekst"]}
+                  {formatMessage({ id: "allerede-registrert-boks-3-tekst" })}
                 </Normaltekst>
                 <a
-                  href={messages["allerede-registrert-boks-3-lenke"]}
+                  href={formatMessage({ id: "allerede-registrert-boks-3-lenke" })}
                   className="allerede-registrert__knapp knapp"
                   onClick={this.handleClickDialog}
                   data-formidlingsgruppe={formidlingsgruppeOrIngenVerdi}
@@ -135,7 +136,7 @@ class AlleredeRegistrert extends React.Component<Props> {
                   data-geografisktilknytning={geografiskTilknytning}
                   data-rettighetsgruppe={rettighetsgruppe}
                 >
-                  {messages["allerede-registrert-boks-3-knapp"]}
+                  {formatMessage({ id: "allerede-registrert-boks-3-knapp" })}
                 </a>
               </div>
             </Column>
