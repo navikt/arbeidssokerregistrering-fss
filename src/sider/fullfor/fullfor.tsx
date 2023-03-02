@@ -1,13 +1,13 @@
 import * as React from "react";
 import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
 import { connect } from "react-redux";
-import { AnyAction, Dispatch } from "redux";
+import { AnyAction } from "redux";
 import { Navigate } from "react-router-dom";
 import NavAlertStripe from "nav-frontend-alertstriper";
 import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel";
 import { Element, Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 
-import { disableVertikalScrollingVedAnimasjon, MatchProps } from "../../utils/utils";
+import { disableVertikalScrollingVedAnimasjon } from "../../utils/utils";
 import KnappFullfor from "../skjema-registrering/knapp-fullfor";
 import { AppState } from "../../reducer";
 import {

@@ -24,7 +24,6 @@ type AllProps = StateProps & WrappedComponentProps & FeilmeldingBrukersStatusUgy
 
 class FeilmeldingBrukersStatusUgyldig extends React.Component<AllProps> {
   lagFeilmelding(feilType: FullforErrorTypes, intl: IntlShape) {
-    const { messages } = intl;
     let feilmelding;
 
     if (feilType === FullforErrorTypes.BRUKER_MANGLER_ARBEIDSTILLATELSE) {

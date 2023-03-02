@@ -39,14 +39,14 @@ export const MOCK_KONTAKTINFO = true;
 export const MOCK_OPPDATER_BRUKER_KONTEKST = true;
 export const DISPATCH_BESVARELSE = process.env.REACT_APP_MOCK_BES || false;
 
-function lagPamjanzzRespons({ q }: { q: string }) {
+/*function lagPamjanzzRespons({ q }: { q: string }) {
   const { typeaheadYrkeList } = pamJanzzData;
   console.log("q", q);
   const filtrertListe = typeaheadYrkeList.filter((data) => data.label.toLowerCase().includes(q.toLowerCase()));
   return {
     typeaheadYrkeList: filtrertListe,
   };
-}
+}*/
 
 const loggingMiddleware: Middleware = (request, response) => {
   console.groupCollapsed(request.url);
@@ -74,7 +74,7 @@ const mock = FetchMock.configure({
 
 // Dette dispatcher svarene _før_ noe annet skjer,
 // som kan føre til en sær tilstand. Siste test før merge bør skje uten dette flagget.
-const DELAY = 0;
+// const DELAY = 0;
 
 const GET = (url, data, delay = 0) => {
   return mock.get(url, (req, res, ctx) => res(ctx.delay(delay), ctx.json(data)));

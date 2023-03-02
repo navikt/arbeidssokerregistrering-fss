@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AnyAction, Dispatch } from "redux";
+import { AnyAction } from "redux";
 import { connect } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { AnyAction, Dispatch } from "redux";
+import { AnyAction } from "redux";
 import { WrappedComponentProps } from "react-intl";
 import { injectIntl } from "react-intl";
 
