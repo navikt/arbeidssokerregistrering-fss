@@ -60,7 +60,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
   svarState: state.svar,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   resetSvar: (sporsmalId) => dispatch(resetSvarAction(sporsmalId)),
   endreSvar: (sporsmalId, svar) => dispatch(endreSvarAction(sporsmalId, svar)),
 });

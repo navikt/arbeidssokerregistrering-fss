@@ -58,7 +58,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
   kontaktinfo: selectKontaktinfo(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   opprettKontaktmegOppgave: () => dispatch(opprettKontaktmegOppgave()),
 });
 

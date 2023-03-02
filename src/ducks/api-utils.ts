@@ -1,7 +1,8 @@
 import { Dispatch } from "redux";
+import { ThunkAction } from "redux-thunk";
+
 import { AppState } from "../reducer";
 import ActionType from "./actions";
-import { ThunkAction } from "redux-thunk";
 import { hentBrukerFnr, hentVeilederEnhetId } from "../utils/fss-utils";
 
 export const STATUS = {
@@ -51,7 +52,7 @@ export function toJson(response: Response) {
   return response;
 }
 
-export function sendResultatTilDispatch(dispatch: Dispatch<AppState>, action: ActionType) {
+export function sendResultatTilDispatch(dispatch: Dispatch<any>, action: ActionType) {
   return <S>(data: S): S => {
     // if (data.length === 1) {
     //     return dispatch({ type: action, data: data[0] });
@@ -61,7 +62,7 @@ export function sendResultatTilDispatch(dispatch: Dispatch<AppState>, action: Ac
   };
 }
 
-export function handterFeil(dispatch: Dispatch<AppState>, action: ActionType) {
+export function handterFeil(dispatch: Dispatch<any>, action: ActionType) {
   return (error: FetchError): void => {
     if (error.response) {
       error.response
@@ -110,7 +111,7 @@ export function doThenDispatch<DATA>(
   fn: () => Promise<DATA>,
   { OK, FEILET, PENDING }: RestActions
 ): ThunkAction<Promise<DATA | void>, AppState, void> {
-  return (dispatch: Dispatch<AppState>) => {
+  return (dispatch: Dispatch<any>) => {
     if (PENDING) {
       dispatch({ type: PENDING });
     }

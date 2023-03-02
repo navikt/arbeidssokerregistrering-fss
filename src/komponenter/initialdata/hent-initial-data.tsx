@@ -70,7 +70,7 @@ const mapStateToProps = (state: AppState) => ({
   featuretoggles: selectFeatureTogglesState(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   hentRegistreringStatus: () => dispatch(hentRegistreringStatus()),
   hentFeatureToggle: () => dispatch(hentFeatureToggles()),
   hentKontaktinfo: () => dispatch(hentKontaktinfo()),

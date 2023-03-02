@@ -155,7 +155,9 @@ class SisteStilling extends React.Component<Props, SisteStillingState> {
                   {getTekst("tittel")}
                 </Innholdstittel>
                 <Normaltekst className="spm-beskrivelse">
-                  <span dangerouslySetInnerHTML={{ __html: intl.formatMessage({ id: "siste-arbeidsforhold.ingress" }) }} />
+                  <span
+                    dangerouslySetInnerHTML={{ __html: intl.formatMessage({ id: "siste-arbeidsforhold.ingress" }) }}
+                  />
                 </Normaltekst>
               </>
             }
@@ -187,7 +189,7 @@ const mapStateToProps = (state: AppState) => ({
   registreringType: selectRegistreringstatus(state).data.registreringType,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   hentStillingFraPamGittStyrkkode: (styrk: string) => dispatch(hentStillingFraPamGittStyrkkode(styrk)),
   velgStilling: (stilling: Stilling) => dispatch(velgSisteStilling(stilling)),
 });

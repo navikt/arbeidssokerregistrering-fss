@@ -95,7 +95,7 @@ const mapStateToProps = (state: AppState) => ({
   sisteStilling: selectSisteStilling(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   hentStyrkkodeForSisteStillingFraAAReg: () => dispatch(hentStyrkkodeForSisteStillingFraAAReg()),
   hentStillingFraPamGittStyrkkode: (styrk: string) => dispatch(hentStillingFraPamGittStyrkkode(styrk)),
   velgStilling: (stilling: Stilling) => dispatch(velgSisteStilling(stilling)),

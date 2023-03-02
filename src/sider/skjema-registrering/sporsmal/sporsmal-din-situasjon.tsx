@@ -90,7 +90,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
   sisteStilling: selectSisteStilling(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   velgStilling: (stilling: Stilling) => dispatch(velgSisteStilling(stilling)),
 });
 
