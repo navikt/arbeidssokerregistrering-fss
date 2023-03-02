@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { AnyAction, Dispatch } from "redux";
+import { AnyAction} from "redux";
 import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
 import { Navigate } from "react-router-dom";
 import KnappBase from "nav-frontend-knapper";

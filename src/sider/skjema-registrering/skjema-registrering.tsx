@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { WrappedComponentProps, injectIntl } from "react-intl";
-import { AnyAction, Dispatch } from "redux";
+import { AnyAction} from "redux";
 
 import LastInnSisteStilling from "./last-inn-siste-stilling";
 import { endreSvarAction, resetSvarAction, SporsmalId, State as SvarState } from "../../ducks/svar";

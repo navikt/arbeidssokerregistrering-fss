@@ -146,7 +146,7 @@ class AutoComplete extends React.Component<Props, AutoCompleteState> {
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.handleClickOutside);
   }
-  setFormRef(node: React.ReactNode) {
+  setFormRef(node: HTMLFormElement) {
     this.formRef = node;
   }
   handleClickOutside(event: Event) {

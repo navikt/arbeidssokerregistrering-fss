@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RadioPanel } from "nav-frontend-skjema";
 import classNames from "classnames";
-import { FormattedMessage, injectIntl, WrappedComponentProps } from "react-intl";
+import { injectIntl, WrappedComponentProps } from "react-intl";
 import { Svar } from "../../ducks/svar-utils";
 
 interface AlternativProps {

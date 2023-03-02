@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
-import { AnyAction, Dispatch } from "redux";
+import { AnyAction} from "redux";
 import KnappBase from "nav-frontend-knapper";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
 
