@@ -1,9 +1,11 @@
 import * as React from "react";
-import "./visittkort.less";
-import { AsyncNavspa, AsyncSpaConfig } from "@navikt/navspa";
-import { utledSpaUrl } from "../../utils/url-utils";
 import NavFrontendSpinner from "nav-frontend-spinner";
+import { AsyncNavspa, AsyncSpaConfig } from "@navikt/navspa";
+
+import { utledSpaUrl } from "../../utils/url-utils";
 import { hentBrukerFnr, hentVeilederEnhetId } from "../../utils/fss-utils";
+
+import "./visittkort.less";
 
 interface SpaProps {
   enhet?: string;
