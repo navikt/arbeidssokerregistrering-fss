@@ -1,3 +1,5 @@
+import FetchMock, { Middleware, MiddlewareUtils } from "yet-another-fetch-mock";
+
 import { BRUKER_KONTEKST_URL, FEATURE_URL, OPPDATER_KONTEKST_URL, VEILARBREGISTRERING_URL } from "../ducks/api";
 import { getStore } from "../store";
 import { ActionTypes as SvarActionTypes, SporsmalId } from "../ducks/svar";
@@ -9,7 +11,6 @@ import pamJanzzData from "./typeahead-mock";
 import startRegistreringStatus from "./registreringstatus-mock";
 import sisteStillingFraAAReg from "./siste-stilling-fra-aareg-mock";
 import brukerKontekst from "./fss-bruker-kontekst";
-import FetchMock, { Middleware, MiddlewareUtils, ResponseUtils } from "yet-another-fetch-mock";
 import {
   // eslint-disable-next-line
   ordinaerRegistreringRespons,
@@ -75,66 +76,69 @@ const mock = FetchMock.configure({
 // som kan føre til en sær tilstand. Siste test før merge bør skje uten dette flagget.
 const DELAY = 0;
 
+const GET = (url, data, delay = 0) => {
+  return mock.get(url, (req, res, ctx) => res(ctx.delay(delay), ctx.json(data)));
+};
+
+const POST = (url, data, delay = 0) => {
+  return mock.post(url, (req, res, ctx) => res(ctx.delay(delay), ctx.json(data)));
+};
+
+const DELETE = (url, data, delay = 0) => {
+  return mock.delete(url, (req, res, ctx) => res(ctx.delay(delay), ctx.json(data)));
+};
+
 if (MOCK_START_REGISRERING_STATUS) {
-  mock.get(`${VEILARBREGISTRERING_URL}/startregistrering`, ResponseUtils.delayed(DELAY, startRegistreringStatus));
+  GET(`${VEILARBREGISTRERING_URL}/startregistrering`, startRegistreringStatus);
 }
 
 if (MOCK_FEATURE_TOGGLES) {
-  mock.get(`${FEATURE_URL}`, ResponseUtils.delayed(DELAY, featureTogglesMock));
+  GET(`${FEATURE_URL}`, featureTogglesMock);
 }
 
 if (MOCK_GET_SISTE_ARBIEDSFORHOLD) {
-  mock.get(`${VEILARBREGISTRERING_URL}/sistearbeidsforhold`, ResponseUtils.delayed(DELAY, sisteStillingFraAAReg));
+  GET(`${VEILARBREGISTRERING_URL}/sistearbeidsforhold`, sisteStillingFraAAReg);
 }
 
 if (MOCK_GET_KODEOVERSETTING_FRA_PAMJANZZ) {
-  mock.get("/pam-janzz/rest/kryssklassifiserMedKonsept", ResponseUtils.delayed(DELAY, oversettelseAvStillingFraAAReg));
+  GET("/pam-janzz/rest/kryssklassifiserMedKonsept", oversettelseAvStillingFraAAReg);
 }
 
 if (MOCK_STYRK08_PAMJANZZ) {
-  mock.get(
-    "/pam-janzz/rest/typeahead/yrke-med-styrk08",
-    ResponseUtils.delayed(DELAY, (args) => ResponseUtils.jsonPromise(lagPamjanzzRespons(args.queryParams)))
-  );
+  GET("/pam-janzz/rest/typeahead/yrke-med-styrk08", pamJanzzData);
 }
 
 if (MOCK_REGISTRER_BRUKER) {
-  mock.post(
-    `${VEILARBREGISTRERING_URL}/fullfoerordinaerregistrering`,
-    ResponseUtils.delayed(DELAY, ordinaerRegistreringRespons)
-  );
+  POST(`${VEILARBREGISTRERING_URL}/fullfoerordinaerregistrering`, ordinaerRegistreringRespons);
   /*
         mock.post(`${VEILARBREGISTRERING_URL}/fullfoerordinaerregistrering`,
                    ResponseUtils.combine(ResponseUtils.statusCode(500),
                    manglerArbeidstillatelseFeilResponse));
     */
-  mock.post(
-    `${VEILARBREGISTRERING_URL}/fullfoersykmeldtregistrering`,
-    ResponseUtils.delayed(DELAY, sykmeldtRegistreringRespons)
-  );
+  POST(`${VEILARBREGISTRERING_URL}/fullfoersykmeldtregistrering`, sykmeldtRegistreringRespons);
 }
 
 if (MOCK_REAKTIVER_BRUKER) {
-  mock.post(`${VEILARBREGISTRERING_URL}/fullfoerreaktivering`, ResponseUtils.delayed(DELAY, {}));
+  POST(`${VEILARBREGISTRERING_URL}/fullfoerreaktivering`, {});
 }
 
 if (MOCK_OPPRETT_KONTAKTMEG_OPPGAVE) {
-  mock.post(`${VEILARBREGISTRERING_URL}/oppgave`, ResponseUtils.delayed(100, opprettKontaktmegOppgaveRespons));
+  POST(`${VEILARBREGISTRERING_URL}/oppgave`, opprettKontaktmegOppgaveRespons, 100);
   // mock.post(`${VEILARBREGISTRERING_URL}/oppgave`, ResponseUtils.statusCode(500));
   // mock.post(`${VEILARBREGISTRERING_URL}/oppgave`, ResponseUtils.statusCode(403));
 }
 
 if (MOCK_BRUKER_KONTEKST) {
-  mock.get(`${BRUKER_KONTEKST_URL}`, ResponseUtils.delayed(DELAY, brukerKontekst));
-  mock.delete(`${BRUKER_KONTEKST_URL}`, ResponseUtils.delayed(DELAY, {}));
+  GET(`${BRUKER_KONTEKST_URL}`, brukerKontekst);
+  DELETE(`${BRUKER_KONTEKST_URL}`, {});
 }
 
 if (MOCK_OPPDATER_BRUKER_KONTEKST) {
-  mock.post(`${OPPDATER_KONTEKST_URL}`, ResponseUtils.delayed(DELAY, {}));
+  POST(`${OPPDATER_KONTEKST_URL}`, {});
 }
 
 if (MOCK_KONTAKTINFO) {
-  mock.get(`${VEILARBREGISTRERING_URL}/person/kontaktinfo`, ResponseUtils.delayed(DELAY, kontaktinfoRespons));
+  GET(`${VEILARBREGISTRERING_URL}/person/kontaktinfo`, kontaktinfoRespons);
   //mock.get(`${VEILARBREGISTRERING_URL}/person/kontaktinfo`, ResponseUtils.delayed(DELAY, ResponseUtils.statusCode(404)));
   /*
         mock.get(`${VEILARBREGISTRERING_URL}/person/kontaktinfo`,
