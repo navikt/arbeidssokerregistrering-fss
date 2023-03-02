@@ -1,12 +1,13 @@
 import * as React from "react";
-import Skjema from "../../komponenter/skjema/skjema";
-import { endreSvarAction, resetSvarAction, SporsmalId, State as SvarState } from "../../ducks/svar";
-import { hentSvar, Svar, UtdanningSvar } from "../../ducks/svar-utils";
-import { AppState } from "../../reducer";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { injectIntl } from "react-intl";
 import { WrappedComponentProps } from "react-intl";
+
+import Skjema from "../../komponenter/skjema/skjema";
+import { endreSvarAction, resetSvarAction, SporsmalId, State as SvarState } from "../../ducks/svar";
+import { hentSvar, Svar, UtdanningSvar } from "../../ducks/svar-utils";
+import { AppState } from "../../reducer";
 import { OPPSUMMERING_PATH, SKJEMA_SYKEFRAVAER_PATH } from "../../utils/konstanter";
 import { nullStillSporsmalSomIkkeSkalBesvares, SkjemaConfig } from "../../komponenter/skjema/skjema-utils";
 import { RegistreringType } from "../../ducks/registreringstatus";

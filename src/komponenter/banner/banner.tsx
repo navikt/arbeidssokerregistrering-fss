@@ -2,18 +2,19 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { WrappedComponentProps, injectIntl } from "react-intl";
 import { Systemtittel } from "nav-frontend-typografi";
+
+import { withRouter } from "../../routes";
 import { START_PATH } from "../../utils/konstanter";
 import { AppState } from "../../reducer";
 import { Data as StartRegistreringData, RegistreringType } from "../../ducks/registreringstatus";
-import { RouteComponentProps, withRouter } from "react-router-dom";
-import { MatchProps } from "../../utils/utils";
+
 import "./banner.less";
 
 interface StateProps {
   startRegistreringStatus: StartRegistreringData;
 }
 
-type Props = RouteComponentProps<MatchProps> & WrappedComponentProps & StateProps;
+type Props = any & WrappedComponentProps & StateProps;
 
 class Banner extends React.Component<Props> {
   settBannerOverskriftId(): string {

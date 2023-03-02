@@ -1,14 +1,13 @@
 import * as React from "react";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { WrappedComponentProps } from "react-intl";
+import { injectIntl } from "react-intl";
+
 import Skjema from "../../komponenter/skjema/skjema";
 import { endreSvarAction, resetSvarAction, SporsmalId, State as SvarState } from "../../ducks/svar";
 import { FremtidigSituasjonSvar, hentSvar, Svar, UtdanningSvar } from "../../ducks/svar-utils";
 import { AppState } from "../../reducer";
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import { injectIntl } from "react-intl";
-import { MatchProps } from "../../utils/utils";
-import { RouteComponentProps } from "react-router-dom";
-import { WrappedComponentProps } from "react-intl";
 import { OPPSUMMERING_PATH, SKJEMA_SYKEFRAVAER_PATH } from "../../utils/konstanter";
 import { nullStillSporsmalSomIkkeSkalBesvares, SkjemaConfig } from "../../komponenter/skjema/skjema-utils";
 import { RegistreringType } from "../../ducks/registreringstatus";
@@ -28,7 +27,7 @@ const skjemaFlytNyArbeidsgiver: SkjemaConfig = new Map<Svar, string[]>([
   [UtdanningSvar.INGEN_UTDANNING, ["utdanningBestatt", "utdanningGodkjent"]],
 ]);
 
-type Props = DispatchProps & StateProps & WrappedComponentProps & RouteComponentProps<MatchProps>;
+type Props = DispatchProps & StateProps & WrappedComponentProps & any;
 
 class SkjemaSykefravaerNyArbeidsgiver extends React.Component<Props> {
   render() {
@@ -69,7 +68,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
   svarState: state.svar,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   resetSvar: (sporsmalId) => dispatch(resetSvarAction(sporsmalId)),
   endreSvar: (sporsmalId, svar) => dispatch(endreSvarAction(sporsmalId, svar)),
 });

@@ -1,9 +1,10 @@
 import * as React from "react";
-import { RouteComponentProps, withRouter } from "react-router-dom";
-import { MatchProps, scrollToBanner } from "../../utils/utils";
+
+import { withRouter } from "../../routes";
+import { scrollToBanner } from "../../utils/utils";
 import { START_PATH } from "../../utils/konstanter";
 
-type Props = RouteComponentProps<MatchProps>;
+type Props = any;
 
 class Sideanimasjon extends React.Component<Props> {
   componentDidUpdate(prevProps: Readonly<Props>) {

@@ -1,13 +1,12 @@
 import * as React from "react";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { WrappedComponentProps, injectIntl } from "react-intl";
+
 import Skjema from "../../komponenter/skjema/skjema";
 import { endreSvarAction, SporsmalId, State as SvarState } from "../../ducks/svar";
 import { hentSvar, Svar } from "../../ducks/svar-utils";
 import { AppState } from "../../reducer";
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import { WrappedComponentProps, injectIntl } from "react-intl";
-import { MatchProps } from "../../utils/utils";
-import { RouteComponentProps } from "react-router-dom";
 import { OPPSUMMERING_PATH, SKJEMA_SYKEFRAVAER_PATH } from "../../utils/konstanter";
 import { vanligFlyt } from "../../komponenter/skjema/skjema-utils";
 import { RegistreringType } from "../../ducks/registreringstatus";
@@ -21,7 +20,7 @@ interface StateProps {
   svarState: SvarState;
 }
 
-type Props = DispatchProps & StateProps & WrappedComponentProps & RouteComponentProps<MatchProps>;
+type Props = DispatchProps & StateProps & WrappedComponentProps & any;
 
 class SkjemaSykefravaerSammeArbeidsgiverNyStilling extends React.Component<Props> {
   render() {
@@ -57,7 +56,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
   svarState: state.svar,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   endreSvar: (sporsmalId, svar) => dispatch(endreSvarAction(sporsmalId, svar)),
 });
 

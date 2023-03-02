@@ -1,13 +1,12 @@
 import * as React from "react";
+import { connect } from "react-redux";
+import { WrappedComponentProps, injectIntl } from "react-intl";
+import { Dispatch } from "redux";
+
 import LastInnSisteStilling from "./last-inn-siste-stilling";
 import { endreSvarAction, resetSvarAction, SporsmalId, State as SvarState } from "../../ducks/svar";
 import { hentSvar, Svar } from "../../ducks/svar-utils";
 import { AppState } from "../../reducer";
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import { WrappedComponentProps, injectIntl } from "react-intl";
-import { MatchProps } from "../../utils/utils";
-import { RouteComponentProps } from "react-router-dom";
 import Skjema from "../../komponenter/skjema/skjema";
 import { OPPSUMMERING_PATH, SKJEMA_PATH } from "../../utils/konstanter";
 import {
@@ -26,7 +25,7 @@ interface StateProps {
   svarState: SvarState;
 }
 
-type Props = DispatchProps & StateProps & WrappedComponentProps & RouteComponentProps<MatchProps>;
+type Props = DispatchProps & StateProps & WrappedComponentProps & any;
 
 class SkjemaRegistrering extends React.Component<Props> {
   render() {
@@ -63,7 +62,7 @@ const mapStateToProps = (state: AppState): StateProps => ({
   svarState: state.svar,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   resetSvar: (sporsmalId) => dispatch(resetSvarAction(sporsmalId)),
   endreSvar: (sporsmalId, svar) => dispatch(endreSvarAction(sporsmalId, svar)),
 });

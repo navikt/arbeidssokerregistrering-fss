@@ -2,23 +2,23 @@ import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { RouteComponentProps, withRouter } from "react-router-dom";
 import KnappBase from "nav-frontend-knapper";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
+
+import { withRouter } from "../../routes";
 import { AppState } from "../../reducer";
 import { reaktiverBruker, State as ReaktiverBrukerState } from "../../ducks/reaktiverbruker";
 import Loader, { loaderTittelElement } from "../../komponenter/loader/loader";
 import ReaktiveringFeilhandtering from "./feilhandtering/reaktivering-feilhandtering";
 import Innholdslaster from "../../komponenter/innholdslaster/innholdslaster";
-import { MatchProps } from "../../utils/utils";
 import { DU_ER_NA_REGISTRERT_PATH } from "../../utils/konstanter";
 import Banner from "../../komponenter/banner/banner";
 import { Data as RegistreringstatusData, selectRegistreringstatus } from "../../ducks/registreringstatus";
+import { lagAktivitetsplanUrl } from "../../utils/url-utils";
+import { uniLogger } from "../../metrikker/uni-logger";
 
 import handinfoSvg from "./handinfo.svg";
 import "./krever-reaktivering.less";
-import { lagAktivitetsplanUrl } from "../../utils/url-utils";
-import { uniLogger } from "../../metrikker/uni-logger";
 
 interface State {
   reaktivererBruker: boolean;
@@ -33,7 +33,7 @@ interface DispatchProps {
   onReaktiverBruker: () => Promise<void | unknown>;
 }
 
-type Props = RouteComponentProps<MatchProps> & StateProps & DispatchProps;
+type Props = any & StateProps & DispatchProps;
 
 class KreverReaktivering extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -131,7 +131,7 @@ const mapStateToProps = (state: AppState) => ({
   registreringstatusData: selectRegistreringstatus(state).data,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   onReaktiverBruker: () => dispatch(reaktiverBruker()),
 });
 

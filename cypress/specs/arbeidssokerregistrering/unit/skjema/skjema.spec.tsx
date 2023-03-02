@@ -2,6 +2,7 @@
 import * as React from 'react';
 import * as enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+
 import Skjema from '../../../../../src/komponenter/skjema/skjema';
 import {
     mountWithStoreRouterAndIntl,
@@ -22,8 +23,6 @@ import UtdanningGodkjentSporsmal from "../../../../../src/sider/skjema-registrer
 import UtdanningBestattSporsmal from "../../../../../src/sider/skjema-registrering/sporsmal/sporsmal-utdanning-bestatt";
 import HelseHinder from "../../../../../src/sider/skjema-registrering/sporsmal/sporsmal-helse-hinder";
 import AndreForhold from "../../../../../src/sider/skjema-registrering/sporsmal/sporsmal-andre-forhold";
-import { RouteComponentProps } from "react-router-dom";
-import { MatchProps } from "../../../../../src/utils/utils";
 import { AppState } from "../../../../../src/reducer";
 import { getStore } from "../../../../../src/store";
 import { Store } from "redux";
@@ -106,7 +105,7 @@ const mountSkjema = (config, startId: string, store: Store<AppState> | undefined
             config={cfg}
             baseUrl={SKJEMA_PATH}
             endUrl={OPPSUMMERING_PATH}
-            {... { match: { params: { id: id } } } as RouteComponentProps<MatchProps>}
+            {... { match: { params: { id: id } } } as any}
         >
             <SporsmalDinSituasjon sporsmalId={SporsmalId.dinSituasjon} {...sporsmalProps} />
             <SisteStilling sporsmalId={SporsmalId.sisteStilling} {...sporsmalProps} />

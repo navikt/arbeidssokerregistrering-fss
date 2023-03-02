@@ -1,26 +1,28 @@
 import * as React from "react";
 import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
-import "./infoside.less";
-import LenkeTilbake from "../../komponenter/knapper/lenke-tilbake";
-import { Link, Redirect, RouteComponentProps, withRouter } from "react-router-dom";
-import { MatchProps } from "../../utils/utils";
-import Veilederpanel from "nav-frontend-veilederpanel";
 import { Normaltekst, Systemtittel, Undertittel } from "nav-frontend-typografi";
+import { Navigate, Link } from "react-router-dom";
+import Veilederpanel from "nav-frontend-veilederpanel";
+import { connect } from "react-redux";
+
+import { withRouter } from "../../routes";
+import LenkeTilbake from "../../komponenter/knapper/lenke-tilbake";
 import InfoViser from "../../komponenter/info-viser/info-viser";
 import { OPPSUMMERING_PATH, START_PATH } from "../../utils/konstanter";
 import { AppState } from "../../reducer";
 import { selectKontaktinfo, State as KontaktinfoState } from "../../ducks/kontaktinfo";
-import { connect } from "react-redux";
 import { lagAktivitetsplanUrl } from "../../utils/url-utils";
 import { erKlarForFullforing } from "../fullfor/fullfor-utils";
 import veilederSvg from "./veileder-syfo.svg";
+
+import "./infoside.less";
 
 interface StateProps {
   kontaktinfo: KontaktinfoState;
   state: AppState;
 }
 
-type Props = StateProps & WrappedComponentProps & RouteComponentProps<MatchProps>;
+type Props = StateProps & WrappedComponentProps & any;
 
 class Infoside extends React.Component<Props> {
   handleTilbakeBtnClick = (): void => {
@@ -29,7 +31,7 @@ class Infoside extends React.Component<Props> {
 
   render() {
     if (!erKlarForFullforing(this.props.state)) {
-      return <Redirect to={START_PATH} />;
+      return <Navigate to={START_PATH} replace />;
     }
 
     const fornavn = this.props.kontaktinfo.data.navn?.fornavn;

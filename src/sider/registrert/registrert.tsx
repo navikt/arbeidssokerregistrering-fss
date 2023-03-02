@@ -2,21 +2,21 @@ import * as React from "react";
 import cls from "classnames";
 import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
 import { Systemtittel } from "nav-frontend-typografi";
+import { connect } from "react-redux";
+
 import AvsjekkBilde from "./avsjekk-bilde/avsjekk-bilde";
 import { erIE } from "../../utils/ie-test";
 import { AppState } from "../../reducer";
-import { connect } from "react-redux";
-import { RouteComponentProps } from "react-router-dom";
-import { MatchProps } from "../../utils/utils";
 import { RegistreringType } from "../../ducks/registreringstatus";
 import RegistrertSendVidere from "./send-videre-fss/registrert-send-videre";
+
 import "./registrert.less";
 
 interface StateProps {
   state: AppState;
 }
 
-type AllProps = StateProps & WrappedComponentProps & RouteComponentProps<MatchProps>;
+type AllProps = StateProps & WrappedComponentProps & any;
 
 class DuErNaRegistrert extends React.Component<AllProps> {
   hentTekstId(erSykmeldt: boolean): (id: string) => string {

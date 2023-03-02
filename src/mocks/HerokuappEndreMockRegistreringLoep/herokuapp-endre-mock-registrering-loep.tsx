@@ -1,7 +1,12 @@
 import * as React from "react";
 import { WrappedComponentProps, injectIntl } from "react-intl";
-import { Route, RouteComponentProps, withRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { connect } from "react-redux";
+import { RadioPanel } from "nav-frontend-skjema";
+import { Normaltekst } from "nav-frontend-typografi";
+import Lukknapp from "nav-frontend-lukknapp";
+
+import { withRouter } from "../../routes";
 import {
   Data as StartRegistreringData,
   RegistreringType,
@@ -12,15 +17,11 @@ import {
 import { State as RegistrerBruker, ActionTypes as registrerbrukerActionType } from "../../ducks/registrerbruker";
 import { ActionTypes as reaktiveringActionType } from "../../ducks/reaktiverbruker";
 import { ActionTypes as SvarActionTypes, ActionTypes as svarActionType, SporsmalId } from "../../ducks/svar";
-import { RadioPanel } from "nav-frontend-skjema";
 import { getStore } from "../../store";
-import { Normaltekst } from "nav-frontend-typografi";
 import { AppState } from "../../reducer";
 import "./herokuapp-endre-mock-registrering-loep.less";
 import startRegistreringStatus from "../registreringstatus-mock";
-import Lukknapp from "nav-frontend-lukknapp";
 import { manglerArbeidstillatelseFeilResponse, utvandretFeilResponse } from "../registrerbruker-mock";
-import { MatchProps } from "../../utils/utils";
 import { ActionTypes as SisteStillingActionTypes, annenStilling } from "../../ducks/siste-stilling";
 import { IngenSvar } from "../../ducks/svar-utils";
 import { ActionTypes as KontaktinfoTypes } from "../../ducks/kontaktinfo";
@@ -38,7 +39,7 @@ interface OwnState {
   feilmeldingRadioKnapp: string;
 }
 
-type Props = WrappedComponentProps & StateProps & RouteComponentProps<MatchProps>;
+type Props = WrappedComponentProps & StateProps & any;
 
 class HerokuappEndreMockRegistreringLoep extends React.Component<Props, OwnState> {
   constructor(props: Props) {
@@ -690,5 +691,5 @@ const mapStateToProps = (state: AppState): StateProps => ({
 const HerokuMock = connect(mapStateToProps)(withRouter(injectIntl(HerokuappEndreMockRegistreringLoep)));
 
 export const RouteHerokuMock = process.env.REACT_APP_MOCK_ENDRE_REG_LOP ? (
-  <Route path="/" component={HerokuMock} />
+  <Route path="/" element={HerokuMock} />
 ) : null;

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { RouteComponentProps } from "react-router-dom";
 import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
 import NavAlertStripe from "nav-frontend-alertstriper";
+
 import { AppState } from "../../reducer";
 import { SporsmalId, State as SvarState } from "../../ducks/svar";
 import LenkeAvbryt from "../knapper/lenke-avbryt";
@@ -10,7 +10,6 @@ import LenkeTilbake from "../knapper/lenke-tilbake";
 import LenkeNeste from "../knapper/lenke-neste";
 import Animasjon from "../../sider/skjema-registrering/animasjon";
 import ResponsivSide from "../side/responsiv-side";
-import { MatchProps } from "../../utils/utils";
 import {
   erSporsmalBesvart,
   finnGjeldendeSporsmalPlassering,
@@ -47,7 +46,7 @@ interface OwnProps {
   endUrl: string;
 }
 
-export type Props = OwnProps & StateProps & WrappedComponentProps & RouteComponentProps<MatchProps>;
+export type Props = OwnProps & StateProps & WrappedComponentProps & any;
 
 class Skjema extends React.Component<Props, OwnState> {
   constructor(props: Props) {

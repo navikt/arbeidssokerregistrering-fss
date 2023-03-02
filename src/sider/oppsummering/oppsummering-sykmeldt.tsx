@@ -2,10 +2,11 @@ import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
-import { Redirect, RouteComponentProps } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import KnappBase from "nav-frontend-knapper";
 import { Innholdstittel, Normaltekst } from "nav-frontend-typografi";
-import { disableVertikalScrollingVedAnimasjon, MatchProps } from "../../utils/utils";
+
+import { disableVertikalScrollingVedAnimasjon } from "../../utils/utils";
 import { AppState } from "../../reducer";
 import { DU_ER_NA_REGISTRERT_PATH, START_PATH } from "../../utils/konstanter";
 import LenkeAvbryt from "../../komponenter/knapper/lenke-avbryt";
@@ -13,7 +14,6 @@ import { erIE } from "../../utils/ie-test";
 import LenkeTilbake from "../../komponenter/knapper/lenke-tilbake";
 import { RegistreringType } from "../../ducks/registreringstatus";
 import SykmeldtOppsummeringBesvarelser from "./sykmeldt-oppsummering-besvarelser";
-import "./oppsummering.less";
 import { mapAvgitteSvarForBackend } from "../../ducks/registrerbruker-utils";
 import { selectSisteStilling } from "../../ducks/siste-stilling";
 import {
@@ -27,6 +27,8 @@ import Loader, { loaderTittelElement } from "../../komponenter/loader/loader";
 import { STATUS } from "../../ducks/api-utils";
 import { erKlarForFullforing } from "../fullfor/fullfor-utils";
 
+import "./oppsummering.less";
+
 interface StateProps {
   registrerBrukerData: RegistrerBrukerState;
   state: AppState;
@@ -36,7 +38,7 @@ interface DispatchProps {
   onRegistrerBruker: (data: RegistrerBrukerData, registreringType: RegistreringType) => Promise<void | unknown>;
 }
 
-type Props = StateProps & DispatchProps & RouteComponentProps<MatchProps> & WrappedComponentProps;
+type Props = StateProps & DispatchProps & any & WrappedComponentProps;
 
 class OppsummeringSykmeldt extends React.Component<Props> {
   constructor(props: Props) {
@@ -69,7 +71,7 @@ class OppsummeringSykmeldt extends React.Component<Props> {
 
   render() {
     if (!erKlarForFullforing(this.props.state)) {
-      return <Redirect to={START_PATH} />;
+      return <Navigate to={START_PATH} replace />;
     }
 
     let classnames = "oppsummering ";
@@ -111,7 +113,7 @@ const mapStateToProps = (state: AppState) => ({
   state: state,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   onRegistrerBruker: (data, registreringType: RegistreringType) => dispatch(utforRegistrering(data, registreringType)),
 });
 

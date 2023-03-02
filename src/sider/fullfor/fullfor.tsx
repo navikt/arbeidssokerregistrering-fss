@@ -2,10 +2,11 @@ import * as React from "react";
 import { FormattedMessage, WrappedComponentProps, injectIntl } from "react-intl";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { Redirect, RouteComponentProps } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import NavAlertStripe from "nav-frontend-alertstriper";
 import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel";
 import { Element, Innholdstittel, Normaltekst } from "nav-frontend-typografi";
+
 import { disableVertikalScrollingVedAnimasjon, MatchProps } from "../../utils/utils";
 import KnappFullfor from "../skjema-registrering/knapp-fullfor";
 import { AppState } from "../../reducer";
@@ -31,9 +32,9 @@ import kalenderSvg from "./kalender.svg";
 import filnySvg from "./fil-ny.svg";
 import epostSvg from "./epost.svg";
 import okonomiSvg from "./okonomi.svg";
+import { erKlarForFullforing } from "./fullfor-utils";
 
 import "./fullfor.less";
-import { erKlarForFullforing } from "./fullfor-utils";
 
 interface StateProps {
   registrerBrukerData: RegistrerBrukerState;
@@ -50,7 +51,7 @@ interface EgenState {
   sblArbeidRegistrerBrukerStatus: string;
 }
 
-type Props = RouteComponentProps<MatchProps> & StateProps & DispatchProps & WrappedComponentProps;
+type Props = any & StateProps & DispatchProps & WrappedComponentProps;
 
 class Fullfor extends React.PureComponent<Props, EgenState> {
   constructor(props: Props) {
@@ -103,7 +104,7 @@ class Fullfor extends React.PureComponent<Props, EgenState> {
 
   render() {
     if (!erKlarForFullforing(this.props.state)) {
-      return <Redirect to={START_PATH} />;
+      return <Navigate to={START_PATH} replace />;
     }
     const { registrerBrukerData, intl } = this.props;
 
@@ -150,7 +151,7 @@ class Fullfor extends React.PureComponent<Props, EgenState> {
 
           <div className="fullfor-info">
             <Ekspanderbartpanel
-              tittel={intl.formatMessage({id: "fullfor-les-mer"})}
+              tittel={intl.formatMessage({ id: "fullfor-les-mer" })}
               border={true}
               {...{ renderContentWhenClosed: true }}
             >
@@ -203,7 +204,7 @@ const mapStateToProps = (state: AppState) => ({
   state: state,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchProps => ({
   onRegistrerBruker: (data, registreringType: RegistreringType) => dispatch(utforRegistrering(data, registreringType)),
 });
 
