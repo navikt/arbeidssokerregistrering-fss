@@ -1,15 +1,19 @@
 import * as React from "react";
 import { FormattedMessage, injectIntl } from "react-intl";
+import { connect } from "react-redux";
+import { AnyAction } from "redux";
+import NavAlertStripe from "nav-frontend-alertstriper";
+import { ThunkDispatch } from "redux-thunk";
+import { Innholdstittel } from "nav-frontend-typografi";
+import { SkjemaGruppe } from "nav-frontend-skjema";
+
 import {
   getIntlTekstForSporsmal,
   getTekstIdForSvar,
   kanGaaTilNeste,
   TekstKontekst,
 } from "../../komponenter/skjema/skjema-utils";
-import { Innholdstittel } from "nav-frontend-typografi";
 import { endreSvarAction, setInitialState, SporsmalId } from "../../ducks/svar";
-import { connect } from "react-redux";
-import { AnyAction } from "redux";
 import { AppState } from "../../reducer";
 import { FremtidigSituasjonSvar, hentSvar, Svar } from "../../ducks/svar-utils";
 import ResponsivSide from "../../komponenter/side/responsiv-side";
@@ -18,12 +22,10 @@ import LenkeTilbake from "../../komponenter/knapper/lenke-tilbake";
 import LenkeNeste from "../../komponenter/knapper/lenke-neste";
 import { OPPSUMMERING_PATH, SKJEMA_SYKEFRAVAER_PATH } from "../../utils/konstanter";
 import { Props as SkjemaProps } from "../../komponenter/skjema/skjema";
-import NavAlertStripe from "nav-frontend-alertstriper";
 import { RegistreringType } from "../../ducks/registreringstatus";
-import "./inngangssporsmal.less";
 import { hentAlternativeneForInngangsporsmal, hentInngangsLoep } from "./inngangssporsmal-svar-alternativene";
-import { SkjemaGruppe } from "nav-frontend-skjema";
-import { ThunkDispatch } from "redux-thunk";
+
+import "./inngangssporsmal.less";
 
 interface OwnState {
   visAdvarsel: boolean;
