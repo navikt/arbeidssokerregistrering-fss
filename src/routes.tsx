@@ -110,40 +110,41 @@ function AppRoutes(props: AllProps) {
       <Route path="/" element={<Banner />} />
       <Route path="/:url" element={<ProgressBarContainer />} />
 
-      <Sideanimasjon>
-        <Routes>
-          {erNede ? <RedirectAll to={"/"} component={TjenesteOppdateres} /> : null}
-          {klarForFullforing || reaktivertStatus === STATUS.OK ? (
-            <Route path={DU_ER_NA_REGISTRERT_PATH} element={<DuErNaRegistrert />} />
-          ) : null}
+      {/*<Sideanimasjon>*/}
+      {/*  <Routes>*/}
+      {erNede ? <RedirectAll to={"/"} component={TjenesteOppdateres} /> : null}
+      {klarForFullforing || reaktivertStatus === STATUS.OK ? (
+        <Route path={DU_ER_NA_REGISTRERT_PATH} element={<DuErNaRegistrert />} />
+      ) : null}
 
-          {visOrdinaerSkjema ? (
-            <Routes>
-              <Route path={START_PATH} element={<RegistreringArbeidssokerFss />} />
-              <Route path={`${SKJEMA_PATH}/:id`} element={<SkjemaRegistrering />} />
-              <Route path={FULLFOR_PATH} element={<Fullfor />} />
-              <Route path={OPPSUMMERING_PATH} element={<OppsummeringOrdinaer />} />
-              <Navigate to={START_PATH} replace />
-            </Routes>
-          ) : null}
-          {visSykefravaerSkjema ? (
-            <Routes>
-              <Route path={START_PATH} element={<RegistreringArbeidssokerSykmeldtFss />} />
-              <Route path={INFOSIDE_PATH} element={<Infoside />} />
-              <Route path={INNGANGSSPORSMAL_PATH} element={<Inngangssporsmal />} />
-              <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/1/:id`} element={<SkjemaSykefravaerSammeArbeidsgiver />} />
-              <Route
-                path={`${SKJEMA_SYKEFRAVAER_PATH}/2/:id`}
-                element={<SkjemaSykefravaerSammeArbeidsgiverNyStilling />}
-              />
-              <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/3/:id`} element={<SkjemaSykefravaerNyArbeidsgiver />} />
-              <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/4/:id`} element={<SkjemaSykefravaerUsikker />} />
-              <Route path={OPPSUMMERING_PATH} element={<OppsummeringSykmeldt />} />
-              <Navigate to={START_PATH + queryParams} replace />
-            </Routes>
-          ) : null}
-        </Routes>
-      </Sideanimasjon>
+      {visOrdinaerSkjema ? (
+        // <Routes>
+        <>
+          <Route path={START_PATH} element={<RegistreringArbeidssokerFss />} />
+          <Route path={`${SKJEMA_PATH}/:id`} element={<SkjemaRegistrering />} />
+          <Route path={FULLFOR_PATH} element={<Fullfor />} />
+          <Route path={OPPSUMMERING_PATH} element={<OppsummeringOrdinaer />} />
+          {/*<Navigate to={START_PATH} replace />*/}
+        </>
+      ) : // </Routes>
+      null}
+      {visSykefravaerSkjema ? (
+        <>
+          {/*<Routes>*/}
+          <Route path={START_PATH} element={<RegistreringArbeidssokerSykmeldtFss />} />
+          <Route path={INFOSIDE_PATH} element={<Infoside />} />
+          <Route path={INNGANGSSPORSMAL_PATH} element={<Inngangssporsmal />} />
+          <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/1/:id`} element={<SkjemaSykefravaerSammeArbeidsgiver />} />
+          <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/2/:id`} element={<SkjemaSykefravaerSammeArbeidsgiverNyStilling />} />
+          <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/3/:id`} element={<SkjemaSykefravaerNyArbeidsgiver />} />
+          <Route path={`${SKJEMA_SYKEFRAVAER_PATH}/4/:id`} element={<SkjemaSykefravaerUsikker />} />
+          <Route path={OPPSUMMERING_PATH} element={<OppsummeringSykmeldt />} />
+          {/*<Navigate to={START_PATH + queryParams} replace />*/}
+          {/*</Routes>*/}
+        </>
+      ) : null}
+      {/*</Routes>*/}
+      {/*</Sideanimasjon>*/}
     </Routes>
   );
 }
