@@ -37,9 +37,9 @@ class AppFss extends React.Component {
           <ManuellRegistreringSjekk>
             <Visitkort />
             <HentInitialData>
-              <Router>
-                <Routes />
-              </Router>
+              {/*<Router>*/}
+              <Routes />
+              {/*</Router>*/}
             </HentInitialData>
           </ManuellRegistreringSjekk>
         </IntlProvider>

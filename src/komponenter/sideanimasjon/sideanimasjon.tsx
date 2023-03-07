@@ -2,8 +2,9 @@ import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { MatchProps, scrollToBanner } from "../../utils/utils";
 import { START_PATH } from "../../utils/konstanter";
+import { PropsWithChildren } from "react";
 
-type Props = RouteComponentProps<MatchProps>;
+type Props = PropsWithChildren & RouteComponentProps<MatchProps>;
 
 class Sideanimasjon extends React.Component<Props> {
   componentDidUpdate(prevProps: Readonly<Props>) {
