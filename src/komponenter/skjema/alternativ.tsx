@@ -27,4 +27,4 @@ function Alternativ(props: AlternativProps & InjectedIntlProps) {
   );
 }
 
-export default injectIntl(Alternativ);
+export default injectIntl<AlternativProps>(Alternativ);

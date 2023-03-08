@@ -23,7 +23,7 @@ interface StateProps {
   state: AppState;
 }
 
-type Props = StateProps & RouteComponentProps<MatchProps> & InjectedIntlProps;
+type Props = StateProps & RouteComponentProps<MatchProps>;
 
 const OppsummeringOrdinaer = ({ state, registrerBrukerData, history }: Props) => {
   React.useEffect(() => {
@@ -79,4 +79,4 @@ const mapStateToProps = (state: AppState) => ({
   state: state,
 });
 
-export default connect(mapStateToProps)(injectIntl(OppsummeringOrdinaer));
+export default connect(mapStateToProps)(injectIntl<Props>(OppsummeringOrdinaer));

@@ -110,8 +110,8 @@ const mapStateToProps = (state: AppState) => ({
   state: state,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch): DispatchProps => ({
   onRegistrerBruker: (data, registreringType: RegistreringType) => dispatch(utforRegistrering(data, registreringType)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(OppsummeringSykmeldt));
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl<Props>(OppsummeringSykmeldt));

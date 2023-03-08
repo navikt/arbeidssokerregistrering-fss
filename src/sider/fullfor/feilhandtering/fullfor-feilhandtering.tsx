@@ -25,4 +25,4 @@ function mapStateToProps(state: AppState) {
   };
 }
 
-export default connect(mapStateToProps)(injectIntl(FullforFeilhandtering));
+export default connect(mapStateToProps)(injectIntl<StateProps>(FullforFeilhandtering));

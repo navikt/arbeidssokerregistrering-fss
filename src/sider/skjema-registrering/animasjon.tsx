@@ -1,5 +1,6 @@
 import * as React from "react";
 import { disableVertikalScrollingVedAnimasjon } from "../../utils/utils";
+import { PropsWithChildren } from "react";
 
 interface Props {
   flag: number | string;
@@ -9,7 +10,7 @@ interface State {
   currentFlag: number | string;
 }
 
-class Animasjon extends React.Component<Props, State> {
+class Animasjon extends React.Component<PropsWithChildren<Props>, State> {
   // Denne komponenten re-mounter children hver gang flag endrer seg.
   // Det vil trigge at CSS-animasjonen kjører om igjen.
 

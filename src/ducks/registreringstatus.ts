@@ -1,6 +1,7 @@
 import * as Api from "./api";
 import { doThenDispatch, STATUS } from "./api-utils";
 import { AppState } from "../reducer";
+import { ThunkAction } from "redux-thunk";
 
 export enum ActionTypes {
   HENT_REG_STATUS_OK = "HENT_REG_STATUS_OK",
@@ -83,7 +84,7 @@ export default function (state: State = initialState, action: Action): State {
   }
 }
 
-export function hentRegistreringStatus() {
+export function hentRegistreringStatus(): ThunkAction<Promise<any>, AppState, void> {
   return doThenDispatch(() => Api.hentRegistreringStatus(), {
     PENDING: ActionTypes.HENT_REG_STATUS_PENDING,
     OK: ActionTypes.HENT_REG_STATUS_OK,

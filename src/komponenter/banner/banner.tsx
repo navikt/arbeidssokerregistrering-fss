@@ -44,4 +44,5 @@ const mapStateToProps = (state: AppState): StateProps => ({
   startRegistreringStatus: state.registreringStatus.data,
 });
 
-export default connect(mapStateToProps)(withRouter(injectIntl(Banner)));
+const DecoratedBanner = injectIntl<StateProps>(withRouter(Banner));
+export default connect(mapStateToProps)(DecoratedBanner);

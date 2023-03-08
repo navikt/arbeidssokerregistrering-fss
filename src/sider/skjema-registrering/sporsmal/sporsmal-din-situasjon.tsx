@@ -26,9 +26,9 @@ interface StateProps {
   sisteStilling: Stilling;
 }
 
-type Props = SporsmalProps & InjectedIntlProps & DispatchProps & StateProps;
+type Props = SporsmalProps & DispatchProps & StateProps;
 
-class SporsmalDinSituasjon extends React.Component<Props> {
+class SporsmalDinSituasjon extends React.Component<Props & InjectedIntlProps> {
   velgStillingHvisDenIkkeAlleredeErValgt(stilling: Stilling) {
     const { sisteStilling, velgStilling } = this.props;
     if (sisteStilling.label !== stilling.label) {
@@ -93,4 +93,4 @@ const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
   velgStilling: (stilling: Stilling) => dispatch(velgSisteStilling(stilling)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(SporsmalDinSituasjon));
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl<Props>(SporsmalDinSituasjon));

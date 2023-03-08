@@ -58,4 +58,4 @@ class EkspanderbartInfo extends React.PureComponent<EgenProps, EgenStateProps> {
   }
 }
 
-export default injectIntl(EkspanderbartInfo);
+export default injectIntl<Props>(EkspanderbartInfo);

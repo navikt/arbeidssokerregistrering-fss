@@ -22,6 +22,7 @@ import { hentOversattStillingFraAAReg, UTEN_STYRKKODE } from "./sporsmal/sporsma
 import { STATUS } from "../../ducks/api-utils";
 import FeilmeldingGenerell from "../../komponenter/feilmelding/feilmelding-generell";
 import { settDefaultStilling } from "../../ducks/default-stilling";
+import { PropsWithChildren } from "react";
 
 interface StateProps {
   sisteStillingFraAAReg: SisteArbeidsforholdState;
@@ -38,7 +39,7 @@ interface DispatchProps {
 }
 
 type Props = StateProps & DispatchProps;
-class LastInnSisteStilling extends React.Component<Props> {
+class LastInnSisteStilling extends React.Component<PropsWithChildren<Props>> {
   componentDidMount() {
     const velgStilling = (stilling: Stilling) => {
       this.props.velgStilling(stilling);
@@ -93,7 +94,7 @@ const mapStateToProps = (state: AppState) => ({
   sisteStilling: selectSisteStilling(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch): DispatchProps => ({
   hentStyrkkodeForSisteStillingFraAAReg: () => dispatch(hentStyrkkodeForSisteStillingFraAAReg()),
   hentStillingFraPamGittStyrkkode: (styrk: string) => dispatch(hentStillingFraPamGittStyrkkode(styrk)),
   velgStilling: (stilling: Stilling) => dispatch(velgSisteStilling(stilling)),

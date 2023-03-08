@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormattedMessage, injectIntl } from "react-intl";
+import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
 import {
   getIntlTekstForSporsmal,
   getTekstIdForSvar,
@@ -34,8 +34,8 @@ interface DispatchProps {
 
 type AllProps = DispatchProps & SkjemaProps;
 
-class Inngangssporsmal extends React.Component<AllProps, OwnState> {
-  constructor(props: AllProps) {
+class Inngangssporsmal extends React.Component<AllProps & InjectedIntlProps, OwnState> {
+  constructor(props: AllProps & InjectedIntlProps) {
     super(props);
 
     this.state = {
@@ -149,4 +149,4 @@ const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
   endreSvar: (sporsmalId, svar) => dispatch(endreSvarAction(sporsmalId, svar)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Inngangssporsmal));
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl<AllProps>(Inngangssporsmal));

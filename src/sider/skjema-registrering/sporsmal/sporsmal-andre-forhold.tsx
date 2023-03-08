@@ -8,9 +8,9 @@ import { SporsmalProps } from "../../../komponenter/skjema/sporsmal-utils";
 import { injectIntl, InjectedIntlProps } from "react-intl";
 import { SkjemaGruppe } from "nav-frontend-skjema";
 
-type Props = SporsmalProps & InjectedIntlProps;
+type Props = SporsmalProps;
 
-function AndreForhold(props: Props) {
+function AndreForhold(props: Props & InjectedIntlProps) {
   const { intl, sporsmalId } = props;
   const fellesProps = {
     endreSvar: props.endreSvar,
@@ -49,4 +49,4 @@ function AndreForhold(props: Props) {
   );
 }
 
-export default injectIntl(AndreForhold);
+export default injectIntl<Props>(AndreForhold);

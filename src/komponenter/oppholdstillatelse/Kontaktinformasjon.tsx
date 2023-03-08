@@ -1,6 +1,6 @@
 import * as React from "react";
 import Panel from "nav-frontend-paneler";
-import { Undertittel, EtikettLiten } from "nav-frontend-typografi";
+import { Undertittel, Undertekst } from "nav-frontend-typografi";
 
 import "./kontaktinformasjon.less";
 
@@ -16,7 +16,7 @@ class Kontaktinformasjon extends React.Component<Props> {
       <Panel border className="kontaktinfo-kort" {...children}>
         <Undertittel>{`Telefonnummer lagret hos ${kilde}`}</Undertittel>
         <Undertittel className="informasjon">{telefonnummer}</Undertittel>
-        <EtikettLiten>{`Kilde: ${kilde}`}</EtikettLiten>
+        <Undertekst>{`Kilde: ${kilde}`}</Undertekst>
       </Panel>
     );
   }

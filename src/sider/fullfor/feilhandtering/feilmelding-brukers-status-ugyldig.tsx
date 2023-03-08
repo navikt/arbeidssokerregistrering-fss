@@ -20,9 +20,9 @@ interface StateProps {
   state: AppState;
 }
 
-type AllProps = StateProps & InjectedIntlProps & FeilmeldingBrukersStatusUgyldigProps;
+type AllProps = StateProps & FeilmeldingBrukersStatusUgyldigProps;
 
-class FeilmeldingBrukersStatusUgyldig extends React.Component<AllProps> {
+class FeilmeldingBrukersStatusUgyldig extends React.Component<AllProps & InjectedIntlProps> {
   lagFeilmelding(feilType: FullforErrorTypes, intl: InjectedIntl) {
     const { messages } = intl;
     let feilmelding;
@@ -64,4 +64,4 @@ const mapStateToProps = (state: AppState) => ({
   state: state,
 });
 
-export default connect(mapStateToProps)(injectIntl(FeilmeldingBrukersStatusUgyldig));
+export default connect(mapStateToProps)(injectIntl<AllProps>(FeilmeldingBrukersStatusUgyldig));

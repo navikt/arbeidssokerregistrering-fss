@@ -67,4 +67,4 @@ const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
   endreSvar: (sporsmalId, svar) => dispatch(endreSvarAction(sporsmalId, svar)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(SkjemaRegistrering));
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl<Props>(SkjemaRegistrering));

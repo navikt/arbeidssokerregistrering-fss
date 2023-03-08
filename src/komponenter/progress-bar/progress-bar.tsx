@@ -62,7 +62,6 @@ export default class ProgressBar extends React.Component<OwnProps> {
         tabIndex={-1}
       >
         <div className="andel" style={framdriftStyle} />
-        {this.scrolling()}
       </div>
     );
   }

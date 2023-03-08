@@ -130,7 +130,7 @@ const mapStateToProps = (state: AppState) => ({
   registreringstatusData: selectRegistreringstatus(state).data,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch): DispatchProps => ({
   onReaktiverBruker: () => dispatch(reaktiverBruker()),
 });
 

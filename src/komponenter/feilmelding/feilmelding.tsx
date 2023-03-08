@@ -2,8 +2,9 @@ import * as React from "react";
 import classNames from "classnames";
 import navAnsattSvg from "./nav-ansatt.svg";
 import "./feilmelding.less";
+import { PropsWithChildren } from "react";
 
-interface FeilmeldingProps {
+interface FeilmeldingProps extends PropsWithChildren {
   bilde?: any;
   className?: string;
 }
