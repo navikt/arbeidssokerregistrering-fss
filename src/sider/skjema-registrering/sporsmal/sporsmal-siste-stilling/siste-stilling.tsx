@@ -1,5 +1,5 @@
 import * as React from "react";
-import { connect, Dispatch } from "react-redux";
+import { connect } from "react-redux";
 import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
 import {
   selectSisteStillingFraAAReg,
@@ -8,8 +8,8 @@ import {
 import { AppState } from "../../../../reducer";
 import {
   hentStillingFraPamGittStyrkkode,
-  selectSisteStillingNavnFraPam,
   selectOversettelseAvStillingFraAAReg,
+  selectSisteStillingNavnFraPam,
   State as OversettelseAvStillingFraAARegState,
 } from "../../../../ducks/oversettelse-av-stilling-fra-aareg";
 import EkspanderbartInfo from "../../../../komponenter/ekspanderbartinfo/ekspanderbartInfo";

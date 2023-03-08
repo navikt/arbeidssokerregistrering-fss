@@ -5,7 +5,6 @@ import ResponsivSide from "../side/responsiv-side";
 import { uniLogger } from "../../metrikker/uni-logger";
 
 import "./innholdslaster.less";
-import { PropsWithChildren } from "react";
 
 const array = (value: unknown) => (Array.isArray(value) ? value : [value]);
 const harStatus =

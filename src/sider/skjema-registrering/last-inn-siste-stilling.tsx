@@ -1,19 +1,20 @@
 import * as React from "react";
-import { connect, Dispatch } from "react-redux";
+import { PropsWithChildren } from "react";
+import { connect } from "react-redux";
 import {
+  Data as SisteArbeidsforholdData,
   hentStyrkkodeForSisteStillingFraAAReg,
   selectSisteStillingFraAAReg,
   State as SisteArbeidsforholdState,
-  Data as SisteArbeidsforholdData,
 } from "../../ducks/siste-stilling-fra-aareg";
 import { AppState } from "../../reducer";
 import {
-  hentStillingFraPamGittStyrkkode,
-  selectSisteStillingNavnFraPam,
-  selectOversettelseAvStillingFraAAReg,
-  State as OversettelseAvStillingFraAARegState,
   Data as OversettelseAvStillingFraAARegData,
   Data as OversettelseAvStillingData,
+  hentStillingFraPamGittStyrkkode,
+  selectOversettelseAvStillingFraAAReg,
+  selectSisteStillingNavnFraPam,
+  State as OversettelseAvStillingFraAARegState,
 } from "../../ducks/oversettelse-av-stilling-fra-aareg";
 import { ingenYrkesbakgrunn, selectSisteStilling, Stilling, velgSisteStilling } from "../../ducks/siste-stilling";
 import Innholdslaster from "../../komponenter/innholdslaster/innholdslaster";
@@ -22,7 +23,6 @@ import { hentOversattStillingFraAAReg, UTEN_STYRKKODE } from "./sporsmal/sporsma
 import { STATUS } from "../../ducks/api-utils";
 import FeilmeldingGenerell from "../../komponenter/feilmelding/feilmelding-generell";
 import { settDefaultStilling } from "../../ducks/default-stilling";
-import { PropsWithChildren } from "react";
 
 interface StateProps {
   sisteStillingFraAAReg: SisteArbeidsforholdState;

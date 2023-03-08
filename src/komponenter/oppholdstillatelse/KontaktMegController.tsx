@@ -1,12 +1,12 @@
 import * as React from "react";
-import { connect, Dispatch } from "react-redux";
+import { connect } from "react-redux";
 import NavFrontendSpinner from "nav-frontend-spinner";
 
 import { AppState } from "../../reducer";
 import { RegistreringType, selectRegistreringstatus } from "../../ducks/registreringstatus";
 import { opprettKontaktmegOppgave, selectOpprettKontaktmegOppgaveResult } from "../../ducks/oppgave";
 import { selectKontaktinfo, State as KontaktinfoState } from "../../ducks/kontaktinfo";
-import { OppgaveSuccess, OppgaveErrorTooSoon, OppgaveError, KontaktMegForm } from "./";
+import { KontaktMegForm, OppgaveError, OppgaveErrorTooSoon, OppgaveSuccess } from "./";
 
 import "./kontakt-meg-melding.less";
 
