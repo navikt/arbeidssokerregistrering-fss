@@ -13,9 +13,9 @@ interface StateProps {
   startRegistreringStatus: StartRegistreringData;
 }
 
-type Props = RouteComponentProps<MatchProps> & InjectedIntlProps & StateProps;
+type Props = RouteComponentProps<MatchProps> & StateProps;
 
-class Banner extends React.Component<Props> {
+class Banner extends React.Component<Props & InjectedIntlProps> {
   settBannerOverskriftId(): string {
     const registreringType = this.props.startRegistreringStatus.registreringType;
     const visSykefravaerSkjema = registreringType === RegistreringType.SYKMELDT_REGISTRERING;
@@ -44,5 +44,5 @@ const mapStateToProps = (state: AppState): StateProps => ({
   startRegistreringStatus: state.registreringStatus.data,
 });
 
-const DecoratedBanner = injectIntl<StateProps>(withRouter(Banner));
+const DecoratedBanner = withRouter(injectIntl<Props>(Banner));
 export default connect(mapStateToProps)(DecoratedBanner);
