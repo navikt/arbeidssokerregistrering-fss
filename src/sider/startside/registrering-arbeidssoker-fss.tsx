@@ -63,17 +63,11 @@ class RegistreringArbeidssokerFss extends React.Component<RouteComponentProps<Ma
     return (
       <div className="registrering-arbeidssoker__rad3">
         <Innholdstittel tag="h2" className="rad__tittel">
-          <FormattedMessage id="registrering-arbeidssoker.argument3tittel-fss" />
+          <FormattedMessage id="registrering-arbeidssoker.dineopplysninger.tittel" />
         </Innholdstittel>
         <div className="rad3__tekst">
-          <Normaltekst>
-            <FormattedMessage id="registrering-arbeidssoker.rad3.del1-fss" />
-          </Normaltekst>
-          <Normaltekst>
-            <FormattedHTMLMessage id="registrering-arbeidssoker.rad3.opplysninger-fss" />
-          </Normaltekst>
           <Normaltekst className="blokk-l" tag="div">
-            <FormattedMessage id="registrering-arbeidssoker.rad3.del2-fss" />
+            <FormattedHTMLMessage id="registrering-arbeidssoker.dineopplysninger.tekst" />
           </Normaltekst>
 
           <Element tag="h3">
