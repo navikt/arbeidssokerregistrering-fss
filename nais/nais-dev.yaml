@@ -79,7 +79,7 @@ spec:
           "redirects": [
               {
                 "fromPath": "/veilarbpersonflate/*",
-                "toUrl": "https://veilarbpersonflate.dev.intern.nav.no",
+                "toUrl": "https://veilarbpersonflate.intern.dev.nav.no",
                 "preserveFromPath": false
               },
               {
