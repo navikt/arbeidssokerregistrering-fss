@@ -8,7 +8,7 @@ Løsningen baserer seg på [poao-frontend](https://github.com/navikt/poao-fronte
 
 # Komme i gang med utvikling
 
-- Bruk Node.js v14.19
+- Bruk Node.js v16 `nvm use`
 
 - `npm i`
 - `npm start` (starter appen i demo-modus)
@@ -19,13 +19,6 @@ Løsningen baserer seg på [poao-frontend](https://github.com/navikt/poao-fronte
 - Clone og start (StartJetty normal) `dev-proxy` https://github.com/navikt/dev-proxy
 - Clone og start `veilarbregistrering` https://github.com/navikt/veilarbregistrering
 - Åpne appen i `localhost:8080`
-
-# Kjøre GUI-tester lokalt
-
-Start server i cypress modus i et terminalvindu og start testene i et annet.
-
-- `npm run start:cypress`
-- `npm run cypress:run`
 
 # Henvendelser
 
