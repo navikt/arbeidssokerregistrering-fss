@@ -150,4 +150,4 @@ const mapStateToProps = (state: AppState) => ({
   state: state,
 });
 
-export default connect(mapStateToProps)(injectIntl(AlleredeRegistrert));
+export default connect(mapStateToProps)(injectIntl<Props>(AlleredeRegistrert));

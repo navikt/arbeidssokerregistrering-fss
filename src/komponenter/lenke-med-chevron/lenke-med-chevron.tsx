@@ -3,8 +3,9 @@ import { HoyreChevron } from "nav-frontend-chevron";
 import classNames from "classnames";
 
 import "./lenke-med-chevron.less";
+import { PropsWithChildren } from "react";
 
-interface Props {
+interface Props extends PropsWithChildren {
   path: string;
   className?: string;
   target?: string;

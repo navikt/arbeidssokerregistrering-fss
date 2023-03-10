@@ -286,7 +286,13 @@ class AutoComplete extends React.Component<Props, AutoCompleteState> {
   render() {
     const { resultatListe, oppdaterState, visSpinner, value, onChange, resetValue, intl } = this.props;
     return (
-      <form className="autocomplete-form" ref={this.setFormRef} action="">
+      <form
+        className="autocomplete-form"
+        ref={(instance) => {
+          this.formRef = instance;
+        }}
+        action=""
+      >
         <Input
           autoFocus={true}
           onKeyDown={this.onKeyDown}
@@ -323,4 +329,4 @@ class AutoComplete extends React.Component<Props, AutoCompleteState> {
   }
 }
 
-export default injectIntl(AutoComplete);
+export default injectIntl<AutoCompleteProps>(AutoComplete);

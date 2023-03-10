@@ -1,5 +1,5 @@
 import * as React from "react";
-import { connect, Dispatch } from "react-redux";
+import { connect } from "react-redux";
 import { AppState } from "../../reducer";
 import { hentKontaktinfo, selectKontaktinfo, State as KontaktinfoState } from "../../ducks/kontaktinfo";
 import {
@@ -17,6 +17,7 @@ import TjenesteOppdateres from "../../sider/tjeneste-oppdateres";
 import { STATUS } from "../../ducks/api-utils";
 import Loader from "../loader/loader";
 import FeilmeldingGenerell from "../feilmelding/feilmelding-generell";
+import { PropsWithChildren } from "react";
 
 interface StateProps {
   kontaktinfo: KontaktinfoState;
@@ -32,7 +33,7 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps;
 
-export class HentInitialData extends React.Component<Props> {
+export class HentInitialData extends React.Component<PropsWithChildren<Props>> {
   componentDidMount() {
     this.props.hentFeatureToggle().then(() => {
       this.props.hentRegistreringStatus();
@@ -69,7 +70,7 @@ const mapStateToProps = (state: AppState) => ({
   featuretoggles: selectFeatureTogglesState(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch): DispatchProps => ({
   hentRegistreringStatus: () => dispatch(hentRegistreringStatus()),
   hentFeatureToggle: () => dispatch(hentFeatureToggles()),
   hentKontaktinfo: () => dispatch(hentKontaktinfo()),

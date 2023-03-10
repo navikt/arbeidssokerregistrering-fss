@@ -63,31 +63,25 @@ class RegistreringArbeidssokerFss extends React.Component<RouteComponentProps<Ma
     return (
       <div className="registrering-arbeidssoker__rad3">
         <Innholdstittel tag="h2" className="rad__tittel">
-          <FormattedMessage id="registrering-arbeidssoker.argument3tittel-fss" />
+          <FormattedMessage id="registrering-arbeidssoker.dineopplysninger.tittel" />
         </Innholdstittel>
         <div className="rad3__tekst">
-          <Normaltekst>
-            <FormattedMessage id="registrering-arbeidssoker.rad3.del1-fss" />
-          </Normaltekst>
-          <Normaltekst>
-            <FormattedHTMLMessage id="registrering-arbeidssoker.rad3.opplysninger-fss" />
-          </Normaltekst>
           <Normaltekst className="blokk-l" tag="div">
-            <FormattedMessage id="registrering-arbeidssoker.rad3.del2-fss" />
+            <FormattedHTMLMessage id="registrering-arbeidssoker.dineopplysninger.tekst" />
           </Normaltekst>
 
           <Element tag="h3">
-            <FormattedMessage id="registrering-arbeidssoker.rad3.del3-tittel-fss" />
+            <FormattedMessage id="registrering-arbeidssoker.bistandsbehov.tittel" />
           </Element>
           <Normaltekst className="blokk-l" tag="div">
-            <FormattedHTMLMessage id="registrering-arbeidssoker.rad3.del3-innhold-fss" />
+            <FormattedHTMLMessage id="registrering-arbeidssoker.bistandsbehov.tekst" />
           </Normaltekst>
 
           <Element tag="h3">
-            <FormattedMessage id="registrering-arbeidssoker.rad3.del4-tittel-fss" />
+            <FormattedMessage id="registrering-arbeidssoker.personopplysninger.tittel" />
           </Element>
           <Normaltekst className="blokk-l" tag="div">
-            <FormattedHTMLMessage id="registrering-arbeidssoker.rad3.del4-innhold-fss" />
+            <FormattedHTMLMessage id="registrering-arbeidssoker.personopplysninger.tekst" />
           </Normaltekst>
 
           <Normaltekst className="registrering-arbeidssoker__rad3--tips" tag="div">

@@ -49,4 +49,4 @@ const mapStateToProps = (state: AppState) => ({
   state: state,
 });
 
-export default connect(mapStateToProps)(injectIntl(DuErNaRegistrert));
+export default connect(mapStateToProps)(injectIntl<AllProps>(DuErNaRegistrert));

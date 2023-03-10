@@ -1,3 +1,3 @@
 import { Action, Dispatch as ReduxDispatch } from "redux";
 
-export type Dispatch = ReduxDispatch<Action>;
+export type Dispatch = ReduxDispatch<Action, any>;

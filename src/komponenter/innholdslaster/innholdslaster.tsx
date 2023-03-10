@@ -7,8 +7,10 @@ import { uniLogger } from "../../metrikker/uni-logger";
 import "./innholdslaster.less";
 
 const array = (value: unknown) => (Array.isArray(value) ? value : [value]);
-const harStatus = (...status: string[]) => (element: { status: string }) =>
-  array(status).toString().includes(element.status);
+const harStatus =
+  (...status: string[]) =>
+  (element: { status: string }) =>
+    array(status).toString().includes(element.status);
 const noenHarFeil = (avhengigheter: { status: string }[]) =>
   avhengigheter && avhengigheter.some(harStatus(STATUS.ERROR));
 const alleLastet = (avhengigheter: { status: string }[]) => avhengigheter && avhengigheter.every(harStatus(STATUS.OK));
@@ -20,6 +22,7 @@ interface InnholdslasterProps {
   feilmeldingKomponent?: React.ReactNode;
   loaderKomponent?: React.ReactNode;
   storrelse?: SpinnerStorrelse;
+  children?: React.ReactNode | ((args: any) => React.ReactNode);
 }
 
 interface InnholdslasterState {

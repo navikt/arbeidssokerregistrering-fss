@@ -5,7 +5,7 @@ interface SpaMockProps {
   name: string;
 }
 
-const SpaMock: React.SFC<SpaMockProps> = (props: SpaMockProps) => {
+const SpaMock: React.FC<SpaMockProps> = (props: SpaMockProps) => {
   return <div className="spa-mock">{props.name}</div>;
 };
 

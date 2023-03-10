@@ -14,6 +14,7 @@ import {
 import { finnLenkeEndreElementForOrdinaer } from "../skjema-registrering/skjema-sporsmalene";
 import { hentLenkeEndre } from "../skjema-sykefravaer/skjema-sykefravaer-sporsmalene";
 import { hentInngangsLoep } from "../skjema-sykefravaer/inngangssporsmal-svar-alternativene";
+import { PropsWithChildren } from "react";
 
 interface OwnProps {
   sporsmalId?: SporsmalId;
@@ -31,7 +32,7 @@ interface StateProps {
 
 type Props = OwnProps & StateProps;
 
-class OppsummeringElement extends React.Component<Props> {
+class OppsummeringElement extends React.Component<PropsWithChildren<Props>> {
   render() {
     const { tekst, values, registreringstatusData } = this.props;
 

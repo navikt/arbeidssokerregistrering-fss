@@ -20,19 +20,14 @@
     "prettier": "prettier --write .",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm i",
     "start:utenmock": "cross-env BROWSER=none craco start",
-    "start:cypress": "npm-run-all -p start:tekster start:utenmock",
-    "cypress:clear": "cypress cache clear",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
     "test": "craco test",
     "test:ci": "CI=true craco test",
     "postinstall": "husky install"
   },
   "dependencies": {
-    "@alheimsins/virkedager": "1.2.5",
+    "@alheimsins/virkedager": "2.2.0",
     "@craco/craco": "6.2.0",
     "@navikt/fnrvalidator": "1.1.4",
-    "@navikt/fo-session-timeout-modal": "1.1.1",
     "@navikt/navspa": "^3.0.2",
     "@sentry/browser": "6.12.0",
     "@sentry/react": "6.12.0",
@@ -79,8 +74,8 @@
     "nav-frontend-typografi-style": "2.0.1",
     "nav-frontend-veileder": "3.0.2",
     "nav-frontend-veileder-style": "3.0.1",
-    "nav-frontend-veilederpanel": "2.0.2",
-    "nav-frontend-veilederpanel-style": "2.0.1",
+    "nav-frontend-veilederpanel": "2.0.3",
+    "nav-frontend-veilederpanel-style": "2.0.2",
     "prop-types": "15.7.2",
     "react": "16.14.0",
     "react-collapse": "5.1.0",
@@ -88,7 +83,7 @@
     "react-dom": "16.14.0",
     "react-intl": "2.9.0",
     "react-maskedinput": "4.0.1",
-    "react-modal": "3.14.3",
+    "react-modal": "3.14.4",
     "react-motion": "0.5.2",
     "react-redux": "5.1.2",
     "react-router-dom": "5.2.1",
@@ -99,7 +94,6 @@
   },
   "devDependencies": {
     "@babel/preset-react": "7.14.5",
-    "@cypress/webpack-preprocessor": "5.9.1",
     "@navikt/react-intl-bundler": "1.0.4",
     "@types/amplitude-js": "6.0.0",
     "@types/chai": "4.2.21",
@@ -112,9 +106,9 @@
     "@types/lodash": "4.14.172",
     "@types/node": "14.14.2",
     "@types/react-intl": "2.3.8",
-    "@types/react-modal": "3.12.1",
+    "@types/react-modal": "3.13.1",
     "@types/react-redux": "5.0.19",
-    "@types/react-router-dom": "5.1.8",
+    "@types/react-router-dom": "5.3.3",
     "@types/react-select": "1.2.0",
     "@types/react-test-renderer": "16.9.3",
     "@types/sinon": "5.0.3",
@@ -125,7 +119,6 @@
     "chai-spies": "1.0.0",
     "cross-env": "7.0.3",
     "cross-spawn": "7.0.3",
-    "cypress": "4.12.1",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.6",
     "express": "4.17.1",
@@ -154,5 +147,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,json,md,ts,tsx}": "prettier --write"
+  },
+  "engines": {
+    "node": "16"
   }
 }

@@ -2,7 +2,7 @@ import * as React from "react";
 import { Provider } from "react-redux";
 import IntlProvider from "./Intl-provider";
 import { getStore } from "./store";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import HentInitialData from "./komponenter/initialdata/hent-initial-data";
 import Routes from "./routes";
 import ManuellRegistreringSjekk from "./komponenter/manuell-registrering-sjekk";
@@ -37,9 +37,9 @@ class AppFss extends React.Component {
           <ManuellRegistreringSjekk>
             <Visitkort />
             <HentInitialData>
-              <Router>
+              <BrowserRouter>
                 <Routes />
-              </Router>
+              </BrowserRouter>
             </HentInitialData>
           </ManuellRegistreringSjekk>
         </IntlProvider>

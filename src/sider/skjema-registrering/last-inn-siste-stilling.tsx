@@ -1,19 +1,20 @@
 import * as React from "react";
-import { connect, Dispatch } from "react-redux";
+import { PropsWithChildren } from "react";
+import { connect } from "react-redux";
 import {
+  Data as SisteArbeidsforholdData,
   hentStyrkkodeForSisteStillingFraAAReg,
   selectSisteStillingFraAAReg,
   State as SisteArbeidsforholdState,
-  Data as SisteArbeidsforholdData,
 } from "../../ducks/siste-stilling-fra-aareg";
 import { AppState } from "../../reducer";
 import {
-  hentStillingFraPamGittStyrkkode,
-  selectSisteStillingNavnFraPam,
-  selectOversettelseAvStillingFraAAReg,
-  State as OversettelseAvStillingFraAARegState,
   Data as OversettelseAvStillingFraAARegData,
   Data as OversettelseAvStillingData,
+  hentStillingFraPamGittStyrkkode,
+  selectOversettelseAvStillingFraAAReg,
+  selectSisteStillingNavnFraPam,
+  State as OversettelseAvStillingFraAARegState,
 } from "../../ducks/oversettelse-av-stilling-fra-aareg";
 import { ingenYrkesbakgrunn, selectSisteStilling, Stilling, velgSisteStilling } from "../../ducks/siste-stilling";
 import Innholdslaster from "../../komponenter/innholdslaster/innholdslaster";
@@ -38,7 +39,7 @@ interface DispatchProps {
 }
 
 type Props = StateProps & DispatchProps;
-class LastInnSisteStilling extends React.Component<Props> {
+class LastInnSisteStilling extends React.Component<PropsWithChildren<Props>> {
   componentDidMount() {
     const velgStilling = (stilling: Stilling) => {
       this.props.velgStilling(stilling);
@@ -93,7 +94,7 @@ const mapStateToProps = (state: AppState) => ({
   sisteStilling: selectSisteStilling(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch): DispatchProps => ({
   hentStyrkkodeForSisteStillingFraAAReg: () => dispatch(hentStyrkkodeForSisteStillingFraAAReg()),
   hentStillingFraPamGittStyrkkode: (styrk: string) => dispatch(hentStillingFraPamGittStyrkkode(styrk)),
   velgStilling: (stilling: Stilling) => dispatch(velgSisteStilling(stilling)),

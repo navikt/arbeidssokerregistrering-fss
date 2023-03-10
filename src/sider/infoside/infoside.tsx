@@ -107,4 +107,4 @@ const mapStateToProps = (state: AppState): StateProps => ({
   state: state,
 });
 
-export default connect(mapStateToProps)(withRouter(injectIntl(Infoside)));
+export default connect(mapStateToProps)(withRouter(injectIntl<Props>(Infoside)));

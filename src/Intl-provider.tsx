@@ -25,7 +25,7 @@ function skalViseTekstnokler(): boolean {
 
 class IntlProvider extends React.Component {
   render() {
-    const { children, ...props } = this.props;
+    const { children, ...props } = this.props as any & { children?: React.ReactNode };
     const locale = "nb";
 
     const teksterEllerNokler = skalViseTekstnokler() ? mapTeksterTilNokler(tekster.nb) : tekster.nb;

@@ -22,7 +22,7 @@ const erITestMiljo = (): boolean => {
 };
 
 export const utledSpaUrl = (appName: string): string => {
-  return erITestMiljo() ? `https://${appName}.dev.intern.nav.no` : `https://${appName}.intern.nav.no`;
+  return erITestMiljo() ? `https://${appName}.intern.dev.nav.no` : `https://${appName}.intern.nav.no`;
 };
 
 type LocationType = { search: string };

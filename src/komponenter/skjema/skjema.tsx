@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
-import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
+import { FormattedMessage, injectIntl } from "react-intl";
 import NavAlertStripe from "nav-frontend-alertstriper";
 import { AppState } from "../../reducer";
 import { SporsmalId, State as SvarState } from "../../ducks/svar";
@@ -47,7 +47,7 @@ interface OwnProps {
   endUrl: string;
 }
 
-export type Props = OwnProps & StateProps & InjectedIntlProps & RouteComponentProps<MatchProps>;
+export type Props = OwnProps & StateProps & RouteComponentProps<MatchProps>;
 
 class Skjema extends React.Component<Props, OwnState> {
   constructor(props: Props) {
@@ -156,4 +156,4 @@ const mapStateToProps = (state: AppState): StateProps => ({
   registreringstatusData: selectRegistreringstatus(state).data,
 });
 
-export default connect(mapStateToProps)(injectIntl(Skjema));
+export default connect(mapStateToProps)(injectIntl<Props>(Skjema));

@@ -9,9 +9,9 @@ interface InaktivSokeInputProps {
   onInputAktivert: () => void;
 }
 
-type AllProps = InaktivSokeInputProps & InjectedIntlProps;
-
-const InaktivSokeInput: React.SFC<AllProps> = (props: AllProps) => {
+const InaktivSokeInput: React.FC<InaktivSokeInputProps & InjectedIntlProps> = (
+  props: InaktivSokeInputProps & InjectedIntlProps
+) => {
   const { intl, stilling, onInputAktivert } = props;
   const tekster = {
     undertittel: intl.messages["siste-arbeidsforhold.undertittel"],
@@ -31,4 +31,4 @@ const InaktivSokeInput: React.SFC<AllProps> = (props: AllProps) => {
   );
 };
 
-export default injectIntl(InaktivSokeInput);
+export default injectIntl<InaktivSokeInputProps>(InaktivSokeInput);

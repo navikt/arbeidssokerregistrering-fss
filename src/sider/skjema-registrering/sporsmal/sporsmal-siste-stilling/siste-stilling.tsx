@@ -1,5 +1,5 @@
 import * as React from "react";
-import { connect, Dispatch } from "react-redux";
+import { connect } from "react-redux";
 import { FormattedMessage, InjectedIntlProps, injectIntl } from "react-intl";
 import {
   selectSisteStillingFraAAReg,
@@ -8,8 +8,8 @@ import {
 import { AppState } from "../../../../reducer";
 import {
   hentStillingFraPamGittStyrkkode,
-  selectSisteStillingNavnFraPam,
   selectOversettelseAvStillingFraAAReg,
+  selectSisteStillingNavnFraPam,
   State as OversettelseAvStillingFraAARegState,
 } from "../../../../ducks/oversettelse-av-stilling-fra-aareg";
 import EkspanderbartInfo from "../../../../komponenter/ekspanderbartinfo/ekspanderbartInfo";
@@ -44,10 +44,10 @@ interface DispatchProps {
   velgStilling: (stilling: Stilling) => void;
 }
 
-type Props = SporsmalProps & StateProps & DispatchProps & InjectedIntlProps;
+type Props = SporsmalProps & StateProps & DispatchProps;
 
-class SisteStilling extends React.Component<Props, SisteStillingState> {
-  constructor(props: Props) {
+class SisteStilling extends React.Component<Props & InjectedIntlProps, SisteStillingState> {
+  constructor(props: Props & InjectedIntlProps) {
     super(props);
 
     this.state = {
@@ -186,9 +186,9 @@ const mapStateToProps = (state: AppState) => ({
   registreringType: selectRegistreringstatus(state).data.registreringType,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppState>): DispatchProps => ({
+const mapDispatchToProps = (dispatch): DispatchProps => ({
   hentStillingFraPamGittStyrkkode: (styrk: string) => dispatch(hentStillingFraPamGittStyrkkode(styrk)),
   velgStilling: (stilling: Stilling) => dispatch(velgSisteStilling(stilling)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(SisteStilling));
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl<Props>(SisteStilling));
