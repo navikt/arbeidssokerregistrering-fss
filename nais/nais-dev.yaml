@@ -63,6 +63,8 @@ spec:
       external:
         - host: paw-proxy.dev-fss-pub.nais.io
         - host: unleash.nais.io
+        - host: modiacontextholder-q1.dev-fss-pub.nais.io
+        - host: pam-janzz.intern.dev.nav.no
 
   env:
     - name: JSON_CONFIG

@@ -62,6 +62,8 @@ spec:
       external:
         - host: paw-proxy.prod-fss-pub.nais.io
         - host: unleash.nais.io
+        - host: modiacontextholder.prod-fss-pub.nais.io
+        - host: pam-janzz.intern.nav.no
   env:
     - name: JSON_CONFIG
       value: >
