@@ -88,30 +88,30 @@ export function initSessionKontekst(): void {
   oppdaterModiaKontekst();
 }
 
-export function hentUrlBrukerFnr(): string | null {
-  return hentQueryParameter(window.location, "fnr");
-}
-
 export function hentUrlEnhetId(): string | null {
   return hentQueryParameter(window.location, "enhetId");
 }
 
-export function hentBrukerFnr(): string | null {
-  const fnrFraUrl = hentUrlBrukerFnr();
+export const hentBrukerFnr =  (): string|null  => {
+  hentBrukerIKontekst().then((res) => {
+    let aktivBruker = res.aktivBruker;
+    if (aktivBruker){
+      return aktivBruker;
+    }
 
-  if (fnrFraUrl) {
-    return fnrFraUrl;
-  }
+    const fnrFraSession = hentSessionBrukerFnr();
 
-  const fnrFraSession = hentSessionBrukerFnr();
+    if (fnrFraSession) {
+      return fnrFraSession;
+    }
 
-  if (fnrFraSession) {
-    return fnrFraSession;
-  }
+    if (process.env.REACT_APP_MOCK_MANUELL_REGISTRERING) {
+      return mockedBrukerFnr;
+    }
 
-  if (process.env.REACT_APP_MOCK_MANUELL_REGISTRERING) {
-    return mockedBrukerFnr;
-  }
+    return null;
+
+  }).catch();
 
   return null;
 }
